@@ -1,0 +1,133 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Spy Cadet</title>
+<meta name="description" content="Crack real World War II codes with your class. Campaign 1: The Midway Code.">
+<meta name="theme-color" content="#14202e">
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+<div id="app">
+
+<!-- ========== home ========== -->
+<section id="scrHome" class="screen home">
+  <div class="lamp"></div>
+  <header class="logo">
+    <div class="stamp tilt">Top Secret</div>
+    <h1>Spy <span>Cadet</span></h1>
+    <p class="tag">Codebreakers of World War II</p>
+  </header>
+  <div class="homegrid">
+    <div class="panel">
+      <h2 class="ptitle">Who is on duty?</h2>
+      <div id="profiles" class="badges"></div>
+    </div>
+    <div class="panel modes" id="modes">
+      <h2 class="ptitle">Report for duty</h2>
+      <button class="big gold" id="soloBtn"><span class="ic">🎧</span><span><b>Play solo</b><small>Your own desk at Station HYPO</small></span></button>
+      <button class="big" id="hostBtn"><span class="ic">📡</span><span><b>Host a team game</b><small>Get a code. The class joins with it.</small></span></button>
+      <div class="joinrow">
+        <button class="big" id="joinBtn"><span class="ic">🔑</span><span><b>Join</b><small>Type the host's code</small></span></button>
+        <input id="joinCode" class="input code" maxlength="8" placeholder="SPY-____" autocomplete="off" spellcheck="false" aria-label="Room code">
+      </div>
+      <p class="err" id="joinErr" hidden></p>
+    </div>
+  </div>
+  <nav class="homenav">
+    <button class="link" id="recordsBtn">🕯 Records Room</button>
+    <button class="link" id="teachBtn">🍎 For teachers</button>
+    <button class="link" id="setBtn">⚙ Settings</button>
+  </nav>
+</section>
+
+<!-- ========== campaign map ========== -->
+<section id="scrMap" class="screen map" hidden>
+  <header class="bar">
+    <button class="btn ghost" id="mapBack">← Back</button>
+    <div class="bartitle"><b id="campTitle">The Midway Code</b><small id="campSub">Pacific, 1942</small></div>
+    <div class="barright"><span id="mapMe" class="me"></span></div>
+  </header>
+  <div class="mapwrap">
+    <div class="chart"><svg id="chart" viewBox="0 0 1000 800" role="img" aria-label="Map of the Pacific Ocean in 1942"></svg></div>
+    <aside class="missions" id="missionList"></aside>
+  </div>
+</section>
+
+<!-- ========== lobby ========== -->
+<section id="scrLobby" class="screen lobby" hidden>
+  <header class="bar">
+    <button class="btn ghost" id="lobbyLeave">← Leave</button>
+    <div class="bartitle"><b>Station HYPO: team room</b><small id="netStatus">Opening room…</small></div>
+    <div class="barright"></div>
+  </header>
+  <div class="lobbygrid">
+    <div class="panel roomcard">
+      <p class="lbl">Room code</p>
+      <div class="roomcode" id="roomCode">SPY-····</div>
+      <div id="qr" class="qr"></div>
+      <p class="muted" id="roomHelp"></p>
+    </div>
+    <div class="panel">
+      <h2 class="ptitle">Crew <span id="crewCount" class="pill">0</span></h2>
+      <ul id="crewList" class="crew"></ul>
+    </div>
+    <div class="panel" id="hostPanel">
+      <h2 class="ptitle">Mission</h2>
+      <div id="lobbyMissions" class="lmissions"></div>
+      <label class="field"><span>Clock</span><select class="input" id="lobbyClock">
+        <option value="recruit">Relaxed: no clock</option><option value="codebreaker" selected>Normal clock</option><option value="expert">Tight clock</option></select></label>
+      <button class="big gold" id="startTeam"><span class="ic">▶</span><span><b>Start mission</b><small>Everyone gets their own messages</small></span></button>
+    </div>
+  </div>
+</section>
+
+<!-- ========== workstation ========== -->
+<section id="scrDesk" class="screen desk" hidden>
+  <header class="bar deskbar">
+    <button class="btn ghost" id="deskMenu" aria-label="Menu">☰</button>
+    <div class="bartitle"><b id="deskTitle"></b><small id="deskStep"></small></div>
+    <div id="crewBar" class="crewbar"></div>
+    <div class="clock" id="clock"><svg viewBox="0 0 40 40" class="ring"><circle cx="20" cy="20" r="17"/><circle cx="20" cy="20" r="17" id="ringFill"/></svg>
+      <span><b id="clockTime">08:00</b><small id="clockDate">2 Mar 1942</small></span></div>
+  </header>
+  <div class="ticker" id="ticker"><span class="tlabel">NEWS</span><div class="tape" id="tape"></div></div>
+  <div class="deskgrid">
+    <main class="bench" id="bench"></main>
+    <aside class="side">
+      <div class="tabs" role="tablist"><button class="tab on" data-tab="book" role="tab">📖 Codebook</button><button class="tab" data-tab="board" role="tab">📌 Board <span id="boardCount" class="pill">0</span></button></div>
+      <div class="tabbody" id="bookTab"></div>
+      <div class="tabbody" id="boardTab" hidden></div>
+    </aside>
+  </div>
+  <footer class="mentor" id="mentor">
+    <span class="mav" id="mentorAv"></span>
+    <p id="mentorSay">Welcome, cadet.</p>
+    <button class="btn round" id="sayBtn" aria-label="Read aloud">🔊</button>
+    <button class="btn" id="hintBtn">💡 Hint</button>
+  </footer>
+</section>
+
+</div>
+
+<!-- full-screen folder for briefings, outcomes and history cards -->
+<div id="folder" class="folderwrap" hidden><div class="folder" id="folderBody"></div></div>
+<div id="modal" class="modal" hidden><div class="sheet" id="sheet"></div></div>
+<div id="toasts" class="toasts" aria-live="polite"></div>
+
+<script src="vendor/peerjs.min.js"></script>
+<script src="vendor/qrcode.js"></script>
+<script src="js/codebook.js"></script>
+<script src="js/content.js"></script>
+<script src="js/engine.js"></script>
+<script src="js/profile.js"></script>
+<script src="js/avatars.js"></script>
+<script src="js/net.js"></script>
+<script src="js/audio.js"></script>
+<script src="js/ui.js"></script>
+<script src="js/map.js"></script>
+<script src="js/desk.js"></script>
+<script src="js/game.js"></script>
+</body>
+</html>

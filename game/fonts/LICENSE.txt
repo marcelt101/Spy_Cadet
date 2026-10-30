@@ -1,0 +1,5 @@
+Fonts from Google Fonts, all under the SIL Open Font License 1.1 (https://openfontlicense.org):
+- Atkinson Hyperlegible, Braille Institute of America
+- Special Elite, Astigmatic
+- Black Ops One, James Grieshaber and Eben Sorkin
+Latin subsets only.
