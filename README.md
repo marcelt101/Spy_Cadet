@@ -67,8 +67,8 @@ python3 tools/build.py      # runs the tests, then zips game/ for itch.io into d
 
 ## Publishing
 
-GitHub builds everything: `.github/workflows/pages.yml` runs on every push. It runs the tests, publishes the web version on GitHub Pages, and attaches the itch.io zip (`spy-cadet-itch`) to the run on the Actions tab.
+Like Crater Crew, the web version is served by GitHub Pages straight from the branch: the root `index.html` sends players to `game/`, and `.nojekyll` makes GitHub serve the files as they are. Every push updates the game.
 
-One-time setup: in the repository, go to **Settings → Pages → Build and deployment → Source** and choose **GitHub Actions**. Then re-run the workflow, or push any change.
+One-time setup: in the repository, go to **Settings → Pages → Build and deployment**, set **Source** to **Deploy from a branch**, pick the branch and the **/ (root)** folder, and save.
 
-See `DESIGN.md` for the plan and `ASSETS.md` for the pictures still needed.
+`.github/workflows/build.yml` runs the tests on every push and attaches the itch.io zip (`spy-cadet-itch`) to the run on the Actions tab.
