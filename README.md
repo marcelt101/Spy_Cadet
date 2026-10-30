@@ -11,7 +11,9 @@ A classroom codebreaking game set in World War II. Each student plays on their o
 | 3 | AF Is Short of Water (May 1942) | Set the famous trap that proved AF meant Midway: three team decisions, then decode the enemy's reply |
 | 4 | The Battle of Midway (June 1942) | Against the clock: find the date and the direction of the attack, then place the carriers |
 
-Open `game/index.html` through a local web server, or publish the repository on GitHub Pages. The root `index.html` redirects to `game/`.
+**Play in the browser: https://marcelt101.github.io/Spy_Cadet/game/** (once GitHub Pages is switched on, see below). The root `index.html` redirects to `game/`.
+
+To play locally, run a small web server:
 
 ```
 python3 -m http.server 8000      # then open http://localhost:8000/game/
@@ -62,5 +64,11 @@ Each device rebuilds the same intercepts from the mission, a seed and the player
 node tests/run-tests.js     # cipher, content checks, mission rules, robots finishing every mission with 1, 2, 7 and 32 players
 python3 tools/build.py      # runs the tests, then zips game/ for itch.io into dist/
 ```
+
+## Publishing
+
+GitHub builds everything: `.github/workflows/pages.yml` runs on every push. It runs the tests, publishes the web version on GitHub Pages, and attaches the itch.io zip (`spy-cadet-itch`) to the run on the Actions tab.
+
+One-time setup: in the repository, go to **Settings → Pages → Build and deployment → Source** and choose **GitHub Actions**. Then re-run the workflow, or push any change.
 
 See `DESIGN.md` for the plan and `ASSETS.md` for the pictures still needed.

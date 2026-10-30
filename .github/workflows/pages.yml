@@ -1,0 +1,53 @@
+# Tests the game, publishes it on GitHub Pages and builds the itch.io zip, on every push.
+name: Build and publish
+
+on:
+  push:
+    branches: [main, ccr-3622b4f2-y5hpba]
+  workflow_dispatch:
+
+permissions:
+  contents: read
+  pages: write
+  id-token: write
+
+concurrency:
+  group: pages
+  cancel-in-progress: true
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 20
+      - name: Run the tests
+        run: node tests/run-tests.js
+      - name: Build the itch.io zip
+        run: python3 tools/build.py
+      - uses: actions/upload-artifact@v4
+        with:
+          name: spy-cadet-itch
+          path: dist/*.zip
+      - name: Collect the web version
+        run: |
+          mkdir -p _site
+          cp -r game index.html .nojekyll _site/
+      - uses: actions/configure-pages@v5
+      - uses: actions/upload-pages-artifact@v3
+        with:
+          path: _site
+
+  deploy:
+    needs: build
+    runs-on: ubuntu-latest
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}game/
+    steps:
+      - id: deployment
+        uses: actions/deploy-pages@v4
