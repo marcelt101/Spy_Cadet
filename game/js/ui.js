@@ -141,8 +141,23 @@ UI.teachers = () => {
     <h3>What students practice</h3><ul><li>Digit-by-digit subtraction without borrowing (mod 10), and the "divides by 3" digit-sum check.</li>
       <li>Reading clues in context and ruling out wrong answers.</li><li>The history of the Pacific war in 1942: Coral Sea, the AF trap and Midway, and the real people involved.</li>
       <li>The big idea: codes are usually broken because of habits and teamwork, not just machines.</li></ul>
-    <h3>Privacy</h3><p>No accounts and no personal data. Progress stays on each device. Devices find each other through the free PeerJS service and then talk directly; there is no chat, only game moves.</p>
+    <h3>Before class: check the school network</h3><p>Run this on a student Chromebook on the school Wi-Fi.</p>
+      <p><button class="btn gold" id="netCheck">📡 Check this network</button></p><p id="netResult" class="muted" aria-live="polite"></p>
+      ${SC.netMode() === 'relay' ? '' : `<p class="muted">School firewalls often block the PeerJS service this copy of the game uses. The school-safe fix is the classroom server: it sends everything as ordinary web traffic from the same address as the game. See "Team games at school" in the game's README.</p>`}
+    <h3>Privacy</h3><p>No accounts and no personal data. Progress stays on each device. ${SC.netMode() === 'relay'
+      ? 'Team-game moves pass through the classroom server and are not stored; there is no chat, only game moves.'
+      : 'Devices find each other through the free PeerJS service and then talk directly; there is no chat, only game moves.'}</p>
     <h3>Honest history</h3><p>Every mission ends with a "What really happened" card that says what the game simplified. Losses are mentioned honestly, without graphic detail and never as a score.</p></div>`);
+  $('netCheck').onclick = async () => {
+    const b = $('netCheck'), out = $('netResult'); b.disabled = true; out.textContent = 'Checking…';
+    const r = await SC.netCheck(); b.disabled = false;
+    out.textContent = r.mode === 'local' ? '✅ Test mode: windows of this browser only.'
+      : r.mode === 'peer' ? (r.ok ? '✅ The PeerJS service answered. Team games should work here (a strict firewall can still block the direct link between devices).'
+        : '❌ The PeerJS service is blocked on this network. Use the classroom server instead (see the README).')
+      : !r.ok ? `❌ Cannot reach the classroom server (${r.host}). Ask IT to allow this address: ${r.host}`
+      : r.ws ? `✅ Ready. Fast connection (WebSocket) to ${r.host}, ${r.ms} ms.`
+      : `✅ Ready. This network blocks WebSockets, so the game will use its backup (ordinary web requests) to ${r.host}. Slightly slower, works fine.`;
+  };
 };
 
 /* ---------- briefing ---------- */

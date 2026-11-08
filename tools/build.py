@@ -1,7 +1,8 @@
 #!/usr/bin/env python3
 """Build the itch.io upload from game/ (adapted from Crater Crew's build script).
 
-    python3 tools/build.py
+    python3 tools/build.py                                    # team games use PeerJS
+    python3 tools/build.py --relay https://spy-cadet.example.org   # team games use that classroom server
 
 Copies game/ to dist/spy-cadet/ and zips it to dist/spy-cadet-<build>.zip, with index.html at the top of the zip as
 itch.io expects. The build name is the current git tag or commit. Runs the tests first and stops if any fail.
@@ -18,12 +19,17 @@ def build_name():
         return 'local'
 
 if __name__ == '__main__':
-    if subprocess.call(['node', os.path.join(ROOT, 'tests', 'run-tests.js')]) != 0:
-        sys.exit('tests failed: no build made')
+    relay = sys.argv[sys.argv.index('--relay') + 1].rstrip('/') if '--relay' in sys.argv else ''
+    for t in ('run-tests.js', 'relay-test.js'):
+        if subprocess.call(['node', os.path.join(ROOT, 'tests', t)]) != 0:
+            sys.exit('tests failed: no build made')
     name = build_name()
     out = os.path.join(DIST, 'spy-cadet')
     shutil.rmtree(out, ignore_errors=True)
     shutil.copytree(SRC, out)
+    if relay:
+        with open(os.path.join(out, 'js', 'config.js'), 'a') as f:
+            f.write(f"window.SC.RELAY_URL = {relay!r};\n")
     os.makedirs(DIST, exist_ok=True)
     zpath = os.path.join(DIST, f'spy-cadet-{name}.zip')
     with zipfile.ZipFile(zpath, 'w', zipfile.ZIP_DEFLATED) as z:

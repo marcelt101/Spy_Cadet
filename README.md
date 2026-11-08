@@ -37,11 +37,34 @@ Levels (chosen on the ID badge): **Recruit** (8–10: step-by-step math, no cloc
 2. Students make an ID badge (codenames only), tap **Join** and type the code.
 3. The host picks the mission and the clock and taps **Start mission**. Everyone gets their own intercepts, and the message pool grows with the class, up to 32 players.
 
-Networking is Crater Crew's: the host's browser is the server, and devices find each other through the free PeerJS service, then talk directly. `?net=local` uses a BroadcastChannel instead, for testing several tabs in one browser, and `?slot=b` keeps a separate set of profiles per tab.
+### How devices connect
+
+There are two ways, and the game picks one from its settings (`game/js/config.js`):
+
+- **Classroom server (school-safe, recommended for schools).** `server/relay.js` serves the game and passes team-game messages between devices. Everything is ordinary HTTPS on port 443, from the same address as the game: **if a school's network can open the game, it can play team games.** Each device uses a WebSocket when the network allows it. If a firewall or filter breaks WebSockets, the device switches by itself to long-polling (plain web requests), which gets through strict filters and SSL-inspecting proxies. Messages are numbered and stay queued until confirmed, so a Chromebook that drops Wi-Fi for a few seconds carries on without losing anything.
+- **PeerJS (Crater Crew's way).** Devices find each other through the free PeerJS service and then talk directly over WebRTC. This needs no server of your own, but school firewalls often block it: they block the PeerJS service, or the UDP traffic WebRTC needs.
+
+The host's browser runs the game rules either way. The classroom server only passes messages along and stores nothing.
+
+Link options for testing: `?net=local` uses a BroadcastChannel, for several tabs in one browser. `?slot=b` keeps a separate set of profiles per tab. `?relay=https://…` uses that classroom server. `?via=poll` forces the long-poll backup. `?net=peer` forces PeerJS.
+
+### Team games at school
+
+1. **Run the classroom server** somewhere every student device can reach. It needs Node.js 18 or later and nothing else:
+
+   ```
+   node server/relay.js            # or: docker build -t spy-cadet . && docker run -p 8080:8080 spy-cadet
+   ```
+
+   It prints its addresses. Run **one copy only**: rooms live in memory, so every device in a class must reach the same server process. If you use a cloud host that scales automatically, set it to a single instance. Put HTTPS in front of it, as most hosts do by default.
+   - **A cloud host** (any service that runs a Node app or a Docker image with WebSockets) gives one address that works for every school, for example `https://spy-cadet.yourdomain.org`. Schools often block game sites (itch.io included) by category, so an address on your own domain that is not filed as "games" gets through filters best.
+   - **A computer at school** (the teacher's laptop, or a small school server) also works: students open `http://<that computer's address>:8080/`. This works with no internet at all, but only if the school Wi-Fi lets devices reach each other. Many school networks block that, so try it first.
+2. **Open the game from the server's address**: that copy uses the server automatically, with nothing to set. To point another copy (GitHub Pages, itch.io) at it, set `SC.RELAY_URL` in `game/js/config.js`, or build with `python3 tools/build.py --relay https://your-server`. In that case the school filter must allow both addresses.
+3. **Before class**, open **For teachers → Check this network** on a student Chromebook on the school Wi-Fi. It says whether the server is reachable and whether the fast or the backup connection will be used. If it is blocked, it names the one address to ask IT to allow.
 
 ## Code
 
-There is no build step: plain HTML, CSS and JavaScript in `game/`.
+There is no build step: plain HTML, CSS and JavaScript in `game/`, plus the optional classroom server in `server/`.
 
 | File | What it does |
 |---|---|
@@ -53,7 +76,9 @@ There is no build step: plain HTML, CSS and JavaScript in `game/`.
 | `js/ui.js`, `js/map.js` | Home, ID badges, settings, Records Room, teacher page, folders, the campaign map |
 | `js/profile.js` | Profiles, ranks, patches and save codes (from Crater Crew) |
 | `js/avatars.js` | 32 avatars plus the mentor (from Crater Crew, with 1940s hats) |
-| `js/net.js` | PeerJS host and join (from Crater Crew) |
+| `js/net.js` | Host and join: the school-safe relay client (WebSocket, falling back to long-poll), PeerJS (from Crater Crew), the network check |
+| `js/config.js` | Where the classroom server is. Empty means PeerJS |
+| `../server/relay.js` | The classroom server: serves `game/` and relays messages. Plain Node.js, no dependencies |
 | `js/audio.js` | Sound effects, the music bed (Crater Crew's engine) and read-aloud |
 
 Each device rebuilds the same intercepts from the mission, a seed and the player count, so only the small shared state goes over the network.
@@ -62,7 +87,8 @@ Each device rebuilds the same intercepts from the mission, a seed and the player
 
 ```
 node tests/run-tests.js     # cipher, content checks, mission rules, robots finishing every mission with 1, 2, 7 and 32 players
-python3 tools/build.py      # runs the tests, then zips game/ for itch.io into dist/
+node tests/relay-test.js    # classroom server and the game's relay client: WebSocket, long-poll, dropped lines, kicks, leaving
+python3 tools/build.py      # runs both, then zips game/ for itch.io into dist/ (add --relay URL to use a classroom server)
 ```
 
 ## Publishing
