@@ -1,0 +1,24 @@
+HVOA loop gain (voltage injection, unity follower)
+.include models.lib
+.include hvoa.sub
+VP VP 0 40
+VN VN 0 -40
+VIN IN 0 0
+X1 IN FB OUT VP VN 0 HVOA PARAMS_HERE
+VINJ FB OUT DC 0 AC 1
+RL OUT 0 10k
+CL OUT 0 220p
+.nodeset v(x1.tail)=0.8 v(out)=0
+.control
+op
+print v(out) @q.x1.q1[ic] @q.x1.q8[ic] @q.x1.q11[ic]
+ac dec 50 10 100Meg
+let t = -v(out)/v(fb)
+let g = db(t)
+let p = 180/pi*ph(t)
+meas ac a20 find g at=20
+meas ac a1k find g at=1k
+meas ac ugf when g=0
+meas ac pm find p at=ugf
+.endc
+.end

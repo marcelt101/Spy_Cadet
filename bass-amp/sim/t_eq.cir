@@ -1,0 +1,48 @@
+3-band EQ: Baxandall bass/treble (U1A) + gyrator mid (U1B/U2A)
+.include opamp.sub
+.param pb=0.5 pt=0.5 pm=0.5 cs=100n cg=15n
+VIN IN 0 AC 1
+* ---------------- U1A Baxandall (inverting) -------------
+R1 IN BA 10k
+RB1 BA BW {50k*(1-pb)+1}
+RB2 BW BB {50k*pb+1}
+R2 BB O1 10k
+C1 BA BW 47n
+C2 BW BB 47n
+R3 BW N1 4.7k
+C3 IN TA 6.8n
+RT1 TA TW {50k*(1-pt)+1}
+RT2 TW TB {50k*pt+1}
+C4 TB O1 6.8n
+R4 TW N1 1.8k
+XU1A 0 N1 O1 OPA
+* ---------------- U1B mid (non-inverting graphic section) -------------
+RI O1 P2 3.3k
+XU1B P2 M2 O2 OPA
+RFB O2 M2 3.3k
+RM1 P2 MW {10k*(1-pm)+1}
+RM2 MW M2 {10k*pm+1}
+CS MW X {cs}
+* gyrator (U2A): L = RL*RG*CG, series loss RL
+CGY X GP {cg}
+RGY GP 0 100k
+XU2A GP GO GO OPA
+RLY GO X 680
+.control
+foreach b 0 0.5 1
+  alterparam pb=$b
+  alterparam pt=$b
+  alterparam pm=$b
+  reset
+  ac dec 40 10 40k
+  let g = db(v(o2))
+  meas ac g30 find g at=30
+  meas ac g40 find g at=40
+  meas ac g100 find g at=100
+  meas ac g270 find g at=270
+  meas ac g1k find g at=1k
+  meas ac g5k find g at=5k
+  meas ac g10k find g at=10k
+end
+.endc
+.end

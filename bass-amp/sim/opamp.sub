@@ -1,0 +1,9 @@
+* Simple NE5532-like macromodel (linear): Aol 100 dB, GBW 10 MHz, Rout 50R
+.subckt OPA INP INN OUT
+RIN INP INN 300k
+G1 0 N1 INP INN 1
+R1 N1 0 100k
+C1 N1 0 1.59n
+E2 N2 0 N1 0 1
+RO N2 OUT 50
+.ends

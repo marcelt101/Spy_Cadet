@@ -1,0 +1,61 @@
+* HVOA-1 : +/-40 V discrete op-amp, nested (bootstrapped + VAS) cascode.
+* Pins: INP INN OUT VP VN GND
+* Variant A1 (hi-Z input): rtail=3k rsink=10k re=1k cc=68p
+* Variant A2 (FX return): rtail=820 rsink=3.3k re=470 cc=150p
+.subckt HVOA INP INN OUT VP VN GND params: rtail=820 rsink=3.3k re=470 cc=150p
+* --- references -------------------------------------------------------
+* top reference (red LED ~1.7 V below +V)
+D101 VP REFP LEDRED
+R101 REFP GND 39k
+C101 VP REFP 10u
+* bottom reference (red LED ~1.7 V above -V)
+D102 REFN VN LEDRED
+R102 GND REFN 39k
+C102 REFN VN 10u
+* --- input pair: 2N5087, degenerated, bootstrapped cascode --------------
+Q103 TAIL REFP E103 MPSA92
+R103 VP E103 {rtail}
+R104 TAIL E1 {re}
+R105 TAIL E2 {re}
+Q1 C1 INN E1 2N5087
+Q2 C2 INP E2 2N5087
+* cascode base rides 5.6 V below the tail node -> Vce(Q1,Q2) ~ 4.7 V at any common mode
+D103 CASB TAIL DZ5V6
+Q104 CASB REFN E104 MPSA42
+R106 E104 VN {rsink}
+C103 TAIL CASB 100n
+Q3 M1 CASB C1 MPSA92
+Q4 M2 CASB C2 MPSA92
+* --- current mirror: 2N5210, degenerated --------------------------------
+Q5 M1 M1 E5 2N5210
+Q6 M2 M1 E6 2N5210
+R107 E5 VN 1k
+R108 E6 VN 1k
+* --- VAS: MPSA42 follower (collector to GND) + 2N5210 VAS, MPSA42 cascode --
+D104 VN VCR DZ3V3
+R109 GND VCR 33k
+C104 VCR VN 10u
+Q7 GND M2 V7 MPSA42
+R110 V7 VN 22k
+Q8 V8 V7 E8 2N5210
+R111 E8 VN 100
+* VAS current limit (~6 mA)
+Q15 V7 E8 VN 2N5210
+Q9 VASL VCR V8 MPSA42
+* VAS load: MPSA92 current source ~3.9 mA
+Q105 VASH REFP E105 MPSA92
+R112 VP E105 270
+* --- dominant-pole compensation ----------------------------------------
+CC VASL M2 {cc}
+* --- bias chain + complementary emitter-follower output ----------------
+D105 VASH B1 D1N4148
+D106 B1 B2 D1N4148
+R113 B2 VASL 100
+Q11 VP VASH E11 MPSA42
+Q12 VN VASL E12 MPSA92
+R114 E11 OUT 56
+R115 E12 OUT 56
+* output current limit (~11 mA)
+Q13 VASH E11 OUT MPSA42
+Q14 VASL E12 OUT MPSA92
+.ends HVOA

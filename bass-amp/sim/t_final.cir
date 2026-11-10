@@ -1,0 +1,62 @@
+Final A1 (input) and A2 (FX return) checks
+.include models.lib
+.include hvoa.sub
+.param amp=1 f=1k rf=47k
+VP VP 0 40
+VN VN 0 -40
+* ---- A1: bootstrapped input / gain stage ----
+VIN JACK 0 DC 0 SIN(0 {amp} {f})
+RST JACK IN1 1k
+CRF IN1 0 100p
+CIN IN1 INP 2.2u
+RA INP BS 1Meg
+RB BS 0 100k
+CB INN BS 2.2u
+X1 INP INN OUT VP VN 0 HVOA params: rtail=3k rsink=10k re=1k cc=68p
+RF OUT INN {rf+470}
+CF OUT INN 22p
+RG INN G 2.2k
+CG G 0 220u
+RL OUT 0 10k
+CL OUT 0 220p
+* ---- A2: unity FX-return buffer, same input network ----
+VIN2 RJ 0 DC 0 SIN(0 {amp} {f})
+RST2 RJ IN2 1k
+CRF2 IN2 0 100p
+CIN2 IN2 INP2 2.2u
+RA2 INP2 BS2 1Meg
+RB2 BS2 0 100k
+CB2 OUT2 BS2 2.2u
+X2 INP2 INN2 OUT2 VP VN 0 HVOA params: rtail=820 rsink=3.3k re=470 cc=150p
+RF2 OUT2 INN2 1k
+RL2 OUT2 0 10k
+CL2 OUT2 0 220p
+.nodeset v(x1.tail)=1 v(x2.tail)=1 v(out)=0 v(out2)=0
+.options reltol=1e-5 abstol=1e-13 vntol=1e-8
+.control
+* A1 max gain, 20 Vrms out at 1k and 10k ; A2 20 Vrms at 1k and 10k
+alterparam amp=1.25
+reset
+tran 2u 14m 0 2u
+fourier 1k v(out)
+alterparam amp=28.3
+reset
+tran 2u 14m 0 2u
+fourier 1k v(out2)
+alterparam amp=1.25
+alterparam f=10k
+reset
+tran 0.2u 1.4m 0 0.2u
+fourier 10k v(out)
+alterparam amp=28.3
+reset
+tran 0.2u 1.4m 0 0.2u
+fourier 10k v(out2)
+* A1 at 40 Hz (low B) max gain 20 Vrms
+alterparam amp=1.25
+alterparam f=40
+reset
+tran 20u 150m 50m 20u
+fourier 40 v(out)
+.endc
+.end
