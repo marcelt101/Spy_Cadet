@@ -35,7 +35,7 @@ def sk(r1,r2,c):
     w=2*np.pi*np.logspace(0,3,400); s=1j*w
     H=s**2/(s**2+s*(2/(r2*c))+1/(r1*r2*c*c)); return w/2/np.pi,20*np.log10(abs(H))
 fig,ax=plt.subplots(figsize=(6,4))
-for r1,r2,lab in [(22e3,47e3,'DEEP  (22k/47k, 220n)'),(12e3,27e3,'TIGHT (12k/27k, 220n)')]:
+for r1,r2,lab in [(22e3,47e3,'DEEP  (22k/47k, 220n)'),(22e3*27e3/49e3,47e3*56e3/103e3,'TIGHT (22k||27k / 47k||56k, 220n)')]:
     f,g=sk(r1,r2,220e-9); ax.semilogx(f,g,label=lab)
     print(lab, 'f(-3dB)=%.1f Hz'%f[np.argmin(abs(g+3))], 'at 31Hz %.2f dB'%np.interp(31,f,g), 'at 41Hz %.2f dB'%np.interp(41,f,g))
 ax.axvline(30.9,ls=':',c='k'); ax.text(31.5,-30,'low B 30.9 Hz',fontsize=8); ax.axvline(41.2,ls=':',c='k'); ax.text(42,-35,'low E 41.2 Hz',fontsize=8)

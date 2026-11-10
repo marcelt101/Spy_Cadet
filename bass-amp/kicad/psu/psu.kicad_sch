@@ -1,0 +1,9694 @@
+(kicad_sch
+  (version 20230121)
+  (generator eeschema)
+  (uuid "2e595ab6-8c2f-5f27-8552-cfe536347d6d")
+  (paper "A2")
+  (title_block
+    (title "Bass amp PSU board: +/-28 V, +/-40 V (discrete reg), +/-15 V (discrete reg)")
+    (rev "1")
+    (comment 1 "Mains wiring (IEC inlet, fuse T3.15A/230V or T6.3A/115V, switch, 5 R NTC) is chassis-wired, not on this board.")
+    (comment 2 "T1: 400 VA toroid 2 x 20 VAC. T2: 15-30 VA 2 x 40 VAC. Centre taps go to GND (star point = C1-C4 junction).")
+    (comment 3 "BR1: GBJ2506 (25 A) - check the footprint against your part; give it a small heatsink.")
+    (comment 4 "Q12/Q15 (MJE340/MJE350) and Q2/Q5 (BD139/BD140) need small clip-on heatsinks.")
+  )
+  (lib_symbols
+    (symbol "Connector_Generic:Conn_01x03"
+      (pin_names
+        (offset 1.016)
+        hide
+      )
+      (in_bom yes)
+      (on_board yes)
+      (property "Reference" "J"
+        (at 0 5.08 0)
+        (effects
+          (font
+            (size 1.27 1.27)
+          )
+        )
+      )
+      (property "Value" "Conn_01x03"
+        (at 0 -5.08 0)
+        (effects
+          (font
+            (size 1.27 1.27)
+          )
+        )
+      )
+      (property "Footprint" ""
+        (at 0 0 0)
+        (effects
+          (font
+            (size 1.27 1.27)
+          )
+          hide
+        )
+      )
+      (property "Datasheet" "~"
+        (at 0 0 0)
+        (effects
+          (font
+            (size 1.27 1.27)
+          )
+          hide
+        )
+      )
+      (property "ki_keywords" "connector"
+        (at 0 0 0)
+        (effects
+          (font
+            (size 1.27 1.27)
+          )
+          hide
+        )
+      )
+      (property "ki_description" "Generic connector, single row, 01x03, script generated (kicad-library-utils/schlib/autogen/connector/)"
+        (at 0 0 0)
+        (effects
+          (font
+            (size 1.27 1.27)
+          )
+          hide
+        )
+      )
+      (property "ki_fp_filters" "Connector*:*_1x??_*"
+        (at 0 0 0)
+        (effects
+          (font
+            (size 1.27 1.27)
+          )
+          hide
+        )
+      )
+      (symbol "Conn_01x03_1_1"
+        (rectangle
+          (start -1.27 -2.413)
+          (end 0 -2.667)
+          (stroke
+            (width 0.1524)
+            (type default)
+          )
+          (fill
+            (type none)
+          )
+        )
+        (rectangle
+          (start -1.27 0.127)
+          (end 0 -0.127)
+          (stroke
+            (width 0.1524)
+            (type default)
+          )
+          (fill
+            (type none)
+          )
+        )
+        (rectangle
+          (start -1.27 2.667)
+          (end 0 2.413)
+          (stroke
+            (width 0.1524)
+            (type default)
+          )
+          (fill
+            (type none)
+          )
+        )
+        (rectangle
+          (start -1.27 3.81)
+          (end 1.27 -3.81)
+          (stroke
+            (width 0.254)
+            (type default)
+          )
+          (fill
+            (type background)
+          )
+        )
+        (pin passive line
+          (at -5.08 2.54 0)
+          (length 3.81)
+          (name "Pin_1"
+            (effects
+              (font
+                (size 1.27 1.27)
+              )
+            )
+          )
+          (number "1"
+            (effects
+              (font
+                (size 1.27 1.27)
+              )
+            )
+          )
+        )
+        (pin passive line
+          (at -5.08 0 0)
+          (length 3.81)
+          (name "Pin_2"
+            (effects
+              (font
+                (size 1.27 1.27)
+              )
+            )
+          )
+          (number "2"
+            (effects
+              (font
+                (size 1.27 1.27)
+              )
+            )
+          )
+        )
+        (pin passive line
+          (at -5.08 -2.54 0)
+          (length 3.81)
+          (name "Pin_3"
+            (effects
+              (font
+                (size 1.27 1.27)
+              )
+            )
+          )
+          (number "3"
+            (effects
+              (font
+                (size 1.27 1.27)
+              )
+            )
+          )
+        )
+      )
+    )
+    (symbol "Device:D_Bridge_+AA-"
+      (pin_names
+        (offset 0)
+      )
+      (in_bom yes)
+      (on_board yes)
+      (property "Reference" "D"
+        (at 2.54 6.985 0)
+        (effects
+          (font
+            (size 1.27 1.27)
+          )
+          (justify left)
+        )
+      )
+      (property "Value" "D_Bridge_+AA-"
+        (at 2.54 5.08 0)
+        (effects
+          (font
+            (size 1.27 1.27)
+          )
+          (justify left)
+        )
+      )
+      (property "Footprint" ""
+        (at 0 0 0)
+        (effects
+          (font
+            (size 1.27 1.27)
+          )
+          hide
+        )
+      )
+      (property "Datasheet" "~"
+        (at 0 0 0)
+        (effects
+          (font
+            (size 1.27 1.27)
+          )
+          hide
+        )
+      )
+      (property "ki_keywords" "rectifier ACDC"
+        (at 0 0 0)
+        (effects
+          (font
+            (size 1.27 1.27)
+          )
+          hide
+        )
+      )
+      (property "ki_description" "Diode bridge, +ve/AC/AC/-ve"
+        (at 0 0 0)
+        (effects
+          (font
+            (size 1.27 1.27)
+          )
+          hide
+        )
+      )
+      (property "ki_fp_filters" "D*Bridge* D*Rectifier*"
+        (at 0 0 0)
+        (effects
+          (font
+            (size 1.27 1.27)
+          )
+          hide
+        )
+      )
+      (symbol "D_Bridge_+AA-_0_1"
+        (circle
+          (center -5.08 0)
+          (radius 0.254)
+          (stroke
+            (width 0)
+            (type default)
+          )
+          (fill
+            (type outline)
+          )
+        )
+        (circle
+          (center 0 -5.08)
+          (radius 0.254)
+          (stroke
+            (width 0)
+            (type default)
+          )
+          (fill
+            (type outline)
+          )
+        )
+        (polyline
+          (pts
+            (xy -2.54 3.81)
+            (xy -1.27 2.54)
+          )
+          (stroke
+            (width 0.254)
+            (type default)
+          )
+          (fill
+            (type none)
+          )
+        )
+        (polyline
+          (pts
+            (xy -1.27 -2.54)
+            (xy -2.54 -3.81)
+          )
+          (stroke
+            (width 0.254)
+            (type default)
+          )
+          (fill
+            (type none)
+          )
+        )
+        (polyline
+          (pts
+            (xy 2.54 -1.27)
+            (xy 3.81 -2.54)
+          )
+          (stroke
+            (width 0.254)
+            (type default)
+          )
+          (fill
+            (type none)
+          )
+        )
+        (polyline
+          (pts
+            (xy 2.54 1.27)
+            (xy 3.81 2.54)
+          )
+          (stroke
+            (width 0.254)
+            (type default)
+          )
+          (fill
+            (type none)
+          )
+        )
+        (polyline
+          (pts
+            (xy -3.81 2.54)
+            (xy -2.54 1.27)
+            (xy -1.905 3.175)
+            (xy -3.81 2.54)
+          )
+          (stroke
+            (width 0.254)
+            (type default)
+          )
+          (fill
+            (type none)
+          )
+        )
+        (polyline
+          (pts
+            (xy -2.54 -1.27)
+            (xy -3.81 -2.54)
+            (xy -1.905 -3.175)
+            (xy -2.54 -1.27)
+          )
+          (stroke
+            (width 0.254)
+            (type default)
+          )
+          (fill
+            (type none)
+          )
+        )
+        (polyline
+          (pts
+            (xy 1.27 2.54)
+            (xy 2.54 3.81)
+            (xy 3.175 1.905)
+            (xy 1.27 2.54)
+          )
+          (stroke
+            (width 0.254)
+            (type default)
+          )
+          (fill
+            (type none)
+          )
+        )
+        (polyline
+          (pts
+            (xy 3.175 -1.905)
+            (xy 1.27 -2.54)
+            (xy 2.54 -3.81)
+            (xy 3.175 -1.905)
+          )
+          (stroke
+            (width 0.254)
+            (type default)
+          )
+          (fill
+            (type none)
+          )
+        )
+        (polyline
+          (pts
+            (xy -5.08 0)
+            (xy 0 -5.08)
+            (xy 5.08 0)
+            (xy 0 5.08)
+            (xy -5.08 0)
+          )
+          (stroke
+            (width 0)
+            (type default)
+          )
+          (fill
+            (type none)
+          )
+        )
+        (circle
+          (center 0 5.08)
+          (radius 0.254)
+          (stroke
+            (width 0)
+            (type default)
+          )
+          (fill
+            (type outline)
+          )
+        )
+        (circle
+          (center 5.08 0)
+          (radius 0.254)
+          (stroke
+            (width 0)
+            (type default)
+          )
+          (fill
+            (type outline)
+          )
+        )
+      )
+      (symbol "D_Bridge_+AA-_1_1"
+        (pin passive line
+          (at 7.62 0 180)
+          (length 2.54)
+          (name "+"
+            (effects
+              (font
+                (size 1.27 1.27)
+              )
+            )
+          )
+          (number "1"
+            (effects
+              (font
+                (size 1.27 1.27)
+              )
+            )
+          )
+        )
+        (pin passive line
+          (at 0 7.62 270)
+          (length 2.54)
+          (name "~"
+            (effects
+              (font
+                (size 1.27 1.27)
+              )
+            )
+          )
+          (number "2"
+            (effects
+              (font
+                (size 1.27 1.27)
+              )
+            )
+          )
+        )
+        (pin passive line
+          (at 0 -7.62 90)
+          (length 2.54)
+          (name "~"
+            (effects
+              (font
+                (size 1.27 1.27)
+              )
+            )
+          )
+          (number "3"
+            (effects
+              (font
+                (size 1.27 1.27)
+              )
+            )
+          )
+        )
+        (pin passive line
+          (at -7.62 0 0)
+          (length 2.54)
+          (name "-"
+            (effects
+              (font
+                (size 1.27 1.27)
+              )
+            )
+          )
+          (number "4"
+            (effects
+              (font
+                (size 1.27 1.27)
+              )
+            )
+          )
+        )
+      )
+    )
+    (symbol "Device:C_Polarized"
+      (pin_numbers hide)
+      (pin_names
+        (offset 0.254)
+      )
+      (in_bom yes)
+      (on_board yes)
+      (property "Reference" "C"
+        (at 0.635 2.54 0)
+        (effects
+          (font
+            (size 1.27 1.27)
+          )
+          (justify left)
+        )
+      )
+      (property "Value" "C_Polarized"
+        (at 0.635 -2.54 0)
+        (effects
+          (font
+            (size 1.27 1.27)
+          )
+          (justify left)
+        )
+      )
+      (property "Footprint" ""
+        (at 0.9652 -3.81 0)
+        (effects
+          (font
+            (size 1.27 1.27)
+          )
+          hide
+        )
+      )
+      (property "Datasheet" "~"
+        (at 0 0 0)
+        (effects
+          (font
+            (size 1.27 1.27)
+          )
+          hide
+        )
+      )
+      (property "ki_keywords" "cap capacitor"
+        (at 0 0 0)
+        (effects
+          (font
+            (size 1.27 1.27)
+          )
+          hide
+        )
+      )
+      (property "ki_description" "Polarized capacitor"
+        (at 0 0 0)
+        (effects
+          (font
+            (size 1.27 1.27)
+          )
+          hide
+        )
+      )
+      (property "ki_fp_filters" "CP_*"
+        (at 0 0 0)
+        (effects
+          (font
+            (size 1.27 1.27)
+          )
+          hide
+        )
+      )
+      (symbol "C_Polarized_0_1"
+        (rectangle
+          (start -2.286 0.508)
+          (end 2.286 1.016)
+          (stroke
+            (width 0)
+            (type default)
+          )
+          (fill
+            (type none)
+          )
+        )
+        (polyline
+          (pts
+            (xy -1.778 2.286)
+            (xy -0.762 2.286)
+          )
+          (stroke
+            (width 0)
+            (type default)
+          )
+          (fill
+            (type none)
+          )
+        )
+        (polyline
+          (pts
+            (xy -1.27 2.794)
+            (xy -1.27 1.778)
+          )
+          (stroke
+            (width 0)
+            (type default)
+          )
+          (fill
+            (type none)
+          )
+        )
+        (rectangle
+          (start 2.286 -0.508)
+          (end -2.286 -1.016)
+          (stroke
+            (width 0)
+            (type default)
+          )
+          (fill
+            (type outline)
+          )
+        )
+      )
+      (symbol "C_Polarized_1_1"
+        (pin passive line
+          (at 0 3.81 270)
+          (length 2.794)
+          (name "~"
+            (effects
+              (font
+                (size 1.27 1.27)
+              )
+            )
+          )
+          (number "1"
+            (effects
+              (font
+                (size 1.27 1.27)
+              )
+            )
+          )
+        )
+        (pin passive line
+          (at 0 -3.81 90)
+          (length 2.794)
+          (name "~"
+            (effects
+              (font
+                (size 1.27 1.27)
+              )
+            )
+          )
+          (number "2"
+            (effects
+              (font
+                (size 1.27 1.27)
+              )
+            )
+          )
+        )
+      )
+    )
+    (symbol "Device:C"
+      (pin_numbers hide)
+      (pin_names
+        (offset 0.254)
+      )
+      (in_bom yes)
+      (on_board yes)
+      (property "Reference" "C"
+        (at 0.635 2.54 0)
+        (effects
+          (font
+            (size 1.27 1.27)
+          )
+          (justify left)
+        )
+      )
+      (property "Value" "C"
+        (at 0.635 -2.54 0)
+        (effects
+          (font
+            (size 1.27 1.27)
+          )
+          (justify left)
+        )
+      )
+      (property "Footprint" ""
+        (at 0.9652 -3.81 0)
+        (effects
+          (font
+            (size 1.27 1.27)
+          )
+          hide
+        )
+      )
+      (property "Datasheet" "~"
+        (at 0 0 0)
+        (effects
+          (font
+            (size 1.27 1.27)
+          )
+          hide
+        )
+      )
+      (property "ki_keywords" "cap capacitor"
+        (at 0 0 0)
+        (effects
+          (font
+            (size 1.27 1.27)
+          )
+          hide
+        )
+      )
+      (property "ki_description" "Unpolarized capacitor"
+        (at 0 0 0)
+        (effects
+          (font
+            (size 1.27 1.27)
+          )
+          hide
+        )
+      )
+      (property "ki_fp_filters" "C_*"
+        (at 0 0 0)
+        (effects
+          (font
+            (size 1.27 1.27)
+          )
+          hide
+        )
+      )
+      (symbol "C_0_1"
+        (polyline
+          (pts
+            (xy -2.032 -0.762)
+            (xy 2.032 -0.762)
+          )
+          (stroke
+            (width 0.508)
+            (type default)
+          )
+          (fill
+            (type none)
+          )
+        )
+        (polyline
+          (pts
+            (xy -2.032 0.762)
+            (xy 2.032 0.762)
+          )
+          (stroke
+            (width 0.508)
+            (type default)
+          )
+          (fill
+            (type none)
+          )
+        )
+      )
+      (symbol "C_1_1"
+        (pin passive line
+          (at 0 3.81 270)
+          (length 2.794)
+          (name "~"
+            (effects
+              (font
+                (size 1.27 1.27)
+              )
+            )
+          )
+          (number "1"
+            (effects
+              (font
+                (size 1.27 1.27)
+              )
+            )
+          )
+        )
+        (pin passive line
+          (at 0 -3.81 90)
+          (length 2.794)
+          (name "~"
+            (effects
+              (font
+                (size 1.27 1.27)
+              )
+            )
+          )
+          (number "2"
+            (effects
+              (font
+                (size 1.27 1.27)
+              )
+            )
+          )
+        )
+      )
+    )
+    (symbol "Device:R"
+      (pin_numbers hide)
+      (pin_names
+        (offset 0)
+      )
+      (in_bom yes)
+      (on_board yes)
+      (property "Reference" "R"
+        (at 2.032 0 90)
+        (effects
+          (font
+            (size 1.27 1.27)
+          )
+        )
+      )
+      (property "Value" "R"
+        (at 0 0 90)
+        (effects
+          (font
+            (size 1.27 1.27)
+          )
+        )
+      )
+      (property "Footprint" ""
+        (at -1.778 0 90)
+        (effects
+          (font
+            (size 1.27 1.27)
+          )
+          hide
+        )
+      )
+      (property "Datasheet" "~"
+        (at 0 0 0)
+        (effects
+          (font
+            (size 1.27 1.27)
+          )
+          hide
+        )
+      )
+      (property "ki_keywords" "R res resistor"
+        (at 0 0 0)
+        (effects
+          (font
+            (size 1.27 1.27)
+          )
+          hide
+        )
+      )
+      (property "ki_description" "Resistor"
+        (at 0 0 0)
+        (effects
+          (font
+            (size 1.27 1.27)
+          )
+          hide
+        )
+      )
+      (property "ki_fp_filters" "R_*"
+        (at 0 0 0)
+        (effects
+          (font
+            (size 1.27 1.27)
+          )
+          hide
+        )
+      )
+      (symbol "R_0_1"
+        (rectangle
+          (start -1.016 -2.54)
+          (end 1.016 2.54)
+          (stroke
+            (width 0.254)
+            (type default)
+          )
+          (fill
+            (type none)
+          )
+        )
+      )
+      (symbol "R_1_1"
+        (pin passive line
+          (at 0 3.81 270)
+          (length 1.27)
+          (name "~"
+            (effects
+              (font
+                (size 1.27 1.27)
+              )
+            )
+          )
+          (number "1"
+            (effects
+              (font
+                (size 1.27 1.27)
+              )
+            )
+          )
+        )
+        (pin passive line
+          (at 0 -3.81 90)
+          (length 1.27)
+          (name "~"
+            (effects
+              (font
+                (size 1.27 1.27)
+              )
+            )
+          )
+          (number "2"
+            (effects
+              (font
+                (size 1.27 1.27)
+              )
+            )
+          )
+        )
+      )
+    )
+    (symbol "Connector_Generic:Conn_01x02"
+      (pin_names
+        (offset 1.016)
+        hide
+      )
+      (in_bom yes)
+      (on_board yes)
+      (property "Reference" "J"
+        (at 0 2.54 0)
+        (effects
+          (font
+            (size 1.27 1.27)
+          )
+        )
+      )
+      (property "Value" "Conn_01x02"
+        (at 0 -5.08 0)
+        (effects
+          (font
+            (size 1.27 1.27)
+          )
+        )
+      )
+      (property "Footprint" ""
+        (at 0 0 0)
+        (effects
+          (font
+            (size 1.27 1.27)
+          )
+          hide
+        )
+      )
+      (property "Datasheet" "~"
+        (at 0 0 0)
+        (effects
+          (font
+            (size 1.27 1.27)
+          )
+          hide
+        )
+      )
+      (property "ki_keywords" "connector"
+        (at 0 0 0)
+        (effects
+          (font
+            (size 1.27 1.27)
+          )
+          hide
+        )
+      )
+      (property "ki_description" "Generic connector, single row, 01x02, script generated (kicad-library-utils/schlib/autogen/connector/)"
+        (at 0 0 0)
+        (effects
+          (font
+            (size 1.27 1.27)
+          )
+          hide
+        )
+      )
+      (property "ki_fp_filters" "Connector*:*_1x??_*"
+        (at 0 0 0)
+        (effects
+          (font
+            (size 1.27 1.27)
+          )
+          hide
+        )
+      )
+      (symbol "Conn_01x02_1_1"
+        (rectangle
+          (start -1.27 -2.413)
+          (end 0 -2.667)
+          (stroke
+            (width 0.1524)
+            (type default)
+          )
+          (fill
+            (type none)
+          )
+        )
+        (rectangle
+          (start -1.27 0.127)
+          (end 0 -0.127)
+          (stroke
+            (width 0.1524)
+            (type default)
+          )
+          (fill
+            (type none)
+          )
+        )
+        (rectangle
+          (start -1.27 1.27)
+          (end 1.27 -3.81)
+          (stroke
+            (width 0.254)
+            (type default)
+          )
+          (fill
+            (type background)
+          )
+        )
+        (pin passive line
+          (at -5.08 0 0)
+          (length 3.81)
+          (name "Pin_1"
+            (effects
+              (font
+                (size 1.27 1.27)
+              )
+            )
+          )
+          (number "1"
+            (effects
+              (font
+                (size 1.27 1.27)
+              )
+            )
+          )
+        )
+        (pin passive line
+          (at -5.08 -2.54 0)
+          (length 3.81)
+          (name "Pin_2"
+            (effects
+              (font
+                (size 1.27 1.27)
+              )
+            )
+          )
+          (number "2"
+            (effects
+              (font
+                (size 1.27 1.27)
+              )
+            )
+          )
+        )
+      )
+    )
+    (symbol "Device:D_Zener"
+      (pin_numbers hide)
+      (pin_names
+        (offset 1.016)
+        hide
+      )
+      (in_bom yes)
+      (on_board yes)
+      (property "Reference" "D"
+        (at 0 2.54 0)
+        (effects
+          (font
+            (size 1.27 1.27)
+          )
+        )
+      )
+      (property "Value" "D_Zener"
+        (at 0 -2.54 0)
+        (effects
+          (font
+            (size 1.27 1.27)
+          )
+        )
+      )
+      (property "Footprint" ""
+        (at 0 0 0)
+        (effects
+          (font
+            (size 1.27 1.27)
+          )
+          hide
+        )
+      )
+      (property "Datasheet" "~"
+        (at 0 0 0)
+        (effects
+          (font
+            (size 1.27 1.27)
+          )
+          hide
+        )
+      )
+      (property "ki_keywords" "diode"
+        (at 0 0 0)
+        (effects
+          (font
+            (size 1.27 1.27)
+          )
+          hide
+        )
+      )
+      (property "ki_description" "Zener diode"
+        (at 0 0 0)
+        (effects
+          (font
+            (size 1.27 1.27)
+          )
+          hide
+        )
+      )
+      (property "ki_fp_filters" "TO-???* *_Diode_* *SingleDiode* D_*"
+        (at 0 0 0)
+        (effects
+          (font
+            (size 1.27 1.27)
+          )
+          hide
+        )
+      )
+      (symbol "D_Zener_0_1"
+        (polyline
+          (pts
+            (xy 1.27 0)
+            (xy -1.27 0)
+          )
+          (stroke
+            (width 0)
+            (type default)
+          )
+          (fill
+            (type none)
+          )
+        )
+        (polyline
+          (pts
+            (xy -1.27 -1.27)
+            (xy -1.27 1.27)
+            (xy -0.762 1.27)
+          )
+          (stroke
+            (width 0.254)
+            (type default)
+          )
+          (fill
+            (type none)
+          )
+        )
+        (polyline
+          (pts
+            (xy 1.27 -1.27)
+            (xy 1.27 1.27)
+            (xy -1.27 0)
+            (xy 1.27 -1.27)
+          )
+          (stroke
+            (width 0.254)
+            (type default)
+          )
+          (fill
+            (type none)
+          )
+        )
+      )
+      (symbol "D_Zener_1_1"
+        (pin passive line
+          (at -3.81 0 0)
+          (length 2.54)
+          (name "K"
+            (effects
+              (font
+                (size 1.27 1.27)
+              )
+            )
+          )
+          (number "1"
+            (effects
+              (font
+                (size 1.27 1.27)
+              )
+            )
+          )
+        )
+        (pin passive line
+          (at 3.81 0 180)
+          (length 2.54)
+          (name "A"
+            (effects
+              (font
+                (size 1.27 1.27)
+              )
+            )
+          )
+          (number "2"
+            (effects
+              (font
+                (size 1.27 1.27)
+              )
+            )
+          )
+        )
+      )
+    )
+    (symbol "Transistor_BJT:MPSA42"
+      (pin_names
+        (offset 1.016)
+        hide
+      )
+      (in_bom yes)
+      (on_board yes)
+      (property "Reference" "Q"
+        (at 5.08 1.905 0)
+        (effects
+          (font
+            (size 1.27 1.27)
+          )
+          (justify left)
+        )
+      )
+      (property "Value" "MPSA42"
+        (at 5.08 0 0)
+        (effects
+          (font
+            (size 1.27 1.27)
+          )
+          (justify left)
+        )
+      )
+      (property "Footprint" "Package_TO_SOT_THT:TO-92_Inline"
+        (at 5.08 -1.905 0)
+        (effects
+          (font
+            (size 1.27 1.27)
+            italic
+          )
+          (justify left)
+          hide
+        )
+      )
+      (property "Datasheet" "http://www.onsemi.com/pub_link/Collateral/MPSA42-D.PDF"
+        (at 0 0 0)
+        (effects
+          (font
+            (size 1.27 1.27)
+          )
+          (justify left)
+          hide
+        )
+      )
+      (property "ki_keywords" "NPN High Voltage Transistor"
+        (at 0 0 0)
+        (effects
+          (font
+            (size 1.27 1.27)
+          )
+          hide
+        )
+      )
+      (property "ki_description" "0.5A Ic, 300V Vce, NPN High Voltage Transistor, TO-92"
+        (at 0 0 0)
+        (effects
+          (font
+            (size 1.27 1.27)
+          )
+          hide
+        )
+      )
+      (property "ki_fp_filters" "TO?92*"
+        (at 0 0 0)
+        (effects
+          (font
+            (size 1.27 1.27)
+          )
+          hide
+        )
+      )
+      (symbol "MPSA42_0_1"
+        (polyline
+          (pts
+            (xy 0 0)
+            (xy 0.635 0)
+          )
+          (stroke
+            (width 0)
+            (type default)
+          )
+          (fill
+            (type none)
+          )
+        )
+        (polyline
+          (pts
+            (xy 0.635 0.635)
+            (xy 2.54 2.54)
+          )
+          (stroke
+            (width 0)
+            (type default)
+          )
+          (fill
+            (type none)
+          )
+        )
+        (polyline
+          (pts
+            (xy 0.635 -0.635)
+            (xy 2.54 -2.54)
+            (xy 2.54 -2.54)
+          )
+          (stroke
+            (width 0)
+            (type default)
+          )
+          (fill
+            (type none)
+          )
+        )
+        (polyline
+          (pts
+            (xy 0.635 1.905)
+            (xy 0.635 -1.905)
+            (xy 0.635 -1.905)
+          )
+          (stroke
+            (width 0.508)
+            (type default)
+          )
+          (fill
+            (type none)
+          )
+        )
+        (polyline
+          (pts
+            (xy 1.27 -1.778)
+            (xy 1.778 -1.27)
+            (xy 2.286 -2.286)
+            (xy 1.27 -1.778)
+            (xy 1.27 -1.778)
+          )
+          (stroke
+            (width 0)
+            (type default)
+          )
+          (fill
+            (type outline)
+          )
+        )
+        (circle
+          (center 1.27 0)
+          (radius 2.8194)
+          (stroke
+            (width 0.254)
+            (type default)
+          )
+          (fill
+            (type none)
+          )
+        )
+      )
+      (symbol "MPSA42_1_1"
+        (pin passive line
+          (at 2.54 -5.08 90)
+          (length 2.54)
+          (name "E"
+            (effects
+              (font
+                (size 1.27 1.27)
+              )
+            )
+          )
+          (number "1"
+            (effects
+              (font
+                (size 1.27 1.27)
+              )
+            )
+          )
+        )
+        (pin input line
+          (at -5.08 0 0)
+          (length 5.08)
+          (name "B"
+            (effects
+              (font
+                (size 1.27 1.27)
+              )
+            )
+          )
+          (number "2"
+            (effects
+              (font
+                (size 1.27 1.27)
+              )
+            )
+          )
+        )
+        (pin passive line
+          (at 2.54 5.08 270)
+          (length 2.54)
+          (name "C"
+            (effects
+              (font
+                (size 1.27 1.27)
+              )
+            )
+          )
+          (number "3"
+            (effects
+              (font
+                (size 1.27 1.27)
+              )
+            )
+          )
+        )
+      )
+    )
+    (symbol "Transistor_BJT:BD139"
+      (pin_names
+        (offset 0)
+        hide
+      )
+      (in_bom yes)
+      (on_board yes)
+      (property "Reference" "Q"
+        (at 5.08 1.905 0)
+        (effects
+          (font
+            (size 1.27 1.27)
+          )
+          (justify left)
+        )
+      )
+      (property "Value" "BD139"
+        (at 5.08 0 0)
+        (effects
+          (font
+            (size 1.27 1.27)
+          )
+          (justify left)
+        )
+      )
+      (property "Footprint" "Package_TO_SOT_THT:TO-126-3_Vertical"
+        (at 5.08 -1.905 0)
+        (effects
+          (font
+            (size 1.27 1.27)
+            italic
+          )
+          (justify left)
+          hide
+        )
+      )
+      (property "Datasheet" "http://www.st.com/internet/com/TECHNICAL_RESOURCES/TECHNICAL_LITERATURE/DATASHEET/CD00001225.pdf"
+        (at 0 0 0)
+        (effects
+          (font
+            (size 1.27 1.27)
+          )
+          (justify left)
+          hide
+        )
+      )
+      (property "ki_keywords" "Low Voltage Transistor"
+        (at 0 0 0)
+        (effects
+          (font
+            (size 1.27 1.27)
+          )
+          hide
+        )
+      )
+      (property "ki_description" "1.5A Ic, 80V Vce, Low Voltage Transistor, TO-126"
+        (at 0 0 0)
+        (effects
+          (font
+            (size 1.27 1.27)
+          )
+          hide
+        )
+      )
+      (property "ki_fp_filters" "TO?126*"
+        (at 0 0 0)
+        (effects
+          (font
+            (size 1.27 1.27)
+          )
+          hide
+        )
+      )
+      (symbol "BD139_0_1"
+        (polyline
+          (pts
+            (xy 0 0)
+            (xy 0.635 0)
+          )
+          (stroke
+            (width 0)
+            (type default)
+          )
+          (fill
+            (type none)
+          )
+        )
+        (polyline
+          (pts
+            (xy 2.54 -2.54)
+            (xy 0.635 -0.635)
+          )
+          (stroke
+            (width 0)
+            (type default)
+          )
+          (fill
+            (type none)
+          )
+        )
+        (polyline
+          (pts
+            (xy 2.54 2.54)
+            (xy 0.635 0.635)
+          )
+          (stroke
+            (width 0)
+            (type default)
+          )
+          (fill
+            (type none)
+          )
+        )
+        (polyline
+          (pts
+            (xy 0.635 1.905)
+            (xy 0.635 -1.905)
+            (xy 0.635 -1.905)
+          )
+          (stroke
+            (width 0.508)
+            (type default)
+          )
+          (fill
+            (type outline)
+          )
+        )
+        (polyline
+          (pts
+            (xy 1.2446 -1.778)
+            (xy 1.7526 -1.27)
+            (xy 2.286 -2.286)
+            (xy 1.2446 -1.778)
+            (xy 1.2446 -1.778)
+          )
+          (stroke
+            (width 0)
+            (type default)
+          )
+          (fill
+            (type outline)
+          )
+        )
+        (circle
+          (center 1.27 0)
+          (radius 2.8194)
+          (stroke
+            (width 0.3048)
+            (type default)
+          )
+          (fill
+            (type none)
+          )
+        )
+      )
+      (symbol "BD139_1_1"
+        (pin passive line
+          (at 2.54 -5.08 90)
+          (length 2.54)
+          (name "E"
+            (effects
+              (font
+                (size 1.27 1.27)
+              )
+            )
+          )
+          (number "1"
+            (effects
+              (font
+                (size 1.27 1.27)
+              )
+            )
+          )
+        )
+        (pin passive line
+          (at 2.54 5.08 270)
+          (length 2.54)
+          (name "C"
+            (effects
+              (font
+                (size 1.27 1.27)
+              )
+            )
+          )
+          (number "2"
+            (effects
+              (font
+                (size 1.27 1.27)
+              )
+            )
+          )
+        )
+        (pin input line
+          (at -5.08 0 0)
+          (length 5.08)
+          (name "B"
+            (effects
+              (font
+                (size 1.27 1.27)
+              )
+            )
+          )
+          (number "3"
+            (effects
+              (font
+                (size 1.27 1.27)
+              )
+            )
+          )
+        )
+      )
+    )
+    (symbol "Transistor_BJT:MPSA92"
+      (pin_names
+        (offset 1.016)
+        hide
+      )
+      (in_bom yes)
+      (on_board yes)
+      (property "Reference" "Q"
+        (at 5.08 1.905 0)
+        (effects
+          (font
+            (size 1.27 1.27)
+          )
+          (justify left)
+        )
+      )
+      (property "Value" "MPSA92"
+        (at 5.08 0 0)
+        (effects
+          (font
+            (size 1.27 1.27)
+          )
+          (justify left)
+        )
+      )
+      (property "Footprint" "Package_TO_SOT_THT:TO-92_Inline"
+        (at 5.08 -1.905 0)
+        (effects
+          (font
+            (size 1.27 1.27)
+            italic
+          )
+          (justify left)
+          hide
+        )
+      )
+      (property "Datasheet" "http://www.onsemi.com/pub_link/Collateral/MPSA92-D.PDF"
+        (at 0 0 0)
+        (effects
+          (font
+            (size 1.27 1.27)
+          )
+          (justify left)
+          hide
+        )
+      )
+      (property "ki_keywords" "PNP High Voltage Transistor"
+        (at 0 0 0)
+        (effects
+          (font
+            (size 1.27 1.27)
+          )
+          hide
+        )
+      )
+      (property "ki_description" "0.5A Ic, 300V Vce, PNP High Voltage Transistor, TO-92"
+        (at 0 0 0)
+        (effects
+          (font
+            (size 1.27 1.27)
+          )
+          hide
+        )
+      )
+      (property "ki_fp_filters" "TO?92*"
+        (at 0 0 0)
+        (effects
+          (font
+            (size 1.27 1.27)
+          )
+          hide
+        )
+      )
+      (symbol "MPSA92_0_1"
+        (polyline
+          (pts
+            (xy 0 0)
+            (xy 0.635 0)
+          )
+          (stroke
+            (width 0)
+            (type default)
+          )
+          (fill
+            (type none)
+          )
+        )
+        (polyline
+          (pts
+            (xy 2.54 -2.54)
+            (xy 0.635 -0.635)
+          )
+          (stroke
+            (width 0)
+            (type default)
+          )
+          (fill
+            (type none)
+          )
+        )
+        (polyline
+          (pts
+            (xy 2.54 2.54)
+            (xy 0.635 0.635)
+          )
+          (stroke
+            (width 0)
+            (type default)
+          )
+          (fill
+            (type none)
+          )
+        )
+        (polyline
+          (pts
+            (xy 0.635 1.905)
+            (xy 0.635 -1.905)
+            (xy 0.635 -1.905)
+          )
+          (stroke
+            (width 0.508)
+            (type default)
+          )
+          (fill
+            (type outline)
+          )
+        )
+        (polyline
+          (pts
+            (xy 1.905 -2.413)
+            (xy 2.413 -1.905)
+            (xy 1.397 -1.397)
+            (xy 1.905 -2.413)
+            (xy 1.905 -2.413)
+          )
+          (stroke
+            (width 0)
+            (type default)
+          )
+          (fill
+            (type outline)
+          )
+        )
+        (circle
+          (center 1.27 0)
+          (radius 2.8194)
+          (stroke
+            (width 0.254)
+            (type default)
+          )
+          (fill
+            (type none)
+          )
+        )
+      )
+      (symbol "MPSA92_1_1"
+        (pin passive line
+          (at 2.54 -5.08 90)
+          (length 2.54)
+          (name "E"
+            (effects
+              (font
+                (size 1.27 1.27)
+              )
+            )
+          )
+          (number "1"
+            (effects
+              (font
+                (size 1.27 1.27)
+              )
+            )
+          )
+        )
+        (pin input line
+          (at -5.08 0 0)
+          (length 5.08)
+          (name "B"
+            (effects
+              (font
+                (size 1.27 1.27)
+              )
+            )
+          )
+          (number "2"
+            (effects
+              (font
+                (size 1.27 1.27)
+              )
+            )
+          )
+        )
+        (pin passive line
+          (at 2.54 5.08 270)
+          (length 2.54)
+          (name "C"
+            (effects
+              (font
+                (size 1.27 1.27)
+              )
+            )
+          )
+          (number "3"
+            (effects
+              (font
+                (size 1.27 1.27)
+              )
+            )
+          )
+        )
+      )
+    )
+    (symbol "Transistor_BJT:BD140"
+      (pin_names
+        (offset 0)
+        hide
+      )
+      (in_bom yes)
+      (on_board yes)
+      (property "Reference" "Q"
+        (at 5.08 1.905 0)
+        (effects
+          (font
+            (size 1.27 1.27)
+          )
+          (justify left)
+        )
+      )
+      (property "Value" "BD140"
+        (at 5.08 0 0)
+        (effects
+          (font
+            (size 1.27 1.27)
+          )
+          (justify left)
+        )
+      )
+      (property "Footprint" "Package_TO_SOT_THT:TO-126-3_Vertical"
+        (at 5.08 -1.905 0)
+        (effects
+          (font
+            (size 1.27 1.27)
+            italic
+          )
+          (justify left)
+          hide
+        )
+      )
+      (property "Datasheet" "http://www.st.com/internet/com/TECHNICAL_RESOURCES/TECHNICAL_LITERATURE/DATASHEET/CD00001225.pdf"
+        (at 0 0 0)
+        (effects
+          (font
+            (size 1.27 1.27)
+          )
+          (justify left)
+          hide
+        )
+      )
+      (property "ki_keywords" "Low Voltage Transistor"
+        (at 0 0 0)
+        (effects
+          (font
+            (size 1.27 1.27)
+          )
+          hide
+        )
+      )
+      (property "ki_description" "1.5A Ic, 80V Vce, Low Voltage Transistor, TO-126"
+        (at 0 0 0)
+        (effects
+          (font
+            (size 1.27 1.27)
+          )
+          hide
+        )
+      )
+      (property "ki_fp_filters" "TO?126*"
+        (at 0 0 0)
+        (effects
+          (font
+            (size 1.27 1.27)
+          )
+          hide
+        )
+      )
+      (symbol "BD140_0_1"
+        (polyline
+          (pts
+            (xy 0 0)
+            (xy 0.635 0)
+          )
+          (stroke
+            (width 0)
+            (type default)
+          )
+          (fill
+            (type none)
+          )
+        )
+        (polyline
+          (pts
+            (xy 2.54 -2.54)
+            (xy 0.635 -0.635)
+          )
+          (stroke
+            (width 0)
+            (type default)
+          )
+          (fill
+            (type none)
+          )
+        )
+        (polyline
+          (pts
+            (xy 2.54 2.54)
+            (xy 0.635 0.635)
+          )
+          (stroke
+            (width 0)
+            (type default)
+          )
+          (fill
+            (type none)
+          )
+        )
+        (polyline
+          (pts
+            (xy 0.635 1.905)
+            (xy 0.635 -1.905)
+            (xy 0.635 -1.905)
+          )
+          (stroke
+            (width 0.508)
+            (type default)
+          )
+          (fill
+            (type outline)
+          )
+        )
+        (polyline
+          (pts
+            (xy 1.778 -2.286)
+            (xy 2.286 -1.778)
+            (xy 1.27 -1.27)
+            (xy 1.778 -2.286)
+            (xy 1.778 -2.286)
+          )
+          (stroke
+            (width 0)
+            (type default)
+          )
+          (fill
+            (type outline)
+          )
+        )
+        (circle
+          (center 1.27 0)
+          (radius 2.8194)
+          (stroke
+            (width 0.3048)
+            (type default)
+          )
+          (fill
+            (type none)
+          )
+        )
+      )
+      (symbol "BD140_1_1"
+        (pin passive line
+          (at 2.54 -5.08 90)
+          (length 2.54)
+          (name "E"
+            (effects
+              (font
+                (size 1.27 1.27)
+              )
+            )
+          )
+          (number "1"
+            (effects
+              (font
+                (size 1.27 1.27)
+              )
+            )
+          )
+        )
+        (pin passive line
+          (at 2.54 5.08 270)
+          (length 2.54)
+          (name "C"
+            (effects
+              (font
+                (size 1.27 1.27)
+              )
+            )
+          )
+          (number "2"
+            (effects
+              (font
+                (size 1.27 1.27)
+              )
+            )
+          )
+        )
+        (pin input line
+          (at -5.08 0 0)
+          (length 5.08)
+          (name "B"
+            (effects
+              (font
+                (size 1.27 1.27)
+              )
+            )
+          )
+          (number "3"
+            (effects
+              (font
+                (size 1.27 1.27)
+              )
+            )
+          )
+        )
+      )
+    )
+    (symbol "Device:D"
+      (pin_numbers hide)
+      (pin_names
+        (offset 1.016)
+        hide
+      )
+      (in_bom yes)
+      (on_board yes)
+      (property "Reference" "D"
+        (at 0 2.54 0)
+        (effects
+          (font
+            (size 1.27 1.27)
+          )
+        )
+      )
+      (property "Value" "D"
+        (at 0 -2.54 0)
+        (effects
+          (font
+            (size 1.27 1.27)
+          )
+        )
+      )
+      (property "Footprint" ""
+        (at 0 0 0)
+        (effects
+          (font
+            (size 1.27 1.27)
+          )
+          hide
+        )
+      )
+      (property "Datasheet" "~"
+        (at 0 0 0)
+        (effects
+          (font
+            (size 1.27 1.27)
+          )
+          hide
+        )
+      )
+      (property "Sim.Device" "D"
+        (at 0 0 0)
+        (effects
+          (font
+            (size 1.27 1.27)
+          )
+          hide
+        )
+      )
+      (property "Sim.Pins" "1=K 2=A"
+        (at 0 0 0)
+        (effects
+          (font
+            (size 1.27 1.27)
+          )
+          hide
+        )
+      )
+      (property "ki_keywords" "diode"
+        (at 0 0 0)
+        (effects
+          (font
+            (size 1.27 1.27)
+          )
+          hide
+        )
+      )
+      (property "ki_description" "Diode"
+        (at 0 0 0)
+        (effects
+          (font
+            (size 1.27 1.27)
+          )
+          hide
+        )
+      )
+      (property "ki_fp_filters" "TO-???* *_Diode_* *SingleDiode* D_*"
+        (at 0 0 0)
+        (effects
+          (font
+            (size 1.27 1.27)
+          )
+          hide
+        )
+      )
+      (symbol "D_0_1"
+        (polyline
+          (pts
+            (xy -1.27 1.27)
+            (xy -1.27 -1.27)
+          )
+          (stroke
+            (width 0.254)
+            (type default)
+          )
+          (fill
+            (type none)
+          )
+        )
+        (polyline
+          (pts
+            (xy 1.27 0)
+            (xy -1.27 0)
+          )
+          (stroke
+            (width 0)
+            (type default)
+          )
+          (fill
+            (type none)
+          )
+        )
+        (polyline
+          (pts
+            (xy 1.27 1.27)
+            (xy 1.27 -1.27)
+            (xy -1.27 0)
+            (xy 1.27 1.27)
+          )
+          (stroke
+            (width 0.254)
+            (type default)
+          )
+          (fill
+            (type none)
+          )
+        )
+      )
+      (symbol "D_1_1"
+        (pin passive line
+          (at -3.81 0 0)
+          (length 2.54)
+          (name "K"
+            (effects
+              (font
+                (size 1.27 1.27)
+              )
+            )
+          )
+          (number "1"
+            (effects
+              (font
+                (size 1.27 1.27)
+              )
+            )
+          )
+        )
+        (pin passive line
+          (at 3.81 0 180)
+          (length 2.54)
+          (name "A"
+            (effects
+              (font
+                (size 1.27 1.27)
+              )
+            )
+          )
+          (number "2"
+            (effects
+              (font
+                (size 1.27 1.27)
+              )
+            )
+          )
+        )
+      )
+    )
+    (symbol "Device:Q_NPN_ECB"
+      (pin_names
+        (offset 0)
+        hide
+      )
+      (in_bom yes)
+      (on_board yes)
+      (property "Reference" "Q"
+        (at 5.08 1.27 0)
+        (effects
+          (font
+            (size 1.27 1.27)
+          )
+          (justify left)
+        )
+      )
+      (property "Value" "Q_NPN_ECB"
+        (at 5.08 -1.27 0)
+        (effects
+          (font
+            (size 1.27 1.27)
+          )
+          (justify left)
+        )
+      )
+      (property "Footprint" ""
+        (at 5.08 2.54 0)
+        (effects
+          (font
+            (size 1.27 1.27)
+          )
+          hide
+        )
+      )
+      (property "Datasheet" "~"
+        (at 0 0 0)
+        (effects
+          (font
+            (size 1.27 1.27)
+          )
+          hide
+        )
+      )
+      (property "ki_keywords" "transistor NPN"
+        (at 0 0 0)
+        (effects
+          (font
+            (size 1.27 1.27)
+          )
+          hide
+        )
+      )
+      (property "ki_description" "NPN transistor, emitter/collector/base"
+        (at 0 0 0)
+        (effects
+          (font
+            (size 1.27 1.27)
+          )
+          hide
+        )
+      )
+      (symbol "Q_NPN_ECB_0_1"
+        (polyline
+          (pts
+            (xy 0.635 0.635)
+            (xy 2.54 2.54)
+          )
+          (stroke
+            (width 0)
+            (type default)
+          )
+          (fill
+            (type none)
+          )
+        )
+        (polyline
+          (pts
+            (xy 0.635 -0.635)
+            (xy 2.54 -2.54)
+            (xy 2.54 -2.54)
+          )
+          (stroke
+            (width 0)
+            (type default)
+          )
+          (fill
+            (type none)
+          )
+        )
+        (polyline
+          (pts
+            (xy 0.635 1.905)
+            (xy 0.635 -1.905)
+            (xy 0.635 -1.905)
+          )
+          (stroke
+            (width 0.508)
+            (type default)
+          )
+          (fill
+            (type none)
+          )
+        )
+        (polyline
+          (pts
+            (xy 1.27 -1.778)
+            (xy 1.778 -1.27)
+            (xy 2.286 -2.286)
+            (xy 1.27 -1.778)
+            (xy 1.27 -1.778)
+          )
+          (stroke
+            (width 0)
+            (type default)
+          )
+          (fill
+            (type outline)
+          )
+        )
+        (circle
+          (center 1.27 0)
+          (radius 2.8194)
+          (stroke
+            (width 0.254)
+            (type default)
+          )
+          (fill
+            (type none)
+          )
+        )
+      )
+      (symbol "Q_NPN_ECB_1_1"
+        (pin passive line
+          (at 2.54 -5.08 90)
+          (length 2.54)
+          (name "E"
+            (effects
+              (font
+                (size 1.27 1.27)
+              )
+            )
+          )
+          (number "1"
+            (effects
+              (font
+                (size 1.27 1.27)
+              )
+            )
+          )
+        )
+        (pin passive line
+          (at 2.54 5.08 270)
+          (length 2.54)
+          (name "C"
+            (effects
+              (font
+                (size 1.27 1.27)
+              )
+            )
+          )
+          (number "2"
+            (effects
+              (font
+                (size 1.27 1.27)
+              )
+            )
+          )
+        )
+        (pin passive line
+          (at -5.08 0 0)
+          (length 5.715)
+          (name "B"
+            (effects
+              (font
+                (size 1.27 1.27)
+              )
+            )
+          )
+          (number "3"
+            (effects
+              (font
+                (size 1.27 1.27)
+              )
+            )
+          )
+        )
+      )
+    )
+    (symbol "Device:Q_PNP_ECB"
+      (pin_names
+        (offset 0)
+        hide
+      )
+      (in_bom yes)
+      (on_board yes)
+      (property "Reference" "Q"
+        (at 5.08 1.27 0)
+        (effects
+          (font
+            (size 1.27 1.27)
+          )
+          (justify left)
+        )
+      )
+      (property "Value" "Q_PNP_ECB"
+        (at 5.08 -1.27 0)
+        (effects
+          (font
+            (size 1.27 1.27)
+          )
+          (justify left)
+        )
+      )
+      (property "Footprint" ""
+        (at 5.08 2.54 0)
+        (effects
+          (font
+            (size 1.27 1.27)
+          )
+          hide
+        )
+      )
+      (property "Datasheet" "~"
+        (at 0 0 0)
+        (effects
+          (font
+            (size 1.27 1.27)
+          )
+          hide
+        )
+      )
+      (property "ki_keywords" "transistor PNP"
+        (at 0 0 0)
+        (effects
+          (font
+            (size 1.27 1.27)
+          )
+          hide
+        )
+      )
+      (property "ki_description" "PNP transistor, emitter/collector/base"
+        (at 0 0 0)
+        (effects
+          (font
+            (size 1.27 1.27)
+          )
+          hide
+        )
+      )
+      (symbol "Q_PNP_ECB_0_1"
+        (polyline
+          (pts
+            (xy 0.635 0.635)
+            (xy 2.54 2.54)
+          )
+          (stroke
+            (width 0)
+            (type default)
+          )
+          (fill
+            (type none)
+          )
+        )
+        (polyline
+          (pts
+            (xy 0.635 -0.635)
+            (xy 2.54 -2.54)
+            (xy 2.54 -2.54)
+          )
+          (stroke
+            (width 0)
+            (type default)
+          )
+          (fill
+            (type none)
+          )
+        )
+        (polyline
+          (pts
+            (xy 0.635 1.905)
+            (xy 0.635 -1.905)
+            (xy 0.635 -1.905)
+          )
+          (stroke
+            (width 0.508)
+            (type default)
+          )
+          (fill
+            (type none)
+          )
+        )
+        (polyline
+          (pts
+            (xy 2.286 -1.778)
+            (xy 1.778 -2.286)
+            (xy 1.27 -1.27)
+            (xy 2.286 -1.778)
+            (xy 2.286 -1.778)
+          )
+          (stroke
+            (width 0)
+            (type default)
+          )
+          (fill
+            (type outline)
+          )
+        )
+        (circle
+          (center 1.27 0)
+          (radius 2.8194)
+          (stroke
+            (width 0.254)
+            (type default)
+          )
+          (fill
+            (type none)
+          )
+        )
+      )
+      (symbol "Q_PNP_ECB_1_1"
+        (pin passive line
+          (at 2.54 -5.08 90)
+          (length 2.54)
+          (name "E"
+            (effects
+              (font
+                (size 1.27 1.27)
+              )
+            )
+          )
+          (number "1"
+            (effects
+              (font
+                (size 1.27 1.27)
+              )
+            )
+          )
+        )
+        (pin passive line
+          (at 2.54 5.08 270)
+          (length 2.54)
+          (name "C"
+            (effects
+              (font
+                (size 1.27 1.27)
+              )
+            )
+          )
+          (number "2"
+            (effects
+              (font
+                (size 1.27 1.27)
+              )
+            )
+          )
+        )
+        (pin input line
+          (at -5.08 0 0)
+          (length 5.715)
+          (name "B"
+            (effects
+              (font
+                (size 1.27 1.27)
+              )
+            )
+          )
+          (number "3"
+            (effects
+              (font
+                (size 1.27 1.27)
+              )
+            )
+          )
+        )
+      )
+    )
+    (symbol "Connector_Generic:Conn_01x04"
+      (pin_names
+        (offset 1.016)
+        hide
+      )
+      (in_bom yes)
+      (on_board yes)
+      (property "Reference" "J"
+        (at 0 5.08 0)
+        (effects
+          (font
+            (size 1.27 1.27)
+          )
+        )
+      )
+      (property "Value" "Conn_01x04"
+        (at 0 -7.62 0)
+        (effects
+          (font
+            (size 1.27 1.27)
+          )
+        )
+      )
+      (property "Footprint" ""
+        (at 0 0 0)
+        (effects
+          (font
+            (size 1.27 1.27)
+          )
+          hide
+        )
+      )
+      (property "Datasheet" "~"
+        (at 0 0 0)
+        (effects
+          (font
+            (size 1.27 1.27)
+          )
+          hide
+        )
+      )
+      (property "ki_keywords" "connector"
+        (at 0 0 0)
+        (effects
+          (font
+            (size 1.27 1.27)
+          )
+          hide
+        )
+      )
+      (property "ki_description" "Generic connector, single row, 01x04, script generated (kicad-library-utils/schlib/autogen/connector/)"
+        (at 0 0 0)
+        (effects
+          (font
+            (size 1.27 1.27)
+          )
+          hide
+        )
+      )
+      (property "ki_fp_filters" "Connector*:*_1x??_*"
+        (at 0 0 0)
+        (effects
+          (font
+            (size 1.27 1.27)
+          )
+          hide
+        )
+      )
+      (symbol "Conn_01x04_1_1"
+        (rectangle
+          (start -1.27 -4.953)
+          (end 0 -5.207)
+          (stroke
+            (width 0.1524)
+            (type default)
+          )
+          (fill
+            (type none)
+          )
+        )
+        (rectangle
+          (start -1.27 -2.413)
+          (end 0 -2.667)
+          (stroke
+            (width 0.1524)
+            (type default)
+          )
+          (fill
+            (type none)
+          )
+        )
+        (rectangle
+          (start -1.27 0.127)
+          (end 0 -0.127)
+          (stroke
+            (width 0.1524)
+            (type default)
+          )
+          (fill
+            (type none)
+          )
+        )
+        (rectangle
+          (start -1.27 2.667)
+          (end 0 2.413)
+          (stroke
+            (width 0.1524)
+            (type default)
+          )
+          (fill
+            (type none)
+          )
+        )
+        (rectangle
+          (start -1.27 3.81)
+          (end 1.27 -6.35)
+          (stroke
+            (width 0.254)
+            (type default)
+          )
+          (fill
+            (type background)
+          )
+        )
+        (pin passive line
+          (at -5.08 2.54 0)
+          (length 3.81)
+          (name "Pin_1"
+            (effects
+              (font
+                (size 1.27 1.27)
+              )
+            )
+          )
+          (number "1"
+            (effects
+              (font
+                (size 1.27 1.27)
+              )
+            )
+          )
+        )
+        (pin passive line
+          (at -5.08 0 0)
+          (length 3.81)
+          (name "Pin_2"
+            (effects
+              (font
+                (size 1.27 1.27)
+              )
+            )
+          )
+          (number "2"
+            (effects
+              (font
+                (size 1.27 1.27)
+              )
+            )
+          )
+        )
+        (pin passive line
+          (at -5.08 -2.54 0)
+          (length 3.81)
+          (name "Pin_3"
+            (effects
+              (font
+                (size 1.27 1.27)
+              )
+            )
+          )
+          (number "3"
+            (effects
+              (font
+                (size 1.27 1.27)
+              )
+            )
+          )
+        )
+        (pin passive line
+          (at -5.08 -5.08 0)
+          (length 3.81)
+          (name "Pin_4"
+            (effects
+              (font
+                (size 1.27 1.27)
+              )
+            )
+          )
+          (number "4"
+            (effects
+              (font
+                (size 1.27 1.27)
+              )
+            )
+          )
+        )
+      )
+    )
+    (symbol "power:PWR_FLAG"
+      (power)
+      (pin_numbers hide)
+      (pin_names
+        (offset 0)
+        hide
+      )
+      (in_bom yes)
+      (on_board yes)
+      (property "Reference" "#FLG"
+        (at 0 1.905 0)
+        (effects
+          (font
+            (size 1.27 1.27)
+          )
+          hide
+        )
+      )
+      (property "Value" "PWR_FLAG"
+        (at 0 3.81 0)
+        (effects
+          (font
+            (size 1.27 1.27)
+          )
+        )
+      )
+      (property "Footprint" ""
+        (at 0 0 0)
+        (effects
+          (font
+            (size 1.27 1.27)
+          )
+          hide
+        )
+      )
+      (property "Datasheet" "~"
+        (at 0 0 0)
+        (effects
+          (font
+            (size 1.27 1.27)
+          )
+          hide
+        )
+      )
+      (property "ki_keywords" "flag power"
+        (at 0 0 0)
+        (effects
+          (font
+            (size 1.27 1.27)
+          )
+          hide
+        )
+      )
+      (property "ki_description" "Special symbol for telling ERC where power comes from"
+        (at 0 0 0)
+        (effects
+          (font
+            (size 1.27 1.27)
+          )
+          hide
+        )
+      )
+      (symbol "PWR_FLAG_0_0"
+        (pin power_out line
+          (at 0 0 90)
+          (length 0)
+          (name "pwr"
+            (effects
+              (font
+                (size 1.27 1.27)
+              )
+            )
+          )
+          (number "1"
+            (effects
+              (font
+                (size 1.27 1.27)
+              )
+            )
+          )
+        )
+      )
+      (symbol "PWR_FLAG_0_1"
+        (polyline
+          (pts
+            (xy 0 0)
+            (xy 0 1.27)
+            (xy -1.016 1.905)
+            (xy 0 2.54)
+            (xy 1.016 1.905)
+            (xy 0 1.27)
+          )
+          (stroke
+            (width 0)
+            (type default)
+          )
+          (fill
+            (type none)
+          )
+        )
+      )
+    )
+  )
+  (rectangle
+    (start 50.8 50.8)
+    (end 274.32 129.54)
+    (stroke
+      (width 0)
+      (type dash)
+    )
+    (fill
+      (type none)
+    )
+    (uuid "3ae39157-1697-58b3-9c08-79c25ee4f1f4")
+  )
+  (symbol
+    (lib_id "Connector_Generic:Conn_01x03")
+    (at 73.66 80.01 0)
+    (unit 1)
+    (in_bom yes)
+    (on_board yes)
+    (dnp no)
+    (uuid "dd216c86-669c-5f66-b933-b18a1cff36ec")
+    (property "Reference" "J1"
+      (at 77.47 78.74 0)
+      (effects
+        (font
+          (size 1.27 1.27)
+        )
+        (justify left)
+      )
+    )
+    (property "Value" "T1 SEC 20-0-20 VAC"
+      (at 77.47 81.28 0)
+      (effects
+        (font
+          (size 1.27 1.27)
+        )
+        (justify left)
+      )
+    )
+    (property "Footprint" "TerminalBlock_Phoenix:TerminalBlock_Phoenix_MKDS-1,5-3_1x03_P5.00mm_Horizontal"
+      (at 73.66 80.01 0)
+      (effects
+        (font
+          (size 1.27 1.27)
+        )
+        (justify left)
+        hide
+      )
+    )
+    (property "Datasheet" "~"
+      (at 73.66 80.01 0)
+      (effects
+        (font
+          (size 1.27 1.27)
+        )
+        (justify left)
+        hide
+      )
+    )
+    (pin "1"
+      (uuid "2a34aedc-e3df-56d6-8062-57b27b26f30e")
+    )
+    (pin "2"
+      (uuid "7c3a8bd6-c78a-5276-b3b1-a852847f4d2e")
+    )
+    (pin "3"
+      (uuid "01f44f7d-dba7-5ccb-b209-c4d8b28bb53d")
+    )
+    (instances
+      (project "psu"
+        (path "/2e595ab6-8c2f-5f27-8552-cfe536347d6d"
+          (reference "J1")
+          (unit 1)
+        )
+      )
+    )
+  )
+  (label "T1A"
+    (at 68.58 77.47 180)
+    (fields_autoplaced)
+    (effects
+      (font
+        (size 1 1)
+      )
+      (justify right bottom)
+    )
+    (uuid "6e683d2b-a357-5415-940a-4280e591b225")
+  )
+  (label "GND"
+    (at 68.58 80.01 180)
+    (fields_autoplaced)
+    (effects
+      (font
+        (size 1 1)
+      )
+      (justify right bottom)
+    )
+    (uuid "a25fd6d0-7c01-5c7a-af11-3d50b99b33d0")
+  )
+  (label "T1B"
+    (at 68.58 82.55 180)
+    (fields_autoplaced)
+    (effects
+      (font
+        (size 1 1)
+      )
+      (justify right bottom)
+    )
+    (uuid "25aaf3ed-25a1-51ee-b4e8-8d5cee47f7df")
+  )
+  (symbol
+    (lib_id "Device:D_Bridge_+AA-")
+    (at 109.22 80.01 0)
+    (unit 1)
+    (in_bom yes)
+    (on_board yes)
+    (dnp no)
+    (uuid "9aa2e63f-a807-5a65-8ef6-0a40ffae291c")
+    (property "Reference" "BR1"
+      (at 113.03 78.74 0)
+      (effects
+        (font
+          (size 1.27 1.27)
+        )
+        (justify left)
+      )
+    )
+    (property "Value" "GBJ2506"
+      (at 113.03 81.28 0)
+      (effects
+        (font
+          (size 1.27 1.27)
+        )
+        (justify left)
+      )
+    )
+    (property "Footprint" "Diode_THT:Diode_Bridge_32.0x5.6x17.0mm_P10.0mm_P7.5mm"
+      (at 109.22 80.01 0)
+      (effects
+        (font
+          (size 1.27 1.27)
+        )
+        (justify left)
+        hide
+      )
+    )
+    (property "Datasheet" "~"
+      (at 109.22 80.01 0)
+      (effects
+        (font
+          (size 1.27 1.27)
+        )
+        (justify left)
+        hide
+      )
+    )
+    (pin "1"
+      (uuid "05f083cc-7ad4-56da-8ee8-2d8e2e6c2788")
+    )
+    (pin "2"
+      (uuid "31b2bbbb-ac39-528f-be6c-6e0dc891f70d")
+    )
+    (pin "3"
+      (uuid "c4210ced-7795-54fc-b670-12346533483a")
+    )
+    (pin "4"
+      (uuid "e3ecd675-0b37-5fd7-a246-14e4c4cfed9a")
+    )
+    (instances
+      (project "psu"
+        (path "/2e595ab6-8c2f-5f27-8552-cfe536347d6d"
+          (reference "BR1")
+          (unit 1)
+        )
+      )
+    )
+  )
+  (label "VCC"
+    (at 116.84 80.01 0)
+    (fields_autoplaced)
+    (effects
+      (font
+        (size 1 1)
+      )
+      (justify left bottom)
+    )
+    (uuid "228ab390-e935-5b8c-a9e7-24b8cc739159")
+  )
+  (label "T1A"
+    (at 109.22 72.39 90)
+    (fields_autoplaced)
+    (effects
+      (font
+        (size 1 1)
+      )
+      (justify left bottom)
+    )
+    (uuid "91fd504d-054c-58a5-99eb-bd2047856dc9")
+  )
+  (label "T1B"
+    (at 109.22 87.63 270)
+    (fields_autoplaced)
+    (effects
+      (font
+        (size 1 1)
+      )
+      (justify left bottom)
+    )
+    (uuid "1f7c10f8-04e8-57d3-9252-5484b861d175")
+  )
+  (label "VEE"
+    (at 101.6 80.01 180)
+    (fields_autoplaced)
+    (effects
+      (font
+        (size 1 1)
+      )
+      (justify right bottom)
+    )
+    (uuid "1fbd6f67-03e7-549d-9c8a-f6d1df8cd759")
+  )
+  (symbol
+    (lib_id "Device:C_Polarized")
+    (at 144.78 80.01 0)
+    (unit 1)
+    (in_bom yes)
+    (on_board yes)
+    (dnp no)
+    (uuid "ee961a9e-8d36-5195-8bd9-3048af726adb")
+    (property "Reference" "C1"
+      (at 148.59 78.74 0)
+      (effects
+        (font
+          (size 1.27 1.27)
+        )
+        (justify left)
+      )
+    )
+    (property "Value" "10000u 50V"
+      (at 148.59 81.28 0)
+      (effects
+        (font
+          (size 1.27 1.27)
+        )
+        (justify left)
+      )
+    )
+    (property "Footprint" "Capacitor_THT:CP_Radial_D30.0mm_P10.00mm_SnapIn"
+      (at 144.78 80.01 0)
+      (effects
+        (font
+          (size 1.27 1.27)
+        )
+        (justify left)
+        hide
+      )
+    )
+    (property "Datasheet" "~"
+      (at 144.78 80.01 0)
+      (effects
+        (font
+          (size 1.27 1.27)
+        )
+        (justify left)
+        hide
+      )
+    )
+    (pin "1"
+      (uuid "3fc142b2-87df-520d-b85c-068a5f97362a")
+    )
+    (pin "2"
+      (uuid "f61cd5ef-6b3f-50ce-8ae8-b18c8094a362")
+    )
+    (instances
+      (project "psu"
+        (path "/2e595ab6-8c2f-5f27-8552-cfe536347d6d"
+          (reference "C1")
+          (unit 1)
+        )
+      )
+    )
+  )
+  (label "VCC"
+    (at 144.78 76.2 90)
+    (fields_autoplaced)
+    (effects
+      (font
+        (size 1 1)
+      )
+      (justify left bottom)
+    )
+    (uuid "95e9cdf8-842e-5de4-a4eb-34f0c4503131")
+  )
+  (label "GND"
+    (at 144.78 83.82 270)
+    (fields_autoplaced)
+    (effects
+      (font
+        (size 1 1)
+      )
+      (justify left bottom)
+    )
+    (uuid "9475d3a6-e649-51b5-8ee2-3ef0ba2dfa01")
+  )
+  (symbol
+    (lib_id "Device:C_Polarized")
+    (at 180.34 80.01 0)
+    (unit 1)
+    (in_bom yes)
+    (on_board yes)
+    (dnp no)
+    (uuid "182a2b4b-9b92-5c13-9432-e9c70d3362de")
+    (property "Reference" "C2"
+      (at 184.15 78.74 0)
+      (effects
+        (font
+          (size 1.27 1.27)
+        )
+        (justify left)
+      )
+    )
+    (property "Value" "10000u 50V"
+      (at 184.15 81.28 0)
+      (effects
+        (font
+          (size 1.27 1.27)
+        )
+        (justify left)
+      )
+    )
+    (property "Footprint" "Capacitor_THT:CP_Radial_D30.0mm_P10.00mm_SnapIn"
+      (at 180.34 80.01 0)
+      (effects
+        (font
+          (size 1.27 1.27)
+        )
+        (justify left)
+        hide
+      )
+    )
+    (property "Datasheet" "~"
+      (at 180.34 80.01 0)
+      (effects
+        (font
+          (size 1.27 1.27)
+        )
+        (justify left)
+        hide
+      )
+    )
+    (pin "1"
+      (uuid "eb8557f9-1f23-5c36-82d9-eadffbb526b2")
+    )
+    (pin "2"
+      (uuid "77e15667-6936-543e-baa5-8c5cbbcbba7c")
+    )
+    (instances
+      (project "psu"
+        (path "/2e595ab6-8c2f-5f27-8552-cfe536347d6d"
+          (reference "C2")
+          (unit 1)
+        )
+      )
+    )
+  )
+  (label "VCC"
+    (at 180.34 76.2 90)
+    (fields_autoplaced)
+    (effects
+      (font
+        (size 1 1)
+      )
+      (justify left bottom)
+    )
+    (uuid "075fad4c-f8da-5f83-97c1-5f3fd3790fd6")
+  )
+  (label "GND"
+    (at 180.34 83.82 270)
+    (fields_autoplaced)
+    (effects
+      (font
+        (size 1 1)
+      )
+      (justify left bottom)
+    )
+    (uuid "3647ab77-f47f-525e-950d-14bce29fc2f4")
+  )
+  (symbol
+    (lib_id "Device:C_Polarized")
+    (at 215.9 80.01 0)
+    (unit 1)
+    (in_bom yes)
+    (on_board yes)
+    (dnp no)
+    (uuid "80cabb49-4b70-538c-9166-cdba56fde0ae")
+    (property "Reference" "C3"
+      (at 219.71 78.74 0)
+      (effects
+        (font
+          (size 1.27 1.27)
+        )
+        (justify left)
+      )
+    )
+    (property "Value" "10000u 50V"
+      (at 219.71 81.28 0)
+      (effects
+        (font
+          (size 1.27 1.27)
+        )
+        (justify left)
+      )
+    )
+    (property "Footprint" "Capacitor_THT:CP_Radial_D30.0mm_P10.00mm_SnapIn"
+      (at 215.9 80.01 0)
+      (effects
+        (font
+          (size 1.27 1.27)
+        )
+        (justify left)
+        hide
+      )
+    )
+    (property "Datasheet" "~"
+      (at 215.9 80.01 0)
+      (effects
+        (font
+          (size 1.27 1.27)
+        )
+        (justify left)
+        hide
+      )
+    )
+    (pin "1"
+      (uuid "f1102d5a-5ab8-5d84-9ab9-6475edbbe2b9")
+    )
+    (pin "2"
+      (uuid "d540f337-3164-5a17-8387-e149a34e3993")
+    )
+    (instances
+      (project "psu"
+        (path "/2e595ab6-8c2f-5f27-8552-cfe536347d6d"
+          (reference "C3")
+          (unit 1)
+        )
+      )
+    )
+  )
+  (label "GND"
+    (at 215.9 76.2 90)
+    (fields_autoplaced)
+    (effects
+      (font
+        (size 1 1)
+      )
+      (justify left bottom)
+    )
+    (uuid "070fe734-9761-5e22-a5b0-92636d59cd07")
+  )
+  (label "VEE"
+    (at 215.9 83.82 270)
+    (fields_autoplaced)
+    (effects
+      (font
+        (size 1 1)
+      )
+      (justify left bottom)
+    )
+    (uuid "9ac02c0a-47d4-5509-8e97-3711a940b802")
+  )
+  (symbol
+    (lib_id "Device:C_Polarized")
+    (at 251.46 80.01 0)
+    (unit 1)
+    (in_bom yes)
+    (on_board yes)
+    (dnp no)
+    (uuid "42e2fa30-a879-51bc-8551-ee9ca90791a6")
+    (property "Reference" "C4"
+      (at 255.27 78.74 0)
+      (effects
+        (font
+          (size 1.27 1.27)
+        )
+        (justify left)
+      )
+    )
+    (property "Value" "10000u 50V"
+      (at 255.27 81.28 0)
+      (effects
+        (font
+          (size 1.27 1.27)
+        )
+        (justify left)
+      )
+    )
+    (property "Footprint" "Capacitor_THT:CP_Radial_D30.0mm_P10.00mm_SnapIn"
+      (at 251.46 80.01 0)
+      (effects
+        (font
+          (size 1.27 1.27)
+        )
+        (justify left)
+        hide
+      )
+    )
+    (property "Datasheet" "~"
+      (at 251.46 80.01 0)
+      (effects
+        (font
+          (size 1.27 1.27)
+        )
+        (justify left)
+        hide
+      )
+    )
+    (pin "1"
+      (uuid "33d44010-8d60-5475-a62f-fade065be388")
+    )
+    (pin "2"
+      (uuid "79faea57-ecb5-57fe-ac27-4f113eecc80c")
+    )
+    (instances
+      (project "psu"
+        (path "/2e595ab6-8c2f-5f27-8552-cfe536347d6d"
+          (reference "C4")
+          (unit 1)
+        )
+      )
+    )
+  )
+  (label "GND"
+    (at 251.46 76.2 90)
+    (fields_autoplaced)
+    (effects
+      (font
+        (size 1 1)
+      )
+      (justify left bottom)
+    )
+    (uuid "60bd924b-5c4c-5bfb-8538-796b67f79578")
+  )
+  (label "VEE"
+    (at 251.46 83.82 270)
+    (fields_autoplaced)
+    (effects
+      (font
+        (size 1 1)
+      )
+      (justify left bottom)
+    )
+    (uuid "4707e94c-c2d9-5283-a902-e5148afa94e7")
+  )
+  (symbol
+    (lib_id "Device:C")
+    (at 73.66 107.95 0)
+    (unit 1)
+    (in_bom yes)
+    (on_board yes)
+    (dnp no)
+    (uuid "42b2c363-8c88-59e5-8d56-17c8e02aba6b")
+    (property "Reference" "C5"
+      (at 77.47 106.68 0)
+      (effects
+        (font
+          (size 1.27 1.27)
+        )
+        (justify left)
+      )
+    )
+    (property "Value" "1u 100V film"
+      (at 77.47 109.22 0)
+      (effects
+        (font
+          (size 1.27 1.27)
+        )
+        (justify left)
+      )
+    )
+    (property "Footprint" "Capacitor_THT:C_Rect_L13.0mm_W6.0mm_P10.00mm_FKS3_FKP3_MKS4"
+      (at 73.66 107.95 0)
+      (effects
+        (font
+          (size 1.27 1.27)
+        )
+        (justify left)
+        hide
+      )
+    )
+    (property "Datasheet" "~"
+      (at 73.66 107.95 0)
+      (effects
+        (font
+          (size 1.27 1.27)
+        )
+        (justify left)
+        hide
+      )
+    )
+    (pin "1"
+      (uuid "38fbf59c-1abf-551a-8e08-90095c361db8")
+    )
+    (pin "2"
+      (uuid "e0dcc37e-6ce0-5ff4-a482-20f96c462d1e")
+    )
+    (instances
+      (project "psu"
+        (path "/2e595ab6-8c2f-5f27-8552-cfe536347d6d"
+          (reference "C5")
+          (unit 1)
+        )
+      )
+    )
+  )
+  (label "VCC"
+    (at 73.66 104.14 90)
+    (fields_autoplaced)
+    (effects
+      (font
+        (size 1 1)
+      )
+      (justify left bottom)
+    )
+    (uuid "6984a0b2-4a91-562e-9323-36ab43a5f182")
+  )
+  (label "GND"
+    (at 73.66 111.76 270)
+    (fields_autoplaced)
+    (effects
+      (font
+        (size 1 1)
+      )
+      (justify left bottom)
+    )
+    (uuid "4f45d2a8-b812-52aa-9baf-79773f9911d2")
+  )
+  (symbol
+    (lib_id "Device:C")
+    (at 109.22 107.95 0)
+    (unit 1)
+    (in_bom yes)
+    (on_board yes)
+    (dnp no)
+    (uuid "3b79e9ce-03d3-54da-9ac8-b177fbac69ee")
+    (property "Reference" "C6"
+      (at 113.03 106.68 0)
+      (effects
+        (font
+          (size 1.27 1.27)
+        )
+        (justify left)
+      )
+    )
+    (property "Value" "1u 100V film"
+      (at 113.03 109.22 0)
+      (effects
+        (font
+          (size 1.27 1.27)
+        )
+        (justify left)
+      )
+    )
+    (property "Footprint" "Capacitor_THT:C_Rect_L13.0mm_W6.0mm_P10.00mm_FKS3_FKP3_MKS4"
+      (at 109.22 107.95 0)
+      (effects
+        (font
+          (size 1.27 1.27)
+        )
+        (justify left)
+        hide
+      )
+    )
+    (property "Datasheet" "~"
+      (at 109.22 107.95 0)
+      (effects
+        (font
+          (size 1.27 1.27)
+        )
+        (justify left)
+        hide
+      )
+    )
+    (pin "1"
+      (uuid "764b5263-b2f4-5b85-b723-b22019f792b5")
+    )
+    (pin "2"
+      (uuid "11cebd5e-ab5f-5792-8dab-d8294731311a")
+    )
+    (instances
+      (project "psu"
+        (path "/2e595ab6-8c2f-5f27-8552-cfe536347d6d"
+          (reference "C6")
+          (unit 1)
+        )
+      )
+    )
+  )
+  (label "GND"
+    (at 109.22 104.14 90)
+    (fields_autoplaced)
+    (effects
+      (font
+        (size 1 1)
+      )
+      (justify left bottom)
+    )
+    (uuid "7a3dc02a-2915-5d26-a92b-babe932a1942")
+  )
+  (label "VEE"
+    (at 109.22 111.76 270)
+    (fields_autoplaced)
+    (effects
+      (font
+        (size 1 1)
+      )
+      (justify left bottom)
+    )
+    (uuid "9121702a-6c48-57cc-bd62-caa885526d47")
+  )
+  (symbol
+    (lib_id "Device:R")
+    (at 144.78 107.95 0)
+    (unit 1)
+    (in_bom yes)
+    (on_board yes)
+    (dnp no)
+    (uuid "284934e0-d703-5f70-bbb7-cba4beb9f9ab")
+    (property "Reference" "R1"
+      (at 148.59 106.68 0)
+      (effects
+        (font
+          (size 1.27 1.27)
+        )
+        (justify left)
+      )
+    )
+    (property "Value" "4k7 0.5W"
+      (at 148.59 109.22 0)
+      (effects
+        (font
+          (size 1.27 1.27)
+        )
+        (justify left)
+      )
+    )
+    (property "Footprint" "Resistor_THT:R_Axial_DIN0309_L9.0mm_D3.2mm_P12.70mm_Horizontal"
+      (at 144.78 107.95 0)
+      (effects
+        (font
+          (size 1.27 1.27)
+        )
+        (justify left)
+        hide
+      )
+    )
+    (property "Datasheet" "~"
+      (at 144.78 107.95 0)
+      (effects
+        (font
+          (size 1.27 1.27)
+        )
+        (justify left)
+        hide
+      )
+    )
+    (pin "1"
+      (uuid "c94f0d3a-d796-5791-97f4-60dfbf564aa1")
+    )
+    (pin "2"
+      (uuid "fffca3dd-c95c-50f5-bad4-890b797bb6ea")
+    )
+    (instances
+      (project "psu"
+        (path "/2e595ab6-8c2f-5f27-8552-cfe536347d6d"
+          (reference "R1")
+          (unit 1)
+        )
+      )
+    )
+  )
+  (label "VCC"
+    (at 144.78 104.14 90)
+    (fields_autoplaced)
+    (effects
+      (font
+        (size 1 1)
+      )
+      (justify left bottom)
+    )
+    (uuid "627058b1-04c2-52ae-80a8-c3dc5c7b0a20")
+  )
+  (label "GND"
+    (at 144.78 111.76 270)
+    (fields_autoplaced)
+    (effects
+      (font
+        (size 1 1)
+      )
+      (justify left bottom)
+    )
+    (uuid "ab189ee2-477c-54c4-87d1-af305e8ac042")
+  )
+  (symbol
+    (lib_id "Device:R")
+    (at 180.34 107.95 0)
+    (unit 1)
+    (in_bom yes)
+    (on_board yes)
+    (dnp no)
+    (uuid "71dc50f4-932a-58a1-884f-9bf743c9927b")
+    (property "Reference" "R2"
+      (at 184.15 106.68 0)
+      (effects
+        (font
+          (size 1.27 1.27)
+        )
+        (justify left)
+      )
+    )
+    (property "Value" "4k7 0.5W"
+      (at 184.15 109.22 0)
+      (effects
+        (font
+          (size 1.27 1.27)
+        )
+        (justify left)
+      )
+    )
+    (property "Footprint" "Resistor_THT:R_Axial_DIN0309_L9.0mm_D3.2mm_P12.70mm_Horizontal"
+      (at 180.34 107.95 0)
+      (effects
+        (font
+          (size 1.27 1.27)
+        )
+        (justify left)
+        hide
+      )
+    )
+    (property "Datasheet" "~"
+      (at 180.34 107.95 0)
+      (effects
+        (font
+          (size 1.27 1.27)
+        )
+        (justify left)
+        hide
+      )
+    )
+    (pin "1"
+      (uuid "cb9e9ad6-3bd4-540a-b640-6de5e52b967c")
+    )
+    (pin "2"
+      (uuid "c93c2292-f63f-581e-ae9d-003836f17ba9")
+    )
+    (instances
+      (project "psu"
+        (path "/2e595ab6-8c2f-5f27-8552-cfe536347d6d"
+          (reference "R2")
+          (unit 1)
+        )
+      )
+    )
+  )
+  (label "GND"
+    (at 180.34 104.14 90)
+    (fields_autoplaced)
+    (effects
+      (font
+        (size 1 1)
+      )
+      (justify left bottom)
+    )
+    (uuid "cf9a6304-c522-5e80-b2a5-d482bfb43135")
+  )
+  (label "VEE"
+    (at 180.34 111.76 270)
+    (fields_autoplaced)
+    (effects
+      (font
+        (size 1 1)
+      )
+      (justify left bottom)
+    )
+    (uuid "1311984a-a90a-5f70-893f-a5106320f71b")
+  )
+  (symbol
+    (lib_id "Connector_Generic:Conn_01x03")
+    (at 215.9 107.95 0)
+    (unit 1)
+    (in_bom yes)
+    (on_board yes)
+    (dnp no)
+    (uuid "55c21396-3a0c-5bed-affa-ab904e7ed349")
+    (property "Reference" "J2"
+      (at 219.71 106.68 0)
+      (effects
+        (font
+          (size 1.27 1.27)
+        )
+        (justify left)
+      )
+    )
+    (property "Value" "TO POWER AMP +28/GND/-28"
+      (at 219.71 109.22 0)
+      (effects
+        (font
+          (size 1.27 1.27)
+        )
+        (justify left)
+      )
+    )
+    (property "Footprint" "TerminalBlock_Phoenix:TerminalBlock_Phoenix_MKDS-1,5-3_1x03_P5.00mm_Horizontal"
+      (at 215.9 107.95 0)
+      (effects
+        (font
+          (size 1.27 1.27)
+        )
+        (justify left)
+        hide
+      )
+    )
+    (property "Datasheet" "~"
+      (at 215.9 107.95 0)
+      (effects
+        (font
+          (size 1.27 1.27)
+        )
+        (justify left)
+        hide
+      )
+    )
+    (pin "1"
+      (uuid "ad116cdd-2286-51c8-9db6-7901f39af544")
+    )
+    (pin "2"
+      (uuid "90781cda-8b84-51e4-a209-56d6b68bd33b")
+    )
+    (pin "3"
+      (uuid "cb8f0ab0-d945-5f13-a6dc-e4675d6a40f3")
+    )
+    (instances
+      (project "psu"
+        (path "/2e595ab6-8c2f-5f27-8552-cfe536347d6d"
+          (reference "J2")
+          (unit 1)
+        )
+      )
+    )
+  )
+  (label "VCC"
+    (at 210.82 105.41 180)
+    (fields_autoplaced)
+    (effects
+      (font
+        (size 1 1)
+      )
+      (justify right bottom)
+    )
+    (uuid "1abe4070-82c3-584c-94a3-c87e2595b8ba")
+  )
+  (label "GND"
+    (at 210.82 107.95 180)
+    (fields_autoplaced)
+    (effects
+      (font
+        (size 1 1)
+      )
+      (justify right bottom)
+    )
+    (uuid "82ecab7f-6ec0-5374-bdea-3392e5025638")
+  )
+  (label "VEE"
+    (at 210.82 110.49 180)
+    (fields_autoplaced)
+    (effects
+      (font
+        (size 1 1)
+      )
+      (justify right bottom)
+    )
+    (uuid "accc0360-7dbf-5bc4-a4ff-d62399e6dda7")
+  )
+  (symbol
+    (lib_id "Connector_Generic:Conn_01x02")
+    (at 251.46 107.95 0)
+    (unit 1)
+    (in_bom yes)
+    (on_board yes)
+    (dnp no)
+    (uuid "48a58bee-a65a-5f60-a116-105294c93d04")
+    (property "Reference" "J3"
+      (at 255.27 106.68 0)
+      (effects
+        (font
+          (size 1.27 1.27)
+        )
+        (justify left)
+      )
+    )
+    (property "Value" "AC SENSE to power amp"
+      (at 255.27 109.22 0)
+      (effects
+        (font
+          (size 1.27 1.27)
+        )
+        (justify left)
+      )
+    )
+    (property "Footprint" "Connector_JST:JST_XH_B2B-XH-A_1x02_P2.50mm_Vertical"
+      (at 251.46 107.95 0)
+      (effects
+        (font
+          (size 1.27 1.27)
+        )
+        (justify left)
+        hide
+      )
+    )
+    (property "Datasheet" "~"
+      (at 251.46 107.95 0)
+      (effects
+        (font
+          (size 1.27 1.27)
+        )
+        (justify left)
+        hide
+      )
+    )
+    (pin "1"
+      (uuid "353efb34-5d37-5a9a-855b-d7b95e0544cc")
+    )
+    (pin "2"
+      (uuid "090c0d92-574e-5c06-8c21-8398d38686a7")
+    )
+    (instances
+      (project "psu"
+        (path "/2e595ab6-8c2f-5f27-8552-cfe536347d6d"
+          (reference "J3")
+          (unit 1)
+        )
+      )
+    )
+  )
+  (label "T1A"
+    (at 246.38 107.95 180)
+    (fields_autoplaced)
+    (effects
+      (font
+        (size 1 1)
+      )
+      (justify right bottom)
+    )
+    (uuid "4e64381d-e1cd-59ea-9170-f347107efac7")
+  )
+  (label "GND"
+    (at 246.38 110.49 180)
+    (fields_autoplaced)
+    (effects
+      (font
+        (size 1 1)
+      )
+      (justify right bottom)
+    )
+    (uuid "e6b3ea09-877d-589a-8aa6-e8e82f2e428d")
+  )
+  (rectangle
+    (start 289.56 50.8)
+    (end 513.08 157.48)
+    (stroke
+      (width 0)
+      (type dash)
+    )
+    (fill
+      (type none)
+    )
+    (uuid "6f3cd376-ae15-5ba7-a9b9-35550047179a")
+  )
+  (symbol
+    (lib_id "Device:R")
+    (at 312.42 80.01 0)
+    (unit 1)
+    (in_bom yes)
+    (on_board yes)
+    (dnp no)
+    (uuid "8db481b9-e1e0-587f-a102-671bac0f736e")
+    (property "Reference" "R11"
+      (at 316.23 78.74 0)
+      (effects
+        (font
+          (size 1.27 1.27)
+        )
+        (justify left)
+      )
+    )
+    (property "Value" "10 1W"
+      (at 316.23 81.28 0)
+      (effects
+        (font
+          (size 1.27 1.27)
+        )
+        (justify left)
+      )
+    )
+    (property "Footprint" "Resistor_THT:R_Axial_DIN0309_L9.0mm_D3.2mm_P12.70mm_Horizontal"
+      (at 312.42 80.01 0)
+      (effects
+        (font
+          (size 1.27 1.27)
+        )
+        (justify left)
+        hide
+      )
+    )
+    (property "Datasheet" "~"
+      (at 312.42 80.01 0)
+      (effects
+        (font
+          (size 1.27 1.27)
+        )
+        (justify left)
+        hide
+      )
+    )
+    (pin "1"
+      (uuid "446d79a1-4de5-5ec3-8020-de5b3848f928")
+    )
+    (pin "2"
+      (uuid "680cb745-70b5-595a-aa7a-c42a4ad7755f")
+    )
+    (instances
+      (project "psu"
+        (path "/2e595ab6-8c2f-5f27-8552-cfe536347d6d"
+          (reference "R11")
+          (unit 1)
+        )
+      )
+    )
+  )
+  (label "VCC"
+    (at 312.42 76.2 90)
+    (fields_autoplaced)
+    (effects
+      (font
+        (size 1 1)
+      )
+      (justify left bottom)
+    )
+    (uuid "21e7b6b9-4aa0-54e6-b1fb-a748895c71e3")
+  )
+  (label "P15R"
+    (at 312.42 83.82 270)
+    (fields_autoplaced)
+    (effects
+      (font
+        (size 1 1)
+      )
+      (justify left bottom)
+    )
+    (uuid "ab567600-b0a1-5e56-aa86-055af3bf55ee")
+  )
+  (symbol
+    (lib_id "Device:C_Polarized")
+    (at 347.98 80.01 0)
+    (unit 1)
+    (in_bom yes)
+    (on_board yes)
+    (dnp no)
+    (uuid "7f5f63cd-31e0-5ed3-bb1f-3911efd0dee4")
+    (property "Reference" "C11"
+      (at 351.79 78.74 0)
+      (effects
+        (font
+          (size 1.27 1.27)
+        )
+        (justify left)
+      )
+    )
+    (property "Value" "1000u 50V"
+      (at 351.79 81.28 0)
+      (effects
+        (font
+          (size 1.27 1.27)
+        )
+        (justify left)
+      )
+    )
+    (property "Footprint" "Capacitor_THT:CP_Radial_D12.5mm_P5.00mm"
+      (at 347.98 80.01 0)
+      (effects
+        (font
+          (size 1.27 1.27)
+        )
+        (justify left)
+        hide
+      )
+    )
+    (property "Datasheet" "~"
+      (at 347.98 80.01 0)
+      (effects
+        (font
+          (size 1.27 1.27)
+        )
+        (justify left)
+        hide
+      )
+    )
+    (pin "1"
+      (uuid "822f0c2a-6569-5c12-bcbe-a6ea257fad2e")
+    )
+    (pin "2"
+      (uuid "00f43af3-666a-5a54-a3ca-58e62c50df3a")
+    )
+    (instances
+      (project "psu"
+        (path "/2e595ab6-8c2f-5f27-8552-cfe536347d6d"
+          (reference "C11")
+          (unit 1)
+        )
+      )
+    )
+  )
+  (label "P15R"
+    (at 347.98 76.2 90)
+    (fields_autoplaced)
+    (effects
+      (font
+        (size 1 1)
+      )
+      (justify left bottom)
+    )
+    (uuid "5f55975f-0171-53bc-93e1-85973cb88e01")
+  )
+  (label "GND"
+    (at 347.98 83.82 270)
+    (fields_autoplaced)
+    (effects
+      (font
+        (size 1 1)
+      )
+      (justify left bottom)
+    )
+    (uuid "de85eb8f-387c-53aa-9a54-c3cbf58229d6")
+  )
+  (symbol
+    (lib_id "Device:R")
+    (at 383.54 80.01 0)
+    (unit 1)
+    (in_bom yes)
+    (on_board yes)
+    (dnp no)
+    (uuid "bf0c209d-c902-5095-be16-a33beba27cde")
+    (property "Reference" "R12"
+      (at 387.35 78.74 0)
+      (effects
+        (font
+          (size 1.27 1.27)
+        )
+        (justify left)
+      )
+    )
+    (property "Value" "2k2"
+      (at 387.35 81.28 0)
+      (effects
+        (font
+          (size 1.27 1.27)
+        )
+        (justify left)
+      )
+    )
+    (property "Footprint" "Resistor_THT:R_Axial_DIN0207_L6.3mm_D2.5mm_P10.16mm_Horizontal"
+      (at 383.54 80.01 0)
+      (effects
+        (font
+          (size 1.27 1.27)
+        )
+        (justify left)
+        hide
+      )
+    )
+    (property "Datasheet" "~"
+      (at 383.54 80.01 0)
+      (effects
+        (font
+          (size 1.27 1.27)
+        )
+        (justify left)
+        hide
+      )
+    )
+    (pin "1"
+      (uuid "e3b2575a-3c35-5f9a-84c0-1d29f36bc2ab")
+    )
+    (pin "2"
+      (uuid "0b7c1032-7d72-545f-88da-29f30f7c04cc")
+    )
+    (instances
+      (project "psu"
+        (path "/2e595ab6-8c2f-5f27-8552-cfe536347d6d"
+          (reference "R12")
+          (unit 1)
+        )
+      )
+    )
+  )
+  (label "P15R"
+    (at 383.54 76.2 90)
+    (fields_autoplaced)
+    (effects
+      (font
+        (size 1 1)
+      )
+      (justify left bottom)
+    )
+    (uuid "dbc90b23-c6d3-5569-b156-2691ec78e490")
+  )
+  (label "P15Z"
+    (at 383.54 83.82 270)
+    (fields_autoplaced)
+    (effects
+      (font
+        (size 1 1)
+      )
+      (justify left bottom)
+    )
+    (uuid "a6f17405-6131-5199-9f78-b1ea97636fc1")
+  )
+  (symbol
+    (lib_id "Device:D_Zener")
+    (at 419.1 80.01 0)
+    (unit 1)
+    (in_bom yes)
+    (on_board yes)
+    (dnp no)
+    (uuid "9a083bf2-fc84-51e3-8add-c6e14d35a917")
+    (property "Reference" "D11"
+      (at 414.02 72.39 0)
+      (effects
+        (font
+          (size 1.27 1.27)
+        )
+        (justify left)
+      )
+    )
+    (property "Value" "1N4745A 16V"
+      (at 414.02 74.93 0)
+      (effects
+        (font
+          (size 1.27 1.27)
+        )
+        (justify left)
+      )
+    )
+    (property "Footprint" "Diode_THT:D_DO-41_SOD81_P10.16mm_Horizontal"
+      (at 419.1 80.01 0)
+      (effects
+        (font
+          (size 1.27 1.27)
+        )
+        (justify left)
+        hide
+      )
+    )
+    (property "Datasheet" "~"
+      (at 419.1 80.01 0)
+      (effects
+        (font
+          (size 1.27 1.27)
+        )
+        (justify left)
+        hide
+      )
+    )
+    (pin "1"
+      (uuid "2abedbd0-bc98-52db-a8d0-dc172942759e")
+    )
+    (pin "2"
+      (uuid "eb277193-eb38-51e6-8d6e-a182fb7e493a")
+    )
+    (instances
+      (project "psu"
+        (path "/2e595ab6-8c2f-5f27-8552-cfe536347d6d"
+          (reference "D11")
+          (unit 1)
+        )
+      )
+    )
+  )
+  (label "P15Z"
+    (at 415.29 80.01 180)
+    (fields_autoplaced)
+    (effects
+      (font
+        (size 1 1)
+      )
+      (justify right bottom)
+    )
+    (uuid "2f4d1cbc-e948-58a3-94a8-3a1583d92a36")
+  )
+  (label "GND"
+    (at 422.91 80.01 0)
+    (fields_autoplaced)
+    (effects
+      (font
+        (size 1 1)
+      )
+      (justify left bottom)
+    )
+    (uuid "6833de0a-9696-5a5b-a533-56072ef6691b")
+  )
+  (symbol
+    (lib_id "Device:R")
+    (at 454.66 80.01 0)
+    (unit 1)
+    (in_bom yes)
+    (on_board yes)
+    (dnp no)
+    (uuid "29c100fe-3535-5502-94eb-21cd0c39c896")
+    (property "Reference" "R13"
+      (at 458.47 78.74 0)
+      (effects
+        (font
+          (size 1.27 1.27)
+        )
+        (justify left)
+      )
+    )
+    (property "Value" "1k"
+      (at 458.47 81.28 0)
+      (effects
+        (font
+          (size 1.27 1.27)
+        )
+        (justify left)
+      )
+    )
+    (property "Footprint" "Resistor_THT:R_Axial_DIN0207_L6.3mm_D2.5mm_P10.16mm_Horizontal"
+      (at 454.66 80.01 0)
+      (effects
+        (font
+          (size 1.27 1.27)
+        )
+        (justify left)
+        hide
+      )
+    )
+    (property "Datasheet" "~"
+      (at 454.66 80.01 0)
+      (effects
+        (font
+          (size 1.27 1.27)
+        )
+        (justify left)
+        hide
+      )
+    )
+    (pin "1"
+      (uuid "e9b415aa-51dd-5b9f-93fb-2d566d589167")
+    )
+    (pin "2"
+      (uuid "e41c7181-e8ec-53bc-92cc-e57e19746e26")
+    )
+    (instances
+      (project "psu"
+        (path "/2e595ab6-8c2f-5f27-8552-cfe536347d6d"
+          (reference "R13")
+          (unit 1)
+        )
+      )
+    )
+  )
+  (label "P15Z"
+    (at 454.66 76.2 90)
+    (fields_autoplaced)
+    (effects
+      (font
+        (size 1 1)
+      )
+      (justify left bottom)
+    )
+    (uuid "3dda1e4d-cad5-58fb-ae03-067780a2bd2d")
+  )
+  (label "P15F"
+    (at 454.66 83.82 270)
+    (fields_autoplaced)
+    (effects
+      (font
+        (size 1 1)
+      )
+      (justify left bottom)
+    )
+    (uuid "236062be-f519-563d-ae58-0b3c921b55aa")
+  )
+  (symbol
+    (lib_id "Device:C_Polarized")
+    (at 490.22 80.01 0)
+    (unit 1)
+    (in_bom yes)
+    (on_board yes)
+    (dnp no)
+    (uuid "cb089dce-08e9-59b9-81c0-a77e136a3642")
+    (property "Reference" "C12"
+      (at 494.03 78.74 0)
+      (effects
+        (font
+          (size 1.27 1.27)
+        )
+        (justify left)
+      )
+    )
+    (property "Value" "100u 25V"
+      (at 494.03 81.28 0)
+      (effects
+        (font
+          (size 1.27 1.27)
+        )
+        (justify left)
+      )
+    )
+    (property "Footprint" "Capacitor_THT:CP_Radial_D6.3mm_P2.50mm"
+      (at 490.22 80.01 0)
+      (effects
+        (font
+          (size 1.27 1.27)
+        )
+        (justify left)
+        hide
+      )
+    )
+    (property "Datasheet" "~"
+      (at 490.22 80.01 0)
+      (effects
+        (font
+          (size 1.27 1.27)
+        )
+        (justify left)
+        hide
+      )
+    )
+    (pin "1"
+      (uuid "12a5c345-895c-5957-a558-d1938a56880b")
+    )
+    (pin "2"
+      (uuid "a0c9314b-49ab-5803-8057-c0757ea8c0fb")
+    )
+    (instances
+      (project "psu"
+        (path "/2e595ab6-8c2f-5f27-8552-cfe536347d6d"
+          (reference "C12")
+          (unit 1)
+        )
+      )
+    )
+  )
+  (label "P15F"
+    (at 490.22 76.2 90)
+    (fields_autoplaced)
+    (effects
+      (font
+        (size 1 1)
+      )
+      (justify left bottom)
+    )
+    (uuid "3757fbc4-4ef3-53f8-9f34-1af57e050204")
+  )
+  (label "GND"
+    (at 490.22 83.82 270)
+    (fields_autoplaced)
+    (effects
+      (font
+        (size 1 1)
+      )
+      (justify left bottom)
+    )
+    (uuid "62ff84dd-0946-5bc2-93fb-20ac03a92d45")
+  )
+  (symbol
+    (lib_id "Device:R")
+    (at 312.42 107.95 0)
+    (unit 1)
+    (in_bom yes)
+    (on_board yes)
+    (dnp no)
+    (uuid "4530dd7f-93fc-5493-a75d-a5e540d64037")
+    (property "Reference" "R14"
+      (at 316.23 106.68 0)
+      (effects
+        (font
+          (size 1.27 1.27)
+        )
+        (justify left)
+      )
+    )
+    (property "Value" "1k"
+      (at 316.23 109.22 0)
+      (effects
+        (font
+          (size 1.27 1.27)
+        )
+        (justify left)
+      )
+    )
+    (property "Footprint" "Resistor_THT:R_Axial_DIN0207_L6.3mm_D2.5mm_P10.16mm_Horizontal"
+      (at 312.42 107.95 0)
+      (effects
+        (font
+          (size 1.27 1.27)
+        )
+        (justify left)
+        hide
+      )
+    )
+    (property "Datasheet" "~"
+      (at 312.42 107.95 0)
+      (effects
+        (font
+          (size 1.27 1.27)
+        )
+        (justify left)
+        hide
+      )
+    )
+    (pin "1"
+      (uuid "5b4e7221-0acc-5f9f-ad87-db296b0ff3f8")
+    )
+    (pin "2"
+      (uuid "04a53ee6-8f40-5f80-a2ab-2a7a8873ee73")
+    )
+    (instances
+      (project "psu"
+        (path "/2e595ab6-8c2f-5f27-8552-cfe536347d6d"
+          (reference "R14")
+          (unit 1)
+        )
+      )
+    )
+  )
+  (label "P15F"
+    (at 312.42 104.14 90)
+    (fields_autoplaced)
+    (effects
+      (font
+        (size 1 1)
+      )
+      (justify left bottom)
+    )
+    (uuid "020b1e3c-ff39-530f-beae-5fca68bc8e7a")
+  )
+  (label "Q1B"
+    (at 312.42 111.76 270)
+    (fields_autoplaced)
+    (effects
+      (font
+        (size 1 1)
+      )
+      (justify left bottom)
+    )
+    (uuid "6ddd73b6-c72e-5b99-8774-472333532c2f")
+  )
+  (symbol
+    (lib_id "Transistor_BJT:MPSA42")
+    (at 347.98 107.95 0)
+    (unit 1)
+    (in_bom yes)
+    (on_board yes)
+    (dnp no)
+    (uuid "f7d49803-b560-5c6e-8db9-7bde31093009")
+    (property "Reference" "Q1"
+      (at 353.06 106.68 0)
+      (effects
+        (font
+          (size 1.27 1.27)
+        )
+        (justify left)
+      )
+    )
+    (property "Value" "MPSA42"
+      (at 353.06 109.22 0)
+      (effects
+        (font
+          (size 1.27 1.27)
+        )
+        (justify left)
+      )
+    )
+    (property "Footprint" "Package_TO_SOT_THT:TO-92_Inline"
+      (at 347.98 107.95 0)
+      (effects
+        (font
+          (size 1.27 1.27)
+        )
+        (justify left)
+        hide
+      )
+    )
+    (property "Datasheet" "~"
+      (at 347.98 107.95 0)
+      (effects
+        (font
+          (size 1.27 1.27)
+        )
+        (justify left)
+        hide
+      )
+    )
+    (pin "1"
+      (uuid "8f77c483-ee8f-5ca6-87bc-224289d29c01")
+    )
+    (pin "2"
+      (uuid "5d64ad2a-3bd5-52ab-9057-dfb2753d523b")
+    )
+    (pin "3"
+      (uuid "0036c9e4-31af-5f3b-9d4a-caacda67998d")
+    )
+    (instances
+      (project "psu"
+        (path "/2e595ab6-8c2f-5f27-8552-cfe536347d6d"
+          (reference "Q1")
+          (unit 1)
+        )
+      )
+    )
+  )
+  (label "Q2B"
+    (at 350.52 113.03 270)
+    (fields_autoplaced)
+    (effects
+      (font
+        (size 1 1)
+      )
+      (justify left bottom)
+    )
+    (uuid "1fbdfd52-f6e2-50ae-80bc-037eff6d18e6")
+  )
+  (label "Q1B"
+    (at 342.9 107.95 180)
+    (fields_autoplaced)
+    (effects
+      (font
+        (size 1 1)
+      )
+      (justify right bottom)
+    )
+    (uuid "ea76a48b-aca6-5156-89ab-d3f1f50825d6")
+  )
+  (label "P15R"
+    (at 350.52 102.87 90)
+    (fields_autoplaced)
+    (effects
+      (font
+        (size 1 1)
+      )
+      (justify left bottom)
+    )
+    (uuid "c8d6e5f7-e798-5c65-abaa-775bc99a524c")
+  )
+  (symbol
+    (lib_id "Transistor_BJT:BD139")
+    (at 383.54 107.95 0)
+    (unit 1)
+    (in_bom yes)
+    (on_board yes)
+    (dnp no)
+    (uuid "1b21c2b2-d769-5da5-977e-44084b8c24df")
+    (property "Reference" "Q2"
+      (at 388.62 106.68 0)
+      (effects
+        (font
+          (size 1.27 1.27)
+        )
+        (justify left)
+      )
+    )
+    (property "Value" "BD139"
+      (at 388.62 109.22 0)
+      (effects
+        (font
+          (size 1.27 1.27)
+        )
+        (justify left)
+      )
+    )
+    (property "Footprint" "Package_TO_SOT_THT:TO-126-3_Vertical"
+      (at 383.54 107.95 0)
+      (effects
+        (font
+          (size 1.27 1.27)
+        )
+        (justify left)
+        hide
+      )
+    )
+    (property "Datasheet" "~"
+      (at 383.54 107.95 0)
+      (effects
+        (font
+          (size 1.27 1.27)
+        )
+        (justify left)
+        hide
+      )
+    )
+    (pin "1"
+      (uuid "447e018c-c048-5c6f-aac4-1b5dfaea3211")
+    )
+    (pin "2"
+      (uuid "10402f52-5510-521a-919f-33f66a26dac5")
+    )
+    (pin "3"
+      (uuid "3d6e7e7e-4ced-5a19-b17d-f6fb441e940e")
+    )
+    (instances
+      (project "psu"
+        (path "/2e595ab6-8c2f-5f27-8552-cfe536347d6d"
+          (reference "Q2")
+          (unit 1)
+        )
+      )
+    )
+  )
+  (label "P15E"
+    (at 386.08 113.03 270)
+    (fields_autoplaced)
+    (effects
+      (font
+        (size 1 1)
+      )
+      (justify left bottom)
+    )
+    (uuid "7d0c60ac-e611-5d2e-9a91-7f15c8ad902b")
+  )
+  (label "P15R"
+    (at 386.08 102.87 90)
+    (fields_autoplaced)
+    (effects
+      (font
+        (size 1 1)
+      )
+      (justify left bottom)
+    )
+    (uuid "41b1908a-eb0d-579d-9557-85aa1437ae6d")
+  )
+  (label "Q2B"
+    (at 378.46 107.95 180)
+    (fields_autoplaced)
+    (effects
+      (font
+        (size 1 1)
+      )
+      (justify right bottom)
+    )
+    (uuid "8dcd315b-7bc8-54a8-acc7-b27c11d46bad")
+  )
+  (symbol
+    (lib_id "Device:R")
+    (at 419.1 107.95 0)
+    (unit 1)
+    (in_bom yes)
+    (on_board yes)
+    (dnp no)
+    (uuid "e1cd70b6-b5dd-533c-b46a-618cd13e7ed4")
+    (property "Reference" "R15"
+      (at 422.91 106.68 0)
+      (effects
+        (font
+          (size 1.27 1.27)
+        )
+        (justify left)
+      )
+    )
+    (property "Value" "2R7"
+      (at 422.91 109.22 0)
+      (effects
+        (font
+          (size 1.27 1.27)
+        )
+        (justify left)
+      )
+    )
+    (property "Footprint" "Resistor_THT:R_Axial_DIN0207_L6.3mm_D2.5mm_P10.16mm_Horizontal"
+      (at 419.1 107.95 0)
+      (effects
+        (font
+          (size 1.27 1.27)
+        )
+        (justify left)
+        hide
+      )
+    )
+    (property "Datasheet" "~"
+      (at 419.1 107.95 0)
+      (effects
+        (font
+          (size 1.27 1.27)
+        )
+        (justify left)
+        hide
+      )
+    )
+    (pin "1"
+      (uuid "9fcb4814-5e04-595f-bdc0-4b7f88d0127a")
+    )
+    (pin "2"
+      (uuid "5259e0bd-9bdf-5274-a9d2-985015800342")
+    )
+    (instances
+      (project "psu"
+        (path "/2e595ab6-8c2f-5f27-8552-cfe536347d6d"
+          (reference "R15")
+          (unit 1)
+        )
+      )
+    )
+  )
+  (label "P15E"
+    (at 419.1 104.14 90)
+    (fields_autoplaced)
+    (effects
+      (font
+        (size 1 1)
+      )
+      (justify left bottom)
+    )
+    (uuid "cedf3ddf-d85c-5d7c-9d39-6f415104a889")
+  )
+  (label "+15V"
+    (at 419.1 111.76 270)
+    (fields_autoplaced)
+    (effects
+      (font
+        (size 1 1)
+      )
+      (justify left bottom)
+    )
+    (uuid "0b18a672-559c-59c7-9c91-9c567b7127e8")
+  )
+  (symbol
+    (lib_id "Transistor_BJT:MPSA42")
+    (at 454.66 107.95 0)
+    (unit 1)
+    (in_bom yes)
+    (on_board yes)
+    (dnp no)
+    (uuid "dfd1d8b5-8c7a-5265-90f1-67b889467d18")
+    (property "Reference" "Q3"
+      (at 459.74 106.68 0)
+      (effects
+        (font
+          (size 1.27 1.27)
+        )
+        (justify left)
+      )
+    )
+    (property "Value" "MPSA42"
+      (at 459.74 109.22 0)
+      (effects
+        (font
+          (size 1.27 1.27)
+        )
+        (justify left)
+      )
+    )
+    (property "Footprint" "Package_TO_SOT_THT:TO-92_Inline"
+      (at 454.66 107.95 0)
+      (effects
+        (font
+          (size 1.27 1.27)
+        )
+        (justify left)
+        hide
+      )
+    )
+    (property "Datasheet" "~"
+      (at 454.66 107.95 0)
+      (effects
+        (font
+          (size 1.27 1.27)
+        )
+        (justify left)
+        hide
+      )
+    )
+    (pin "1"
+      (uuid "9eff5ba6-32ba-5b3d-8ab8-43863af89e57")
+    )
+    (pin "2"
+      (uuid "3f897333-45e4-5e06-8718-3515b327730a")
+    )
+    (pin "3"
+      (uuid "aedfeb85-7835-59d2-be99-2e412e348ff8")
+    )
+    (instances
+      (project "psu"
+        (path "/2e595ab6-8c2f-5f27-8552-cfe536347d6d"
+          (reference "Q3")
+          (unit 1)
+        )
+      )
+    )
+  )
+  (label "+15V"
+    (at 457.2 113.03 270)
+    (fields_autoplaced)
+    (effects
+      (font
+        (size 1 1)
+      )
+      (justify left bottom)
+    )
+    (uuid "e96886d4-b1ef-5e84-971b-8a095e3907a7")
+  )
+  (label "P15E"
+    (at 449.58 107.95 180)
+    (fields_autoplaced)
+    (effects
+      (font
+        (size 1 1)
+      )
+      (justify right bottom)
+    )
+    (uuid "e831ce3f-0f29-5e07-92b4-97e330a1ae0a")
+  )
+  (label "Q1B"
+    (at 457.2 102.87 90)
+    (fields_autoplaced)
+    (effects
+      (font
+        (size 1 1)
+      )
+      (justify left bottom)
+    )
+    (uuid "04e05867-bba2-5521-9c57-08a7c7937ce9")
+  )
+  (symbol
+    (lib_id "Device:C_Polarized")
+    (at 490.22 107.95 0)
+    (unit 1)
+    (in_bom yes)
+    (on_board yes)
+    (dnp no)
+    (uuid "9e1ff61a-72ec-5fed-a8b0-c350c1138442")
+    (property "Reference" "C13"
+      (at 494.03 106.68 0)
+      (effects
+        (font
+          (size 1.27 1.27)
+        )
+        (justify left)
+      )
+    )
+    (property "Value" "100u 25V"
+      (at 494.03 109.22 0)
+      (effects
+        (font
+          (size 1.27 1.27)
+        )
+        (justify left)
+      )
+    )
+    (property "Footprint" "Capacitor_THT:CP_Radial_D6.3mm_P2.50mm"
+      (at 490.22 107.95 0)
+      (effects
+        (font
+          (size 1.27 1.27)
+        )
+        (justify left)
+        hide
+      )
+    )
+    (property "Datasheet" "~"
+      (at 490.22 107.95 0)
+      (effects
+        (font
+          (size 1.27 1.27)
+        )
+        (justify left)
+        hide
+      )
+    )
+    (pin "1"
+      (uuid "33796e8f-cef3-59db-84bd-c17876d98306")
+    )
+    (pin "2"
+      (uuid "047b5b4e-1eaf-5bc1-bf90-a6e9371578c7")
+    )
+    (instances
+      (project "psu"
+        (path "/2e595ab6-8c2f-5f27-8552-cfe536347d6d"
+          (reference "C13")
+          (unit 1)
+        )
+      )
+    )
+  )
+  (label "+15V"
+    (at 490.22 104.14 90)
+    (fields_autoplaced)
+    (effects
+      (font
+        (size 1 1)
+      )
+      (justify left bottom)
+    )
+    (uuid "ba90141d-9bfa-5cad-b196-7d906a34526e")
+  )
+  (label "GND"
+    (at 490.22 111.76 270)
+    (fields_autoplaced)
+    (effects
+      (font
+        (size 1 1)
+      )
+      (justify left bottom)
+    )
+    (uuid "05335d05-e8bb-545f-911c-420d6a1b382b")
+  )
+  (symbol
+    (lib_id "Device:C")
+    (at 312.42 135.89 0)
+    (unit 1)
+    (in_bom yes)
+    (on_board yes)
+    (dnp no)
+    (uuid "a1fab272-9423-57db-9f8b-6861b20e12c3")
+    (property "Reference" "C14"
+      (at 316.23 134.62 0)
+      (effects
+        (font
+          (size 1.27 1.27)
+        )
+        (justify left)
+      )
+    )
+    (property "Value" "100n"
+      (at 316.23 137.16 0)
+      (effects
+        (font
+          (size 1.27 1.27)
+        )
+        (justify left)
+      )
+    )
+    (property "Footprint" "Capacitor_THT:C_Rect_L7.2mm_W3.5mm_P5.00mm_FKS2_FKP2_MKS2_MKP2"
+      (at 312.42 135.89 0)
+      (effects
+        (font
+          (size 1.27 1.27)
+        )
+        (justify left)
+        hide
+      )
+    )
+    (property "Datasheet" "~"
+      (at 312.42 135.89 0)
+      (effects
+        (font
+          (size 1.27 1.27)
+        )
+        (justify left)
+        hide
+      )
+    )
+    (pin "1"
+      (uuid "c6cf7852-bc49-5f3c-8f9e-06a499ed70e6")
+    )
+    (pin "2"
+      (uuid "49d564c9-fada-5816-a719-5ba872e88880")
+    )
+    (instances
+      (project "psu"
+        (path "/2e595ab6-8c2f-5f27-8552-cfe536347d6d"
+          (reference "C14")
+          (unit 1)
+        )
+      )
+    )
+  )
+  (label "+15V"
+    (at 312.42 132.08 90)
+    (fields_autoplaced)
+    (effects
+      (font
+        (size 1 1)
+      )
+      (justify left bottom)
+    )
+    (uuid "e4d1e259-f62b-565c-89c4-54235f725403")
+  )
+  (label "GND"
+    (at 312.42 139.7 270)
+    (fields_autoplaced)
+    (effects
+      (font
+        (size 1 1)
+      )
+      (justify left bottom)
+    )
+    (uuid "0b53f415-6c81-5cef-9e93-c9de6c788546")
+  )
+  (symbol
+    (lib_id "Device:R")
+    (at 347.98 135.89 0)
+    (unit 1)
+    (in_bom yes)
+    (on_board yes)
+    (dnp no)
+    (uuid "273c0a6f-d29c-5db1-9ba0-48c0e650d7a4")
+    (property "Reference" "R16"
+      (at 351.79 134.62 0)
+      (effects
+        (font
+          (size 1.27 1.27)
+        )
+        (justify left)
+      )
+    )
+    (property "Value" "4k7"
+      (at 351.79 137.16 0)
+      (effects
+        (font
+          (size 1.27 1.27)
+        )
+        (justify left)
+      )
+    )
+    (property "Footprint" "Resistor_THT:R_Axial_DIN0207_L6.3mm_D2.5mm_P10.16mm_Horizontal"
+      (at 347.98 135.89 0)
+      (effects
+        (font
+          (size 1.27 1.27)
+        )
+        (justify left)
+        hide
+      )
+    )
+    (property "Datasheet" "~"
+      (at 347.98 135.89 0)
+      (effects
+        (font
+          (size 1.27 1.27)
+        )
+        (justify left)
+        hide
+      )
+    )
+    (pin "1"
+      (uuid "b65a5a18-2fc1-545e-aca0-d948e9d5096a")
+    )
+    (pin "2"
+      (uuid "fbcbdfb4-cbca-5c7b-8dae-b26965db4438")
+    )
+    (instances
+      (project "psu"
+        (path "/2e595ab6-8c2f-5f27-8552-cfe536347d6d"
+          (reference "R16")
+          (unit 1)
+        )
+      )
+    )
+  )
+  (label "+15V"
+    (at 347.98 132.08 90)
+    (fields_autoplaced)
+    (effects
+      (font
+        (size 1 1)
+      )
+      (justify left bottom)
+    )
+    (uuid "dc01886b-5bef-5b17-b070-71930fcdfb23")
+  )
+  (label "GND"
+    (at 347.98 139.7 270)
+    (fields_autoplaced)
+    (effects
+      (font
+        (size 1 1)
+      )
+      (justify left bottom)
+    )
+    (uuid "675ca9bc-c6e4-507d-83c6-058cffe117fc")
+  )
+  (rectangle
+    (start 50.8 139.7)
+    (end 274.32 246.38)
+    (stroke
+      (width 0)
+      (type dash)
+    )
+    (fill
+      (type none)
+    )
+    (uuid "5bbc8603-def2-52ba-8be8-433e88488827")
+  )
+  (symbol
+    (lib_id "Device:R")
+    (at 73.66 168.91 0)
+    (unit 1)
+    (in_bom yes)
+    (on_board yes)
+    (dnp no)
+    (uuid "26ca3048-3499-598e-8867-4f3052e05eae")
+    (property "Reference" "R21"
+      (at 77.47 167.64 0)
+      (effects
+        (font
+          (size 1.27 1.27)
+        )
+        (justify left)
+      )
+    )
+    (property "Value" "10 1W"
+      (at 77.47 170.18 0)
+      (effects
+        (font
+          (size 1.27 1.27)
+        )
+        (justify left)
+      )
+    )
+    (property "Footprint" "Resistor_THT:R_Axial_DIN0309_L9.0mm_D3.2mm_P12.70mm_Horizontal"
+      (at 73.66 168.91 0)
+      (effects
+        (font
+          (size 1.27 1.27)
+        )
+        (justify left)
+        hide
+      )
+    )
+    (property "Datasheet" "~"
+      (at 73.66 168.91 0)
+      (effects
+        (font
+          (size 1.27 1.27)
+        )
+        (justify left)
+        hide
+      )
+    )
+    (pin "1"
+      (uuid "536cf2a3-0db1-5cf6-b654-10e3c2183f8a")
+    )
+    (pin "2"
+      (uuid "9fbbf29e-95d6-5d67-88b9-6509312d3f10")
+    )
+    (instances
+      (project "psu"
+        (path "/2e595ab6-8c2f-5f27-8552-cfe536347d6d"
+          (reference "R21")
+          (unit 1)
+        )
+      )
+    )
+  )
+  (label "N15R"
+    (at 73.66 165.1 90)
+    (fields_autoplaced)
+    (effects
+      (font
+        (size 1 1)
+      )
+      (justify left bottom)
+    )
+    (uuid "2541571d-f544-5cd8-9a49-d86ec960c0c7")
+  )
+  (label "VEE"
+    (at 73.66 172.72 270)
+    (fields_autoplaced)
+    (effects
+      (font
+        (size 1 1)
+      )
+      (justify left bottom)
+    )
+    (uuid "f34cc1d6-f5b8-5035-856c-991d12aa014d")
+  )
+  (symbol
+    (lib_id "Device:C_Polarized")
+    (at 109.22 168.91 0)
+    (unit 1)
+    (in_bom yes)
+    (on_board yes)
+    (dnp no)
+    (uuid "80873d72-53af-533d-b56a-4ea5a7428210")
+    (property "Reference" "C21"
+      (at 113.03 167.64 0)
+      (effects
+        (font
+          (size 1.27 1.27)
+        )
+        (justify left)
+      )
+    )
+    (property "Value" "1000u 50V"
+      (at 113.03 170.18 0)
+      (effects
+        (font
+          (size 1.27 1.27)
+        )
+        (justify left)
+      )
+    )
+    (property "Footprint" "Capacitor_THT:CP_Radial_D12.5mm_P5.00mm"
+      (at 109.22 168.91 0)
+      (effects
+        (font
+          (size 1.27 1.27)
+        )
+        (justify left)
+        hide
+      )
+    )
+    (property "Datasheet" "~"
+      (at 109.22 168.91 0)
+      (effects
+        (font
+          (size 1.27 1.27)
+        )
+        (justify left)
+        hide
+      )
+    )
+    (pin "1"
+      (uuid "93ec37e8-926a-53d6-afb6-63f15daf2676")
+    )
+    (pin "2"
+      (uuid "0e27071c-7082-5364-a185-c11bf980a4bf")
+    )
+    (instances
+      (project "psu"
+        (path "/2e595ab6-8c2f-5f27-8552-cfe536347d6d"
+          (reference "C21")
+          (unit 1)
+        )
+      )
+    )
+  )
+  (label "GND"
+    (at 109.22 165.1 90)
+    (fields_autoplaced)
+    (effects
+      (font
+        (size 1 1)
+      )
+      (justify left bottom)
+    )
+    (uuid "4418e665-4726-52fd-b3f8-59c3632d1668")
+  )
+  (label "N15R"
+    (at 109.22 172.72 270)
+    (fields_autoplaced)
+    (effects
+      (font
+        (size 1 1)
+      )
+      (justify left bottom)
+    )
+    (uuid "925fc409-c3a2-554e-a0a9-9ac3564066f3")
+  )
+  (symbol
+    (lib_id "Device:R")
+    (at 144.78 168.91 0)
+    (unit 1)
+    (in_bom yes)
+    (on_board yes)
+    (dnp no)
+    (uuid "cf6ee219-fec1-50b8-9455-ed4f76c867e8")
+    (property "Reference" "R22"
+      (at 148.59 167.64 0)
+      (effects
+        (font
+          (size 1.27 1.27)
+        )
+        (justify left)
+      )
+    )
+    (property "Value" "2k2"
+      (at 148.59 170.18 0)
+      (effects
+        (font
+          (size 1.27 1.27)
+        )
+        (justify left)
+      )
+    )
+    (property "Footprint" "Resistor_THT:R_Axial_DIN0207_L6.3mm_D2.5mm_P10.16mm_Horizontal"
+      (at 144.78 168.91 0)
+      (effects
+        (font
+          (size 1.27 1.27)
+        )
+        (justify left)
+        hide
+      )
+    )
+    (property "Datasheet" "~"
+      (at 144.78 168.91 0)
+      (effects
+        (font
+          (size 1.27 1.27)
+        )
+        (justify left)
+        hide
+      )
+    )
+    (pin "1"
+      (uuid "7958e2c1-db19-5846-8b67-4e2d04b8abf6")
+    )
+    (pin "2"
+      (uuid "5b1bdb5a-2bd6-5863-9e49-175bf937adfd")
+    )
+    (instances
+      (project "psu"
+        (path "/2e595ab6-8c2f-5f27-8552-cfe536347d6d"
+          (reference "R22")
+          (unit 1)
+        )
+      )
+    )
+  )
+  (label "N15Z"
+    (at 144.78 165.1 90)
+    (fields_autoplaced)
+    (effects
+      (font
+        (size 1 1)
+      )
+      (justify left bottom)
+    )
+    (uuid "ae9db964-3fd9-56ee-af64-f8eeababd1aa")
+  )
+  (label "N15R"
+    (at 144.78 172.72 270)
+    (fields_autoplaced)
+    (effects
+      (font
+        (size 1 1)
+      )
+      (justify left bottom)
+    )
+    (uuid "44463daa-691f-5926-b31f-51e6bf6fc841")
+  )
+  (symbol
+    (lib_id "Device:D_Zener")
+    (at 180.34 168.91 0)
+    (unit 1)
+    (in_bom yes)
+    (on_board yes)
+    (dnp no)
+    (uuid "513141d8-2827-51d4-affe-18f77c4d3bed")
+    (property "Reference" "D21"
+      (at 175.26 161.29 0)
+      (effects
+        (font
+          (size 1.27 1.27)
+        )
+        (justify left)
+      )
+    )
+    (property "Value" "1N4745A 16V"
+      (at 175.26 163.83 0)
+      (effects
+        (font
+          (size 1.27 1.27)
+        )
+        (justify left)
+      )
+    )
+    (property "Footprint" "Diode_THT:D_DO-41_SOD81_P10.16mm_Horizontal"
+      (at 180.34 168.91 0)
+      (effects
+        (font
+          (size 1.27 1.27)
+        )
+        (justify left)
+        hide
+      )
+    )
+    (property "Datasheet" "~"
+      (at 180.34 168.91 0)
+      (effects
+        (font
+          (size 1.27 1.27)
+        )
+        (justify left)
+        hide
+      )
+    )
+    (pin "1"
+      (uuid "0e0b057b-c271-531d-877c-08053816b20e")
+    )
+    (pin "2"
+      (uuid "c885f83c-2f2c-5a09-8d58-7e6275e93c76")
+    )
+    (instances
+      (project "psu"
+        (path "/2e595ab6-8c2f-5f27-8552-cfe536347d6d"
+          (reference "D21")
+          (unit 1)
+        )
+      )
+    )
+  )
+  (label "GND"
+    (at 176.53 168.91 180)
+    (fields_autoplaced)
+    (effects
+      (font
+        (size 1 1)
+      )
+      (justify right bottom)
+    )
+    (uuid "6c4204a7-04b2-5047-8d88-0c08c5378518")
+  )
+  (label "N15Z"
+    (at 184.15 168.91 0)
+    (fields_autoplaced)
+    (effects
+      (font
+        (size 1 1)
+      )
+      (justify left bottom)
+    )
+    (uuid "fde43f09-daa7-537e-8b30-3d163651bc7c")
+  )
+  (symbol
+    (lib_id "Device:R")
+    (at 215.9 168.91 0)
+    (unit 1)
+    (in_bom yes)
+    (on_board yes)
+    (dnp no)
+    (uuid "44677d51-d6b1-52fc-9d34-5d9d13134582")
+    (property "Reference" "R23"
+      (at 219.71 167.64 0)
+      (effects
+        (font
+          (size 1.27 1.27)
+        )
+        (justify left)
+      )
+    )
+    (property "Value" "1k"
+      (at 219.71 170.18 0)
+      (effects
+        (font
+          (size 1.27 1.27)
+        )
+        (justify left)
+      )
+    )
+    (property "Footprint" "Resistor_THT:R_Axial_DIN0207_L6.3mm_D2.5mm_P10.16mm_Horizontal"
+      (at 215.9 168.91 0)
+      (effects
+        (font
+          (size 1.27 1.27)
+        )
+        (justify left)
+        hide
+      )
+    )
+    (property "Datasheet" "~"
+      (at 215.9 168.91 0)
+      (effects
+        (font
+          (size 1.27 1.27)
+        )
+        (justify left)
+        hide
+      )
+    )
+    (pin "1"
+      (uuid "326e9508-cea4-51cb-ab27-4812e0c3f2c6")
+    )
+    (pin "2"
+      (uuid "74176607-adcc-568f-8e41-1d27ce4f3863")
+    )
+    (instances
+      (project "psu"
+        (path "/2e595ab6-8c2f-5f27-8552-cfe536347d6d"
+          (reference "R23")
+          (unit 1)
+        )
+      )
+    )
+  )
+  (label "N15Z"
+    (at 215.9 165.1 90)
+    (fields_autoplaced)
+    (effects
+      (font
+        (size 1 1)
+      )
+      (justify left bottom)
+    )
+    (uuid "e55231b6-2d90-5654-9b4e-f46da9b07915")
+  )
+  (label "N15F"
+    (at 215.9 172.72 270)
+    (fields_autoplaced)
+    (effects
+      (font
+        (size 1 1)
+      )
+      (justify left bottom)
+    )
+    (uuid "b2fc5e0e-9476-5598-8e15-4ef582b9713a")
+  )
+  (symbol
+    (lib_id "Device:C_Polarized")
+    (at 251.46 168.91 0)
+    (unit 1)
+    (in_bom yes)
+    (on_board yes)
+    (dnp no)
+    (uuid "2d7c4dd8-229d-5dbb-a788-e3fa355f5899")
+    (property "Reference" "C22"
+      (at 255.27 167.64 0)
+      (effects
+        (font
+          (size 1.27 1.27)
+        )
+        (justify left)
+      )
+    )
+    (property "Value" "100u 25V"
+      (at 255.27 170.18 0)
+      (effects
+        (font
+          (size 1.27 1.27)
+        )
+        (justify left)
+      )
+    )
+    (property "Footprint" "Capacitor_THT:CP_Radial_D6.3mm_P2.50mm"
+      (at 251.46 168.91 0)
+      (effects
+        (font
+          (size 1.27 1.27)
+        )
+        (justify left)
+        hide
+      )
+    )
+    (property "Datasheet" "~"
+      (at 251.46 168.91 0)
+      (effects
+        (font
+          (size 1.27 1.27)
+        )
+        (justify left)
+        hide
+      )
+    )
+    (pin "1"
+      (uuid "5a2e6a1b-dce1-5d34-a554-a3e2a07c80b6")
+    )
+    (pin "2"
+      (uuid "82fe2f10-1e37-5e26-9b10-8035765012c8")
+    )
+    (instances
+      (project "psu"
+        (path "/2e595ab6-8c2f-5f27-8552-cfe536347d6d"
+          (reference "C22")
+          (unit 1)
+        )
+      )
+    )
+  )
+  (label "GND"
+    (at 251.46 165.1 90)
+    (fields_autoplaced)
+    (effects
+      (font
+        (size 1 1)
+      )
+      (justify left bottom)
+    )
+    (uuid "58a60c85-2da1-58f3-9d30-b915f8d87cfc")
+  )
+  (label "N15F"
+    (at 251.46 172.72 270)
+    (fields_autoplaced)
+    (effects
+      (font
+        (size 1 1)
+      )
+      (justify left bottom)
+    )
+    (uuid "099cf452-b169-5ca4-a052-5fd69da089a8")
+  )
+  (symbol
+    (lib_id "Device:R")
+    (at 73.66 196.85 0)
+    (unit 1)
+    (in_bom yes)
+    (on_board yes)
+    (dnp no)
+    (uuid "57baff62-f9cc-5190-a1c1-ad2382eaa04d")
+    (property "Reference" "R24"
+      (at 77.47 195.58 0)
+      (effects
+        (font
+          (size 1.27 1.27)
+        )
+        (justify left)
+      )
+    )
+    (property "Value" "1k"
+      (at 77.47 198.12 0)
+      (effects
+        (font
+          (size 1.27 1.27)
+        )
+        (justify left)
+      )
+    )
+    (property "Footprint" "Resistor_THT:R_Axial_DIN0207_L6.3mm_D2.5mm_P10.16mm_Horizontal"
+      (at 73.66 196.85 0)
+      (effects
+        (font
+          (size 1.27 1.27)
+        )
+        (justify left)
+        hide
+      )
+    )
+    (property "Datasheet" "~"
+      (at 73.66 196.85 0)
+      (effects
+        (font
+          (size 1.27 1.27)
+        )
+        (justify left)
+        hide
+      )
+    )
+    (pin "1"
+      (uuid "1fff322c-8302-598f-acbc-5389507846ee")
+    )
+    (pin "2"
+      (uuid "6b7a02ae-6e60-528b-a1d6-2ad58e3eebe7")
+    )
+    (instances
+      (project "psu"
+        (path "/2e595ab6-8c2f-5f27-8552-cfe536347d6d"
+          (reference "R24")
+          (unit 1)
+        )
+      )
+    )
+  )
+  (label "N15F"
+    (at 73.66 193.04 90)
+    (fields_autoplaced)
+    (effects
+      (font
+        (size 1 1)
+      )
+      (justify left bottom)
+    )
+    (uuid "4a5d0039-1b5d-5b78-93e0-ec6bfcd4f459")
+  )
+  (label "Q4B"
+    (at 73.66 200.66 270)
+    (fields_autoplaced)
+    (effects
+      (font
+        (size 1 1)
+      )
+      (justify left bottom)
+    )
+    (uuid "91f417c4-5895-5562-aebc-af1f17211651")
+  )
+  (symbol
+    (lib_id "Transistor_BJT:MPSA92")
+    (at 109.22 196.85 0)
+    (unit 1)
+    (in_bom yes)
+    (on_board yes)
+    (dnp no)
+    (uuid "ebc8fa4d-318e-5143-bfee-e8ffb1f98cb6")
+    (property "Reference" "Q4"
+      (at 114.3 195.58 0)
+      (effects
+        (font
+          (size 1.27 1.27)
+        )
+        (justify left)
+      )
+    )
+    (property "Value" "MPSA92"
+      (at 114.3 198.12 0)
+      (effects
+        (font
+          (size 1.27 1.27)
+        )
+        (justify left)
+      )
+    )
+    (property "Footprint" "Package_TO_SOT_THT:TO-92_Inline"
+      (at 109.22 196.85 0)
+      (effects
+        (font
+          (size 1.27 1.27)
+        )
+        (justify left)
+        hide
+      )
+    )
+    (property "Datasheet" "~"
+      (at 109.22 196.85 0)
+      (effects
+        (font
+          (size 1.27 1.27)
+        )
+        (justify left)
+        hide
+      )
+    )
+    (pin "1"
+      (uuid "7a100a62-4f53-5c99-a11c-da83336987cb")
+    )
+    (pin "2"
+      (uuid "51834876-f125-55ea-a9b9-32dbe96b508c")
+    )
+    (pin "3"
+      (uuid "e8a9cbc6-d65c-5062-b5a4-1d541d01a4a8")
+    )
+    (instances
+      (project "psu"
+        (path "/2e595ab6-8c2f-5f27-8552-cfe536347d6d"
+          (reference "Q4")
+          (unit 1)
+        )
+      )
+    )
+  )
+  (label "Q5B"
+    (at 111.76 201.93 270)
+    (fields_autoplaced)
+    (effects
+      (font
+        (size 1 1)
+      )
+      (justify left bottom)
+    )
+    (uuid "dc26b227-b3b4-5fb2-9815-250a3f6efdd7")
+  )
+  (label "Q4B"
+    (at 104.14 196.85 180)
+    (fields_autoplaced)
+    (effects
+      (font
+        (size 1 1)
+      )
+      (justify right bottom)
+    )
+    (uuid "30767181-1c58-578f-ac3d-aee7e7872994")
+  )
+  (label "N15R"
+    (at 111.76 191.77 90)
+    (fields_autoplaced)
+    (effects
+      (font
+        (size 1 1)
+      )
+      (justify left bottom)
+    )
+    (uuid "001863d5-2aac-5166-a1f6-f55c1e5863a4")
+  )
+  (symbol
+    (lib_id "Transistor_BJT:BD140")
+    (at 144.78 196.85 0)
+    (unit 1)
+    (in_bom yes)
+    (on_board yes)
+    (dnp no)
+    (uuid "b4ebe225-f503-546a-b07d-b1771e3ac367")
+    (property "Reference" "Q5"
+      (at 149.86 195.58 0)
+      (effects
+        (font
+          (size 1.27 1.27)
+        )
+        (justify left)
+      )
+    )
+    (property "Value" "BD140"
+      (at 149.86 198.12 0)
+      (effects
+        (font
+          (size 1.27 1.27)
+        )
+        (justify left)
+      )
+    )
+    (property "Footprint" "Package_TO_SOT_THT:TO-126-3_Vertical"
+      (at 144.78 196.85 0)
+      (effects
+        (font
+          (size 1.27 1.27)
+        )
+        (justify left)
+        hide
+      )
+    )
+    (property "Datasheet" "~"
+      (at 144.78 196.85 0)
+      (effects
+        (font
+          (size 1.27 1.27)
+        )
+        (justify left)
+        hide
+      )
+    )
+    (pin "1"
+      (uuid "04c0d523-c7c5-5ed2-895c-04910692d4de")
+    )
+    (pin "2"
+      (uuid "758ebf42-167c-57ef-b043-6da9d732f487")
+    )
+    (pin "3"
+      (uuid "64ce957c-8060-5161-a891-c903ced9debf")
+    )
+    (instances
+      (project "psu"
+        (path "/2e595ab6-8c2f-5f27-8552-cfe536347d6d"
+          (reference "Q5")
+          (unit 1)
+        )
+      )
+    )
+  )
+  (label "N15E"
+    (at 147.32 201.93 270)
+    (fields_autoplaced)
+    (effects
+      (font
+        (size 1 1)
+      )
+      (justify left bottom)
+    )
+    (uuid "c3f81b96-6914-5b97-a9b7-1cd4dc32cf40")
+  )
+  (label "N15R"
+    (at 147.32 191.77 90)
+    (fields_autoplaced)
+    (effects
+      (font
+        (size 1 1)
+      )
+      (justify left bottom)
+    )
+    (uuid "d568ff11-4edb-5ec4-bf20-cd008241fe63")
+  )
+  (label "Q5B"
+    (at 139.7 196.85 180)
+    (fields_autoplaced)
+    (effects
+      (font
+        (size 1 1)
+      )
+      (justify right bottom)
+    )
+    (uuid "f7b88950-d969-58cf-a6dc-ffccbaaf75f3")
+  )
+  (symbol
+    (lib_id "Device:R")
+    (at 180.34 196.85 0)
+    (unit 1)
+    (in_bom yes)
+    (on_board yes)
+    (dnp no)
+    (uuid "a6c1aefc-a697-57b9-ab2a-cc3a87a0c129")
+    (property "Reference" "R25"
+      (at 184.15 195.58 0)
+      (effects
+        (font
+          (size 1.27 1.27)
+        )
+        (justify left)
+      )
+    )
+    (property "Value" "2R7"
+      (at 184.15 198.12 0)
+      (effects
+        (font
+          (size 1.27 1.27)
+        )
+        (justify left)
+      )
+    )
+    (property "Footprint" "Resistor_THT:R_Axial_DIN0207_L6.3mm_D2.5mm_P10.16mm_Horizontal"
+      (at 180.34 196.85 0)
+      (effects
+        (font
+          (size 1.27 1.27)
+        )
+        (justify left)
+        hide
+      )
+    )
+    (property "Datasheet" "~"
+      (at 180.34 196.85 0)
+      (effects
+        (font
+          (size 1.27 1.27)
+        )
+        (justify left)
+        hide
+      )
+    )
+    (pin "1"
+      (uuid "59f17791-2177-526f-a96a-f76db7d3e211")
+    )
+    (pin "2"
+      (uuid "61e59104-dd01-536f-80c5-1466c38ac558")
+    )
+    (instances
+      (project "psu"
+        (path "/2e595ab6-8c2f-5f27-8552-cfe536347d6d"
+          (reference "R25")
+          (unit 1)
+        )
+      )
+    )
+  )
+  (label "N15E"
+    (at 180.34 193.04 90)
+    (fields_autoplaced)
+    (effects
+      (font
+        (size 1 1)
+      )
+      (justify left bottom)
+    )
+    (uuid "286a756d-1baf-59f5-a57f-00ae42b0f606")
+  )
+  (label "-15V"
+    (at 180.34 200.66 270)
+    (fields_autoplaced)
+    (effects
+      (font
+        (size 1 1)
+      )
+      (justify left bottom)
+    )
+    (uuid "d0802911-c670-5d3d-bd4c-a8499ba15ba8")
+  )
+  (symbol
+    (lib_id "Transistor_BJT:MPSA92")
+    (at 215.9 196.85 0)
+    (unit 1)
+    (in_bom yes)
+    (on_board yes)
+    (dnp no)
+    (uuid "c814e0fd-8d3b-5be8-b4f4-70002f22d5e7")
+    (property "Reference" "Q6"
+      (at 220.98 195.58 0)
+      (effects
+        (font
+          (size 1.27 1.27)
+        )
+        (justify left)
+      )
+    )
+    (property "Value" "MPSA92"
+      (at 220.98 198.12 0)
+      (effects
+        (font
+          (size 1.27 1.27)
+        )
+        (justify left)
+      )
+    )
+    (property "Footprint" "Package_TO_SOT_THT:TO-92_Inline"
+      (at 215.9 196.85 0)
+      (effects
+        (font
+          (size 1.27 1.27)
+        )
+        (justify left)
+        hide
+      )
+    )
+    (property "Datasheet" "~"
+      (at 215.9 196.85 0)
+      (effects
+        (font
+          (size 1.27 1.27)
+        )
+        (justify left)
+        hide
+      )
+    )
+    (pin "1"
+      (uuid "48c4d1bd-32e9-5149-939f-9decd71e9ad1")
+    )
+    (pin "2"
+      (uuid "efac6474-e492-5ecb-83ba-f2269de5871a")
+    )
+    (pin "3"
+      (uuid "6717af3e-0319-55d7-b354-e865519add0d")
+    )
+    (instances
+      (project "psu"
+        (path "/2e595ab6-8c2f-5f27-8552-cfe536347d6d"
+          (reference "Q6")
+          (unit 1)
+        )
+      )
+    )
+  )
+  (label "-15V"
+    (at 218.44 201.93 270)
+    (fields_autoplaced)
+    (effects
+      (font
+        (size 1 1)
+      )
+      (justify left bottom)
+    )
+    (uuid "6adaee03-a925-559b-9db4-a111cfcbac31")
+  )
+  (label "N15E"
+    (at 210.82 196.85 180)
+    (fields_autoplaced)
+    (effects
+      (font
+        (size 1 1)
+      )
+      (justify right bottom)
+    )
+    (uuid "40a010e3-7e63-5b8c-8a07-e37853614384")
+  )
+  (label "Q4B"
+    (at 218.44 191.77 90)
+    (fields_autoplaced)
+    (effects
+      (font
+        (size 1 1)
+      )
+      (justify left bottom)
+    )
+    (uuid "52d0e6d6-db24-5866-82b1-cb794422e9d9")
+  )
+  (symbol
+    (lib_id "Device:C_Polarized")
+    (at 251.46 196.85 0)
+    (unit 1)
+    (in_bom yes)
+    (on_board yes)
+    (dnp no)
+    (uuid "883153de-24de-5f39-aad9-8d5645dd51f8")
+    (property "Reference" "C23"
+      (at 255.27 195.58 0)
+      (effects
+        (font
+          (size 1.27 1.27)
+        )
+        (justify left)
+      )
+    )
+    (property "Value" "100u 25V"
+      (at 255.27 198.12 0)
+      (effects
+        (font
+          (size 1.27 1.27)
+        )
+        (justify left)
+      )
+    )
+    (property "Footprint" "Capacitor_THT:CP_Radial_D6.3mm_P2.50mm"
+      (at 251.46 196.85 0)
+      (effects
+        (font
+          (size 1.27 1.27)
+        )
+        (justify left)
+        hide
+      )
+    )
+    (property "Datasheet" "~"
+      (at 251.46 196.85 0)
+      (effects
+        (font
+          (size 1.27 1.27)
+        )
+        (justify left)
+        hide
+      )
+    )
+    (pin "1"
+      (uuid "66df84fe-822c-5220-b5bd-02b8de6000cd")
+    )
+    (pin "2"
+      (uuid "fcddd05f-5a69-5c25-a6dc-60a87697750f")
+    )
+    (instances
+      (project "psu"
+        (path "/2e595ab6-8c2f-5f27-8552-cfe536347d6d"
+          (reference "C23")
+          (unit 1)
+        )
+      )
+    )
+  )
+  (label "GND"
+    (at 251.46 193.04 90)
+    (fields_autoplaced)
+    (effects
+      (font
+        (size 1 1)
+      )
+      (justify left bottom)
+    )
+    (uuid "18028446-876e-56c5-94e5-d94def151d5e")
+  )
+  (label "-15V"
+    (at 251.46 200.66 270)
+    (fields_autoplaced)
+    (effects
+      (font
+        (size 1 1)
+      )
+      (justify left bottom)
+    )
+    (uuid "9f3cd656-c18f-5076-977c-f2e881b114a2")
+  )
+  (symbol
+    (lib_id "Device:C")
+    (at 73.66 224.79 0)
+    (unit 1)
+    (in_bom yes)
+    (on_board yes)
+    (dnp no)
+    (uuid "716e56a6-953e-5f45-bcc5-0d908c792d8b")
+    (property "Reference" "C24"
+      (at 77.47 223.52 0)
+      (effects
+        (font
+          (size 1.27 1.27)
+        )
+        (justify left)
+      )
+    )
+    (property "Value" "100n"
+      (at 77.47 226.06 0)
+      (effects
+        (font
+          (size 1.27 1.27)
+        )
+        (justify left)
+      )
+    )
+    (property "Footprint" "Capacitor_THT:C_Rect_L7.2mm_W3.5mm_P5.00mm_FKS2_FKP2_MKS2_MKP2"
+      (at 73.66 224.79 0)
+      (effects
+        (font
+          (size 1.27 1.27)
+        )
+        (justify left)
+        hide
+      )
+    )
+    (property "Datasheet" "~"
+      (at 73.66 224.79 0)
+      (effects
+        (font
+          (size 1.27 1.27)
+        )
+        (justify left)
+        hide
+      )
+    )
+    (pin "1"
+      (uuid "b44a3eff-7b47-5a05-9638-52efa3070818")
+    )
+    (pin "2"
+      (uuid "f2eab395-b787-5499-b3ec-0909d17ea350")
+    )
+    (instances
+      (project "psu"
+        (path "/2e595ab6-8c2f-5f27-8552-cfe536347d6d"
+          (reference "C24")
+          (unit 1)
+        )
+      )
+    )
+  )
+  (label "GND"
+    (at 73.66 220.98 90)
+    (fields_autoplaced)
+    (effects
+      (font
+        (size 1 1)
+      )
+      (justify left bottom)
+    )
+    (uuid "e57d227a-faac-503b-905d-3a7d4774d173")
+  )
+  (label "-15V"
+    (at 73.66 228.6 270)
+    (fields_autoplaced)
+    (effects
+      (font
+        (size 1 1)
+      )
+      (justify left bottom)
+    )
+    (uuid "d9946a81-b3be-5b60-9161-3c3fd8469533")
+  )
+  (symbol
+    (lib_id "Device:R")
+    (at 109.22 224.79 0)
+    (unit 1)
+    (in_bom yes)
+    (on_board yes)
+    (dnp no)
+    (uuid "6da73b8f-14e7-5506-8937-e78630e65d20")
+    (property "Reference" "R26"
+      (at 113.03 223.52 0)
+      (effects
+        (font
+          (size 1.27 1.27)
+        )
+        (justify left)
+      )
+    )
+    (property "Value" "4k7"
+      (at 113.03 226.06 0)
+      (effects
+        (font
+          (size 1.27 1.27)
+        )
+        (justify left)
+      )
+    )
+    (property "Footprint" "Resistor_THT:R_Axial_DIN0207_L6.3mm_D2.5mm_P10.16mm_Horizontal"
+      (at 109.22 224.79 0)
+      (effects
+        (font
+          (size 1.27 1.27)
+        )
+        (justify left)
+        hide
+      )
+    )
+    (property "Datasheet" "~"
+      (at 109.22 224.79 0)
+      (effects
+        (font
+          (size 1.27 1.27)
+        )
+        (justify left)
+        hide
+      )
+    )
+    (pin "1"
+      (uuid "27d25596-b462-5018-95f3-3f7dfff9844f")
+    )
+    (pin "2"
+      (uuid "f30ba467-73a0-5acd-93d4-401f7b1d7ae9")
+    )
+    (instances
+      (project "psu"
+        (path "/2e595ab6-8c2f-5f27-8552-cfe536347d6d"
+          (reference "R26")
+          (unit 1)
+        )
+      )
+    )
+  )
+  (label "-15V"
+    (at 109.22 220.98 90)
+    (fields_autoplaced)
+    (effects
+      (font
+        (size 1 1)
+      )
+      (justify left bottom)
+    )
+    (uuid "8684981d-7dfe-5110-8dde-d9559de3f22c")
+  )
+  (label "GND"
+    (at 109.22 228.6 270)
+    (fields_autoplaced)
+    (effects
+      (font
+        (size 1 1)
+      )
+      (justify left bottom)
+    )
+    (uuid "05de1338-3f15-55e1-b940-c367a28a7d72")
+  )
+  (symbol
+    (lib_id "Connector_Generic:Conn_01x03")
+    (at 144.78 224.79 0)
+    (unit 1)
+    (in_bom yes)
+    (on_board yes)
+    (dnp no)
+    (uuid "e4bb9b89-ce36-5b5a-ada6-c4bef3d1f31a")
+    (property "Reference" "J4"
+      (at 148.59 223.52 0)
+      (effects
+        (font
+          (size 1.27 1.27)
+        )
+        (justify left)
+      )
+    )
+    (property "Value" "TO PREAMP +15/GND/-15"
+      (at 148.59 226.06 0)
+      (effects
+        (font
+          (size 1.27 1.27)
+        )
+        (justify left)
+      )
+    )
+    (property "Footprint" "Connector_JST:JST_XH_B3B-XH-A_1x03_P2.50mm_Vertical"
+      (at 144.78 224.79 0)
+      (effects
+        (font
+          (size 1.27 1.27)
+        )
+        (justify left)
+        hide
+      )
+    )
+    (property "Datasheet" "~"
+      (at 144.78 224.79 0)
+      (effects
+        (font
+          (size 1.27 1.27)
+        )
+        (justify left)
+        hide
+      )
+    )
+    (pin "1"
+      (uuid "3d0d1397-a12e-5d13-8cff-5deae41050a5")
+    )
+    (pin "2"
+      (uuid "c8ab7a40-751d-5359-81ef-57c1e3ce15a9")
+    )
+    (pin "3"
+      (uuid "8ff0eed8-9505-5fa2-8efb-914e10059368")
+    )
+    (instances
+      (project "psu"
+        (path "/2e595ab6-8c2f-5f27-8552-cfe536347d6d"
+          (reference "J4")
+          (unit 1)
+        )
+      )
+    )
+  )
+  (label "+15V"
+    (at 139.7 222.25 180)
+    (fields_autoplaced)
+    (effects
+      (font
+        (size 1 1)
+      )
+      (justify right bottom)
+    )
+    (uuid "b1505e99-013a-5270-99a8-52f194b9964e")
+  )
+  (label "GND"
+    (at 139.7 224.79 180)
+    (fields_autoplaced)
+    (effects
+      (font
+        (size 1 1)
+      )
+      (justify right bottom)
+    )
+    (uuid "3df3f8b4-e40c-5e14-a5e0-cddb50dff5cf")
+  )
+  (label "-15V"
+    (at 139.7 227.33 180)
+    (fields_autoplaced)
+    (effects
+      (font
+        (size 1 1)
+      )
+      (justify right bottom)
+    )
+    (uuid "9a4294c4-619a-5784-abae-e804940335f9")
+  )
+  (rectangle
+    (start 289.56 167.64)
+    (end 513.08 246.38)
+    (stroke
+      (width 0)
+      (type dash)
+    )
+    (fill
+      (type none)
+    )
+    (uuid "7d96d727-963e-5a4f-8a06-f49594687abd")
+  )
+  (symbol
+    (lib_id "Connector_Generic:Conn_01x03")
+    (at 312.42 196.85 0)
+    (unit 1)
+    (in_bom yes)
+    (on_board yes)
+    (dnp no)
+    (uuid "b25b6df4-c05d-5ca0-99b4-d453a0c795c0")
+    (property "Reference" "J5"
+      (at 316.23 195.58 0)
+      (effects
+        (font
+          (size 1.27 1.27)
+        )
+        (justify left)
+      )
+    )
+    (property "Value" "T2 SEC 40-0-40 VAC"
+      (at 316.23 198.12 0)
+      (effects
+        (font
+          (size 1.27 1.27)
+        )
+        (justify left)
+      )
+    )
+    (property "Footprint" "TerminalBlock_Phoenix:TerminalBlock_Phoenix_MKDS-1,5-3_1x03_P5.00mm_Horizontal"
+      (at 312.42 196.85 0)
+      (effects
+        (font
+          (size 1.27 1.27)
+        )
+        (justify left)
+        hide
+      )
+    )
+    (property "Datasheet" "~"
+      (at 312.42 196.85 0)
+      (effects
+        (font
+          (size 1.27 1.27)
+        )
+        (justify left)
+        hide
+      )
+    )
+    (pin "1"
+      (uuid "0fc4c3a8-432e-509f-b0df-e92440734cda")
+    )
+    (pin "2"
+      (uuid "1d63b71b-6fd5-58c1-99be-f90a5d74d16a")
+    )
+    (pin "3"
+      (uuid "31647f89-6a9f-5d84-9c41-4d8d18c9a8ae")
+    )
+    (instances
+      (project "psu"
+        (path "/2e595ab6-8c2f-5f27-8552-cfe536347d6d"
+          (reference "J5")
+          (unit 1)
+        )
+      )
+    )
+  )
+  (label "T2A"
+    (at 307.34 194.31 180)
+    (fields_autoplaced)
+    (effects
+      (font
+        (size 1 1)
+      )
+      (justify right bottom)
+    )
+    (uuid "caf206cf-0295-5ddb-8d5f-8edb75cb3fb3")
+  )
+  (label "GND"
+    (at 307.34 196.85 180)
+    (fields_autoplaced)
+    (effects
+      (font
+        (size 1 1)
+      )
+      (justify right bottom)
+    )
+    (uuid "6db324dd-cded-5712-b6f5-3f509f32c257")
+  )
+  (label "T2B"
+    (at 307.34 199.39 180)
+    (fields_autoplaced)
+    (effects
+      (font
+        (size 1 1)
+      )
+      (justify right bottom)
+    )
+    (uuid "eb74dcf8-d887-5b9b-96f4-14b69ee0b859")
+  )
+  (symbol
+    (lib_id "Device:D")
+    (at 347.98 196.85 0)
+    (unit 1)
+    (in_bom yes)
+    (on_board yes)
+    (dnp no)
+    (uuid "db7d51fe-8e15-54eb-b96b-22de8c16a2d4")
+    (property "Reference" "D31"
+      (at 342.9 189.23 0)
+      (effects
+        (font
+          (size 1.27 1.27)
+        )
+        (justify left)
+      )
+    )
+    (property "Value" "1N4007"
+      (at 342.9 191.77 0)
+      (effects
+        (font
+          (size 1.27 1.27)
+        )
+        (justify left)
+      )
+    )
+    (property "Footprint" "Diode_THT:D_DO-41_SOD81_P10.16mm_Horizontal"
+      (at 347.98 196.85 0)
+      (effects
+        (font
+          (size 1.27 1.27)
+        )
+        (justify left)
+        hide
+      )
+    )
+    (property "Datasheet" "~"
+      (at 347.98 196.85 0)
+      (effects
+        (font
+          (size 1.27 1.27)
+        )
+        (justify left)
+        hide
+      )
+    )
+    (pin "1"
+      (uuid "63f72280-0c48-561f-9378-78c4aaaa5a0e")
+    )
+    (pin "2"
+      (uuid "406f164d-f2cb-5450-a8ed-c3486f7a10da")
+    )
+    (instances
+      (project "psu"
+        (path "/2e595ab6-8c2f-5f27-8552-cfe536347d6d"
+          (reference "D31")
+          (unit 1)
+        )
+      )
+    )
+  )
+  (label "HV_PR"
+    (at 344.17 196.85 180)
+    (fields_autoplaced)
+    (effects
+      (font
+        (size 1 1)
+      )
+      (justify right bottom)
+    )
+    (uuid "9e5efefd-2f61-5803-8aae-263ebccc5a73")
+  )
+  (label "T2A"
+    (at 351.79 196.85 0)
+    (fields_autoplaced)
+    (effects
+      (font
+        (size 1 1)
+      )
+      (justify left bottom)
+    )
+    (uuid "84ba0ee1-c827-5da9-8481-088dc058aca5")
+  )
+  (symbol
+    (lib_id "Device:D")
+    (at 383.54 196.85 0)
+    (unit 1)
+    (in_bom yes)
+    (on_board yes)
+    (dnp no)
+    (uuid "19902154-2c4b-5817-ac0d-470cd34d2ded")
+    (property "Reference" "D32"
+      (at 378.46 189.23 0)
+      (effects
+        (font
+          (size 1.27 1.27)
+        )
+        (justify left)
+      )
+    )
+    (property "Value" "1N4007"
+      (at 378.46 191.77 0)
+      (effects
+        (font
+          (size 1.27 1.27)
+        )
+        (justify left)
+      )
+    )
+    (property "Footprint" "Diode_THT:D_DO-41_SOD81_P10.16mm_Horizontal"
+      (at 383.54 196.85 0)
+      (effects
+        (font
+          (size 1.27 1.27)
+        )
+        (justify left)
+        hide
+      )
+    )
+    (property "Datasheet" "~"
+      (at 383.54 196.85 0)
+      (effects
+        (font
+          (size 1.27 1.27)
+        )
+        (justify left)
+        hide
+      )
+    )
+    (pin "1"
+      (uuid "b105f222-f568-5fd2-8c30-d06792ccd815")
+    )
+    (pin "2"
+      (uuid "d59cf9ff-28b0-5b48-842f-b64e403801d4")
+    )
+    (instances
+      (project "psu"
+        (path "/2e595ab6-8c2f-5f27-8552-cfe536347d6d"
+          (reference "D32")
+          (unit 1)
+        )
+      )
+    )
+  )
+  (label "HV_PR"
+    (at 379.73 196.85 180)
+    (fields_autoplaced)
+    (effects
+      (font
+        (size 1 1)
+      )
+      (justify right bottom)
+    )
+    (uuid "7aee5a9a-0aec-5f23-9571-5aab985dd1c7")
+  )
+  (label "T2B"
+    (at 387.35 196.85 0)
+    (fields_autoplaced)
+    (effects
+      (font
+        (size 1 1)
+      )
+      (justify left bottom)
+    )
+    (uuid "0877d72b-f936-5f7e-8435-ef9ad166a278")
+  )
+  (symbol
+    (lib_id "Device:D")
+    (at 419.1 196.85 0)
+    (unit 1)
+    (in_bom yes)
+    (on_board yes)
+    (dnp no)
+    (uuid "8516c1bb-9bf5-5e85-938a-b35e0def2d47")
+    (property "Reference" "D33"
+      (at 414.02 189.23 0)
+      (effects
+        (font
+          (size 1.27 1.27)
+        )
+        (justify left)
+      )
+    )
+    (property "Value" "1N4007"
+      (at 414.02 191.77 0)
+      (effects
+        (font
+          (size 1.27 1.27)
+        )
+        (justify left)
+      )
+    )
+    (property "Footprint" "Diode_THT:D_DO-41_SOD81_P10.16mm_Horizontal"
+      (at 419.1 196.85 0)
+      (effects
+        (font
+          (size 1.27 1.27)
+        )
+        (justify left)
+        hide
+      )
+    )
+    (property "Datasheet" "~"
+      (at 419.1 196.85 0)
+      (effects
+        (font
+          (size 1.27 1.27)
+        )
+        (justify left)
+        hide
+      )
+    )
+    (pin "1"
+      (uuid "2e4611a5-41cd-5fb2-975f-7dcfc725cfdd")
+    )
+    (pin "2"
+      (uuid "de92ee44-68d9-54dc-9eb0-512287151c9a")
+    )
+    (instances
+      (project "psu"
+        (path "/2e595ab6-8c2f-5f27-8552-cfe536347d6d"
+          (reference "D33")
+          (unit 1)
+        )
+      )
+    )
+  )
+  (label "T2A"
+    (at 415.29 196.85 180)
+    (fields_autoplaced)
+    (effects
+      (font
+        (size 1 1)
+      )
+      (justify right bottom)
+    )
+    (uuid "e5269d4a-972d-5298-a667-4df4d053629d")
+  )
+  (label "HV_NR"
+    (at 422.91 196.85 0)
+    (fields_autoplaced)
+    (effects
+      (font
+        (size 1 1)
+      )
+      (justify left bottom)
+    )
+    (uuid "fcb49226-a887-5ca7-857c-3414612927d2")
+  )
+  (symbol
+    (lib_id "Device:D")
+    (at 454.66 196.85 0)
+    (unit 1)
+    (in_bom yes)
+    (on_board yes)
+    (dnp no)
+    (uuid "36b464a4-2d01-5535-bf38-26ff5fa20b19")
+    (property "Reference" "D34"
+      (at 449.58 189.23 0)
+      (effects
+        (font
+          (size 1.27 1.27)
+        )
+        (justify left)
+      )
+    )
+    (property "Value" "1N4007"
+      (at 449.58 191.77 0)
+      (effects
+        (font
+          (size 1.27 1.27)
+        )
+        (justify left)
+      )
+    )
+    (property "Footprint" "Diode_THT:D_DO-41_SOD81_P10.16mm_Horizontal"
+      (at 454.66 196.85 0)
+      (effects
+        (font
+          (size 1.27 1.27)
+        )
+        (justify left)
+        hide
+      )
+    )
+    (property "Datasheet" "~"
+      (at 454.66 196.85 0)
+      (effects
+        (font
+          (size 1.27 1.27)
+        )
+        (justify left)
+        hide
+      )
+    )
+    (pin "1"
+      (uuid "11c76028-c204-5649-ac10-79e14d55f690")
+    )
+    (pin "2"
+      (uuid "3a368653-6d0e-51cd-b198-d21ac5bcf2e4")
+    )
+    (instances
+      (project "psu"
+        (path "/2e595ab6-8c2f-5f27-8552-cfe536347d6d"
+          (reference "D34")
+          (unit 1)
+        )
+      )
+    )
+  )
+  (label "T2B"
+    (at 450.85 196.85 180)
+    (fields_autoplaced)
+    (effects
+      (font
+        (size 1 1)
+      )
+      (justify right bottom)
+    )
+    (uuid "cfa55d64-5735-5341-9c58-bd6a1d68d96b")
+  )
+  (label "HV_NR"
+    (at 458.47 196.85 0)
+    (fields_autoplaced)
+    (effects
+      (font
+        (size 1 1)
+      )
+      (justify left bottom)
+    )
+    (uuid "ec5e5e38-ba77-5aa0-82ce-2c413eaa8161")
+  )
+  (symbol
+    (lib_id "Device:C_Polarized")
+    (at 490.22 196.85 0)
+    (unit 1)
+    (in_bom yes)
+    (on_board yes)
+    (dnp no)
+    (uuid "c9dabb4f-2262-527d-adf6-7b4b7c30c116")
+    (property "Reference" "C31"
+      (at 494.03 195.58 0)
+      (effects
+        (font
+          (size 1.27 1.27)
+        )
+        (justify left)
+      )
+    )
+    (property "Value" "1000u 100V"
+      (at 494.03 198.12 0)
+      (effects
+        (font
+          (size 1.27 1.27)
+        )
+        (justify left)
+      )
+    )
+    (property "Footprint" "Capacitor_THT:CP_Radial_D16.0mm_P7.50mm"
+      (at 490.22 196.85 0)
+      (effects
+        (font
+          (size 1.27 1.27)
+        )
+        (justify left)
+        hide
+      )
+    )
+    (property "Datasheet" "~"
+      (at 490.22 196.85 0)
+      (effects
+        (font
+          (size 1.27 1.27)
+        )
+        (justify left)
+        hide
+      )
+    )
+    (pin "1"
+      (uuid "a68cfe5f-4700-5039-a79f-6f1ecffbd427")
+    )
+    (pin "2"
+      (uuid "ac16935f-fa17-59e5-bf47-987db60614b6")
+    )
+    (instances
+      (project "psu"
+        (path "/2e595ab6-8c2f-5f27-8552-cfe536347d6d"
+          (reference "C31")
+          (unit 1)
+        )
+      )
+    )
+  )
+  (label "HV_PR"
+    (at 490.22 193.04 90)
+    (fields_autoplaced)
+    (effects
+      (font
+        (size 1 1)
+      )
+      (justify left bottom)
+    )
+    (uuid "fdb2c12c-7e67-5fca-9315-18e6fd17fd94")
+  )
+  (label "GND"
+    (at 490.22 200.66 270)
+    (fields_autoplaced)
+    (effects
+      (font
+        (size 1 1)
+      )
+      (justify left bottom)
+    )
+    (uuid "c1611873-5beb-5bbe-9752-4b2821d5e52c")
+  )
+  (symbol
+    (lib_id "Device:C_Polarized")
+    (at 312.42 224.79 0)
+    (unit 1)
+    (in_bom yes)
+    (on_board yes)
+    (dnp no)
+    (uuid "64d9527b-a592-5ec7-8af8-2a4b154dd849")
+    (property "Reference" "C32"
+      (at 316.23 223.52 0)
+      (effects
+        (font
+          (size 1.27 1.27)
+        )
+        (justify left)
+      )
+    )
+    (property "Value" "1000u 100V"
+      (at 316.23 226.06 0)
+      (effects
+        (font
+          (size 1.27 1.27)
+        )
+        (justify left)
+      )
+    )
+    (property "Footprint" "Capacitor_THT:CP_Radial_D16.0mm_P7.50mm"
+      (at 312.42 224.79 0)
+      (effects
+        (font
+          (size 1.27 1.27)
+        )
+        (justify left)
+        hide
+      )
+    )
+    (property "Datasheet" "~"
+      (at 312.42 224.79 0)
+      (effects
+        (font
+          (size 1.27 1.27)
+        )
+        (justify left)
+        hide
+      )
+    )
+    (pin "1"
+      (uuid "f91b8ffd-7062-56b6-8666-f685165cd5c7")
+    )
+    (pin "2"
+      (uuid "33c2d175-59af-590a-8c47-3cc9aee44c08")
+    )
+    (instances
+      (project "psu"
+        (path "/2e595ab6-8c2f-5f27-8552-cfe536347d6d"
+          (reference "C32")
+          (unit 1)
+        )
+      )
+    )
+  )
+  (label "GND"
+    (at 312.42 220.98 90)
+    (fields_autoplaced)
+    (effects
+      (font
+        (size 1 1)
+      )
+      (justify left bottom)
+    )
+    (uuid "3fe04486-6bcf-523d-94df-1966873e39a9")
+  )
+  (label "HV_NR"
+    (at 312.42 228.6 270)
+    (fields_autoplaced)
+    (effects
+      (font
+        (size 1 1)
+      )
+      (justify left bottom)
+    )
+    (uuid "e51d008a-79ee-57e3-8977-07e90ac575f7")
+  )
+  (symbol
+    (lib_id "Device:C")
+    (at 347.98 224.79 0)
+    (unit 1)
+    (in_bom yes)
+    (on_board yes)
+    (dnp no)
+    (uuid "ff135419-2d2f-53a1-bcbd-151b847c485a")
+    (property "Reference" "C33"
+      (at 351.79 223.52 0)
+      (effects
+        (font
+          (size 1.27 1.27)
+        )
+        (justify left)
+      )
+    )
+    (property "Value" "100n 250V"
+      (at 351.79 226.06 0)
+      (effects
+        (font
+          (size 1.27 1.27)
+        )
+        (justify left)
+      )
+    )
+    (property "Footprint" "Capacitor_THT:C_Rect_L7.2mm_W3.5mm_P5.00mm_FKS2_FKP2_MKS2_MKP2"
+      (at 347.98 224.79 0)
+      (effects
+        (font
+          (size 1.27 1.27)
+        )
+        (justify left)
+        hide
+      )
+    )
+    (property "Datasheet" "~"
+      (at 347.98 224.79 0)
+      (effects
+        (font
+          (size 1.27 1.27)
+        )
+        (justify left)
+        hide
+      )
+    )
+    (pin "1"
+      (uuid "083ca8ad-ddfe-59c2-99af-1679f3fcb491")
+    )
+    (pin "2"
+      (uuid "fd052df5-fa05-5067-9ac5-d23c4eae5564")
+    )
+    (instances
+      (project "psu"
+        (path "/2e595ab6-8c2f-5f27-8552-cfe536347d6d"
+          (reference "C33")
+          (unit 1)
+        )
+      )
+    )
+  )
+  (label "HV_PR"
+    (at 347.98 220.98 90)
+    (fields_autoplaced)
+    (effects
+      (font
+        (size 1 1)
+      )
+      (justify left bottom)
+    )
+    (uuid "b5fdaebf-58e7-5e7f-b70e-620b28876dc9")
+  )
+  (label "GND"
+    (at 347.98 228.6 270)
+    (fields_autoplaced)
+    (effects
+      (font
+        (size 1 1)
+      )
+      (justify left bottom)
+    )
+    (uuid "b1846d72-ec9b-566a-9e8f-b12aca5107b4")
+  )
+  (symbol
+    (lib_id "Device:C")
+    (at 383.54 224.79 0)
+    (unit 1)
+    (in_bom yes)
+    (on_board yes)
+    (dnp no)
+    (uuid "0b440f8e-99b6-5ef5-9273-f724a6ed9387")
+    (property "Reference" "C34"
+      (at 387.35 223.52 0)
+      (effects
+        (font
+          (size 1.27 1.27)
+        )
+        (justify left)
+      )
+    )
+    (property "Value" "100n 250V"
+      (at 387.35 226.06 0)
+      (effects
+        (font
+          (size 1.27 1.27)
+        )
+        (justify left)
+      )
+    )
+    (property "Footprint" "Capacitor_THT:C_Rect_L7.2mm_W3.5mm_P5.00mm_FKS2_FKP2_MKS2_MKP2"
+      (at 383.54 224.79 0)
+      (effects
+        (font
+          (size 1.27 1.27)
+        )
+        (justify left)
+        hide
+      )
+    )
+    (property "Datasheet" "~"
+      (at 383.54 224.79 0)
+      (effects
+        (font
+          (size 1.27 1.27)
+        )
+        (justify left)
+        hide
+      )
+    )
+    (pin "1"
+      (uuid "1251a394-1d93-5ca6-aaed-c801c27b0ba6")
+    )
+    (pin "2"
+      (uuid "3a5ff5d3-82b2-53b0-aade-1ac1f7c16b6e")
+    )
+    (instances
+      (project "psu"
+        (path "/2e595ab6-8c2f-5f27-8552-cfe536347d6d"
+          (reference "C34")
+          (unit 1)
+        )
+      )
+    )
+  )
+  (label "GND"
+    (at 383.54 220.98 90)
+    (fields_autoplaced)
+    (effects
+      (font
+        (size 1 1)
+      )
+      (justify left bottom)
+    )
+    (uuid "e4d440c4-45e5-5147-a341-cee078e2a56d")
+  )
+  (label "HV_NR"
+    (at 383.54 228.6 270)
+    (fields_autoplaced)
+    (effects
+      (font
+        (size 1 1)
+      )
+      (justify left bottom)
+    )
+    (uuid "053779b4-9223-5010-8e56-6a8d1c55e580")
+  )
+  (rectangle
+    (start 50.8 256.54)
+    (end 274.32 335.28)
+    (stroke
+      (width 0)
+      (type dash)
+    )
+    (fill
+      (type none)
+    )
+    (uuid "503d67c9-65eb-5d08-a421-1d302bcb9ea4")
+  )
+  (symbol
+    (lib_id "Device:R")
+    (at 73.66 285.75 0)
+    (unit 1)
+    (in_bom yes)
+    (on_board yes)
+    (dnp no)
+    (uuid "1edd0239-87a8-50ff-8ff7-39a560979cbe")
+    (property "Reference" "R31"
+      (at 77.47 284.48 0)
+      (effects
+        (font
+          (size 1.27 1.27)
+        )
+        (justify left)
+      )
+    )
+    (property "Value" "4k7 0.5W"
+      (at 77.47 287.02 0)
+      (effects
+        (font
+          (size 1.27 1.27)
+        )
+        (justify left)
+      )
+    )
+    (property "Footprint" "Resistor_THT:R_Axial_DIN0309_L9.0mm_D3.2mm_P12.70mm_Horizontal"
+      (at 73.66 285.75 0)
+      (effects
+        (font
+          (size 1.27 1.27)
+        )
+        (justify left)
+        hide
+      )
+    )
+    (property "Datasheet" "~"
+      (at 73.66 285.75 0)
+      (effects
+        (font
+          (size 1.27 1.27)
+        )
+        (justify left)
+        hide
+      )
+    )
+    (pin "1"
+      (uuid "3e84098b-b77d-52ab-bf6d-1ca262f91912")
+    )
+    (pin "2"
+      (uuid "12ad9365-8fed-57eb-b1de-0b68c467d4f3")
+    )
+    (instances
+      (project "psu"
+        (path "/2e595ab6-8c2f-5f27-8552-cfe536347d6d"
+          (reference "R31")
+          (unit 1)
+        )
+      )
+    )
+  )
+  (label "HV_PR"
+    (at 73.66 281.94 90)
+    (fields_autoplaced)
+    (effects
+      (font
+        (size 1 1)
+      )
+      (justify left bottom)
+    )
+    (uuid "0a3ecc7b-043d-5dcd-9b42-bf66b5239c2a")
+  )
+  (label "HPZ"
+    (at 73.66 289.56 270)
+    (fields_autoplaced)
+    (effects
+      (font
+        (size 1 1)
+      )
+      (justify left bottom)
+    )
+    (uuid "95446fcd-e6f6-5a07-bcf2-16dc9de60073")
+  )
+  (symbol
+    (lib_id "Device:D_Zener")
+    (at 109.22 285.75 0)
+    (unit 1)
+    (in_bom yes)
+    (on_board yes)
+    (dnp no)
+    (uuid "7dc73c4a-c8ce-5a90-8bff-bd10289c2481")
+    (property "Reference" "D35"
+      (at 104.14 278.13 0)
+      (effects
+        (font
+          (size 1.27 1.27)
+        )
+        (justify left)
+      )
+    )
+    (property "Value" "1N4755A 43V"
+      (at 104.14 280.67 0)
+      (effects
+        (font
+          (size 1.27 1.27)
+        )
+        (justify left)
+      )
+    )
+    (property "Footprint" "Diode_THT:D_DO-41_SOD81_P10.16mm_Horizontal"
+      (at 109.22 285.75 0)
+      (effects
+        (font
+          (size 1.27 1.27)
+        )
+        (justify left)
+        hide
+      )
+    )
+    (property "Datasheet" "~"
+      (at 109.22 285.75 0)
+      (effects
+        (font
+          (size 1.27 1.27)
+        )
+        (justify left)
+        hide
+      )
+    )
+    (pin "1"
+      (uuid "cd9cc1f2-289b-5a4c-b448-104e2b3ece9f")
+    )
+    (pin "2"
+      (uuid "ed749314-28f3-5ae1-812c-6c4a294f016f")
+    )
+    (instances
+      (project "psu"
+        (path "/2e595ab6-8c2f-5f27-8552-cfe536347d6d"
+          (reference "D35")
+          (unit 1)
+        )
+      )
+    )
+  )
+  (label "HPZ"
+    (at 105.41 285.75 180)
+    (fields_autoplaced)
+    (effects
+      (font
+        (size 1 1)
+      )
+      (justify right bottom)
+    )
+    (uuid "64073c7f-f1c4-5409-bc67-c8344a8c227d")
+  )
+  (label "GND"
+    (at 113.03 285.75 0)
+    (fields_autoplaced)
+    (effects
+      (font
+        (size 1 1)
+      )
+      (justify left bottom)
+    )
+    (uuid "7030bd95-49dc-5263-b0ae-2805130914a0")
+  )
+  (symbol
+    (lib_id "Device:R")
+    (at 144.78 285.75 0)
+    (unit 1)
+    (in_bom yes)
+    (on_board yes)
+    (dnp no)
+    (uuid "677bc374-1d08-5490-ac7e-87a730c8db26")
+    (property "Reference" "R32"
+      (at 148.59 284.48 0)
+      (effects
+        (font
+          (size 1.27 1.27)
+        )
+        (justify left)
+      )
+    )
+    (property "Value" "10k"
+      (at 148.59 287.02 0)
+      (effects
+        (font
+          (size 1.27 1.27)
+        )
+        (justify left)
+      )
+    )
+    (property "Footprint" "Resistor_THT:R_Axial_DIN0207_L6.3mm_D2.5mm_P10.16mm_Horizontal"
+      (at 144.78 285.75 0)
+      (effects
+        (font
+          (size 1.27 1.27)
+        )
+        (justify left)
+        hide
+      )
+    )
+    (property "Datasheet" "~"
+      (at 144.78 285.75 0)
+      (effects
+        (font
+          (size 1.27 1.27)
+        )
+        (justify left)
+        hide
+      )
+    )
+    (pin "1"
+      (uuid "4654805f-d673-5c4e-a54c-7a8784fc38a3")
+    )
+    (pin "2"
+      (uuid "e486fca8-529e-52f2-9ff2-c783a5225038")
+    )
+    (instances
+      (project "psu"
+        (path "/2e595ab6-8c2f-5f27-8552-cfe536347d6d"
+          (reference "R32")
+          (unit 1)
+        )
+      )
+    )
+  )
+  (label "HPZ"
+    (at 144.78 281.94 90)
+    (fields_autoplaced)
+    (effects
+      (font
+        (size 1 1)
+      )
+      (justify left bottom)
+    )
+    (uuid "b5cb87bb-6474-5355-86bb-6d4dbc89a877")
+  )
+  (label "HPF"
+    (at 144.78 289.56 270)
+    (fields_autoplaced)
+    (effects
+      (font
+        (size 1 1)
+      )
+      (justify left bottom)
+    )
+    (uuid "fc164eff-c0b6-51a2-a255-042ec2d843f3")
+  )
+  (symbol
+    (lib_id "Device:C_Polarized")
+    (at 180.34 285.75 0)
+    (unit 1)
+    (in_bom yes)
+    (on_board yes)
+    (dnp no)
+    (uuid "daeb7bc9-ccee-5222-a210-2e6db574c92d")
+    (property "Reference" "C35"
+      (at 184.15 284.48 0)
+      (effects
+        (font
+          (size 1.27 1.27)
+        )
+        (justify left)
+      )
+    )
+    (property "Value" "100u 63V"
+      (at 184.15 287.02 0)
+      (effects
+        (font
+          (size 1.27 1.27)
+        )
+        (justify left)
+      )
+    )
+    (property "Footprint" "Capacitor_THT:CP_Radial_D8.0mm_P3.50mm"
+      (at 180.34 285.75 0)
+      (effects
+        (font
+          (size 1.27 1.27)
+        )
+        (justify left)
+        hide
+      )
+    )
+    (property "Datasheet" "~"
+      (at 180.34 285.75 0)
+      (effects
+        (font
+          (size 1.27 1.27)
+        )
+        (justify left)
+        hide
+      )
+    )
+    (pin "1"
+      (uuid "53ec90d1-240c-5fe6-b217-0cf3593c12a3")
+    )
+    (pin "2"
+      (uuid "eb6a751e-fcdb-5722-a1ab-b298be01cee2")
+    )
+    (instances
+      (project "psu"
+        (path "/2e595ab6-8c2f-5f27-8552-cfe536347d6d"
+          (reference "C35")
+          (unit 1)
+        )
+      )
+    )
+  )
+  (label "HPF"
+    (at 180.34 281.94 90)
+    (fields_autoplaced)
+    (effects
+      (font
+        (size 1 1)
+      )
+      (justify left bottom)
+    )
+    (uuid "025c9e3b-b6d2-5166-9bd0-723dc653e962")
+  )
+  (label "GND"
+    (at 180.34 289.56 270)
+    (fields_autoplaced)
+    (effects
+      (font
+        (size 1 1)
+      )
+      (justify left bottom)
+    )
+    (uuid "6b7981da-30f3-54ea-adf7-19ec80ae7ca8")
+  )
+  (symbol
+    (lib_id "Device:R")
+    (at 215.9 285.75 0)
+    (unit 1)
+    (in_bom yes)
+    (on_board yes)
+    (dnp no)
+    (uuid "7bcb094f-dadc-5d25-b8b1-ec12717f052f")
+    (property "Reference" "R33"
+      (at 219.71 284.48 0)
+      (effects
+        (font
+          (size 1.27 1.27)
+        )
+        (justify left)
+      )
+    )
+    (property "Value" "1k"
+      (at 219.71 287.02 0)
+      (effects
+        (font
+          (size 1.27 1.27)
+        )
+        (justify left)
+      )
+    )
+    (property "Footprint" "Resistor_THT:R_Axial_DIN0207_L6.3mm_D2.5mm_P10.16mm_Horizontal"
+      (at 215.9 285.75 0)
+      (effects
+        (font
+          (size 1.27 1.27)
+        )
+        (justify left)
+        hide
+      )
+    )
+    (property "Datasheet" "~"
+      (at 215.9 285.75 0)
+      (effects
+        (font
+          (size 1.27 1.27)
+        )
+        (justify left)
+        hide
+      )
+    )
+    (pin "1"
+      (uuid "5846531a-c3c6-5e87-9704-885e9eff316c")
+    )
+    (pin "2"
+      (uuid "ea87db47-bbf8-591e-88f5-48d5a6ef7ce9")
+    )
+    (instances
+      (project "psu"
+        (path "/2e595ab6-8c2f-5f27-8552-cfe536347d6d"
+          (reference "R33")
+          (unit 1)
+        )
+      )
+    )
+  )
+  (label "HPF"
+    (at 215.9 281.94 90)
+    (fields_autoplaced)
+    (effects
+      (font
+        (size 1 1)
+      )
+      (justify left bottom)
+    )
+    (uuid "501ead3b-4ff0-5e3f-9980-6653fa293051")
+  )
+  (label "Q11B"
+    (at 215.9 289.56 270)
+    (fields_autoplaced)
+    (effects
+      (font
+        (size 1 1)
+      )
+      (justify left bottom)
+    )
+    (uuid "85f5708f-66b9-5fbd-bbc3-8384b449dd55")
+  )
+  (symbol
+    (lib_id "Transistor_BJT:MPSA42")
+    (at 251.46 285.75 0)
+    (unit 1)
+    (in_bom yes)
+    (on_board yes)
+    (dnp no)
+    (uuid "9beba42b-5ed3-51a0-9a16-8e9eacb9d03d")
+    (property "Reference" "Q11"
+      (at 256.54 284.48 0)
+      (effects
+        (font
+          (size 1.27 1.27)
+        )
+        (justify left)
+      )
+    )
+    (property "Value" "MPSA42"
+      (at 256.54 287.02 0)
+      (effects
+        (font
+          (size 1.27 1.27)
+        )
+        (justify left)
+      )
+    )
+    (property "Footprint" "Package_TO_SOT_THT:TO-92_Inline"
+      (at 251.46 285.75 0)
+      (effects
+        (font
+          (size 1.27 1.27)
+        )
+        (justify left)
+        hide
+      )
+    )
+    (property "Datasheet" "~"
+      (at 251.46 285.75 0)
+      (effects
+        (font
+          (size 1.27 1.27)
+        )
+        (justify left)
+        hide
+      )
+    )
+    (pin "1"
+      (uuid "28d11818-c63e-5165-af97-0e0d9ee72931")
+    )
+    (pin "2"
+      (uuid "8fe7ecc6-ee2a-5a22-99c0-a9e9143e19ac")
+    )
+    (pin "3"
+      (uuid "205a3dcd-4a90-5628-bc0b-8994c97086c7")
+    )
+    (instances
+      (project "psu"
+        (path "/2e595ab6-8c2f-5f27-8552-cfe536347d6d"
+          (reference "Q11")
+          (unit 1)
+        )
+      )
+    )
+  )
+  (label "Q12B"
+    (at 254 290.83 270)
+    (fields_autoplaced)
+    (effects
+      (font
+        (size 1 1)
+      )
+      (justify left bottom)
+    )
+    (uuid "def27597-b754-58aa-aadd-c411724ad046")
+  )
+  (label "Q11B"
+    (at 246.38 285.75 180)
+    (fields_autoplaced)
+    (effects
+      (font
+        (size 1 1)
+      )
+      (justify right bottom)
+    )
+    (uuid "6b31da1f-0d78-5153-8346-5369e2447f12")
+  )
+  (label "HV_PR"
+    (at 254 280.67 90)
+    (fields_autoplaced)
+    (effects
+      (font
+        (size 1 1)
+      )
+      (justify left bottom)
+    )
+    (uuid "89b7c364-1b12-5ad9-ac8a-904818af7f0a")
+  )
+  (symbol
+    (lib_id "Device:Q_NPN_ECB")
+    (at 73.66 313.69 0)
+    (unit 1)
+    (in_bom yes)
+    (on_board yes)
+    (dnp no)
+    (uuid "a2f1c973-e6dd-547c-bcf7-eb8e70517b26")
+    (property "Reference" "Q12"
+      (at 78.74 312.42 0)
+      (effects
+        (font
+          (size 1.27 1.27)
+        )
+        (justify left)
+      )
+    )
+    (property "Value" "MJE340"
+      (at 78.74 314.96 0)
+      (effects
+        (font
+          (size 1.27 1.27)
+        )
+        (justify left)
+      )
+    )
+    (property "Footprint" "Package_TO_SOT_THT:TO-126-3_Vertical"
+      (at 73.66 313.69 0)
+      (effects
+        (font
+          (size 1.27 1.27)
+        )
+        (justify left)
+        hide
+      )
+    )
+    (property "Datasheet" "~"
+      (at 73.66 313.69 0)
+      (effects
+        (font
+          (size 1.27 1.27)
+        )
+        (justify left)
+        hide
+      )
+    )
+    (pin "1"
+      (uuid "22c1f8f1-f9e7-5ca7-bfb4-cc3c595bdd42")
+    )
+    (pin "2"
+      (uuid "50b7625e-f33d-54d1-b074-858a41dad228")
+    )
+    (pin "3"
+      (uuid "a835bc7e-91ba-50b9-a661-8bf7cd8ea4e2")
+    )
+    (instances
+      (project "psu"
+        (path "/2e595ab6-8c2f-5f27-8552-cfe536347d6d"
+          (reference "Q12")
+          (unit 1)
+        )
+      )
+    )
+  )
+  (label "HPE"
+    (at 76.2 318.77 270)
+    (fields_autoplaced)
+    (effects
+      (font
+        (size 1 1)
+      )
+      (justify left bottom)
+    )
+    (uuid "1e30b128-1a27-598b-bb1e-40b8a01caf28")
+  )
+  (label "HV_PR"
+    (at 76.2 308.61 90)
+    (fields_autoplaced)
+    (effects
+      (font
+        (size 1 1)
+      )
+      (justify left bottom)
+    )
+    (uuid "19cbad56-b5c0-5966-9a79-5a47189ab40d")
+  )
+  (label "Q12B"
+    (at 68.58 313.69 180)
+    (fields_autoplaced)
+    (effects
+      (font
+        (size 1 1)
+      )
+      (justify right bottom)
+    )
+    (uuid "48928299-ab5c-59ce-adda-5399468e3b28")
+  )
+  (symbol
+    (lib_id "Device:R")
+    (at 109.22 313.69 0)
+    (unit 1)
+    (in_bom yes)
+    (on_board yes)
+    (dnp no)
+    (uuid "dfab3dc7-917f-50d6-bb67-d2c59207b66c")
+    (property "Reference" "R34"
+      (at 113.03 312.42 0)
+      (effects
+        (font
+          (size 1.27 1.27)
+        )
+        (justify left)
+      )
+    )
+    (property "Value" "12"
+      (at 113.03 314.96 0)
+      (effects
+        (font
+          (size 1.27 1.27)
+        )
+        (justify left)
+      )
+    )
+    (property "Footprint" "Resistor_THT:R_Axial_DIN0207_L6.3mm_D2.5mm_P10.16mm_Horizontal"
+      (at 109.22 313.69 0)
+      (effects
+        (font
+          (size 1.27 1.27)
+        )
+        (justify left)
+        hide
+      )
+    )
+    (property "Datasheet" "~"
+      (at 109.22 313.69 0)
+      (effects
+        (font
+          (size 1.27 1.27)
+        )
+        (justify left)
+        hide
+      )
+    )
+    (pin "1"
+      (uuid "31c91966-0a70-571a-bc92-c1d3a3fa8e36")
+    )
+    (pin "2"
+      (uuid "0440ece4-bebe-5efc-8706-dad746f493ea")
+    )
+    (instances
+      (project "psu"
+        (path "/2e595ab6-8c2f-5f27-8552-cfe536347d6d"
+          (reference "R34")
+          (unit 1)
+        )
+      )
+    )
+  )
+  (label "HPE"
+    (at 109.22 309.88 90)
+    (fields_autoplaced)
+    (effects
+      (font
+        (size 1 1)
+      )
+      (justify left bottom)
+    )
+    (uuid "8550a212-bacd-504f-b873-d7eabaebea59")
+  )
+  (label "+40V"
+    (at 109.22 317.5 270)
+    (fields_autoplaced)
+    (effects
+      (font
+        (size 1 1)
+      )
+      (justify left bottom)
+    )
+    (uuid "8f6b6a68-fc4b-548e-9f83-123bd0c76dd3")
+  )
+  (symbol
+    (lib_id "Transistor_BJT:MPSA42")
+    (at 144.78 313.69 0)
+    (unit 1)
+    (in_bom yes)
+    (on_board yes)
+    (dnp no)
+    (uuid "05fccb87-8e37-504b-8c40-b68a70440974")
+    (property "Reference" "Q13"
+      (at 149.86 312.42 0)
+      (effects
+        (font
+          (size 1.27 1.27)
+        )
+        (justify left)
+      )
+    )
+    (property "Value" "MPSA42"
+      (at 149.86 314.96 0)
+      (effects
+        (font
+          (size 1.27 1.27)
+        )
+        (justify left)
+      )
+    )
+    (property "Footprint" "Package_TO_SOT_THT:TO-92_Inline"
+      (at 144.78 313.69 0)
+      (effects
+        (font
+          (size 1.27 1.27)
+        )
+        (justify left)
+        hide
+      )
+    )
+    (property "Datasheet" "~"
+      (at 144.78 313.69 0)
+      (effects
+        (font
+          (size 1.27 1.27)
+        )
+        (justify left)
+        hide
+      )
+    )
+    (pin "1"
+      (uuid "6a8a0187-52a7-5efc-9493-78132e814082")
+    )
+    (pin "2"
+      (uuid "ce1edd8f-c003-5af2-b8f2-2e8018fb1b1f")
+    )
+    (pin "3"
+      (uuid "a94e350e-f744-57eb-9510-ad5912f83c6b")
+    )
+    (instances
+      (project "psu"
+        (path "/2e595ab6-8c2f-5f27-8552-cfe536347d6d"
+          (reference "Q13")
+          (unit 1)
+        )
+      )
+    )
+  )
+  (label "+40V"
+    (at 147.32 318.77 270)
+    (fields_autoplaced)
+    (effects
+      (font
+        (size 1 1)
+      )
+      (justify left bottom)
+    )
+    (uuid "988ec474-3488-5bb3-b0b0-3a5f81ff828f")
+  )
+  (label "HPE"
+    (at 139.7 313.69 180)
+    (fields_autoplaced)
+    (effects
+      (font
+        (size 1 1)
+      )
+      (justify right bottom)
+    )
+    (uuid "7f3bc25c-2724-5a47-89f9-e0c24abb7275")
+  )
+  (label "Q11B"
+    (at 147.32 308.61 90)
+    (fields_autoplaced)
+    (effects
+      (font
+        (size 1 1)
+      )
+      (justify left bottom)
+    )
+    (uuid "4d7e00ca-10c7-5e36-8d1b-d32b2acd2d86")
+  )
+  (symbol
+    (lib_id "Device:C_Polarized")
+    (at 180.34 313.69 0)
+    (unit 1)
+    (in_bom yes)
+    (on_board yes)
+    (dnp no)
+    (uuid "0e2418c4-e69d-5f3d-b4fa-a1dac6fcd8eb")
+    (property "Reference" "C36"
+      (at 184.15 312.42 0)
+      (effects
+        (font
+          (size 1.27 1.27)
+        )
+        (justify left)
+      )
+    )
+    (property "Value" "100u 63V"
+      (at 184.15 314.96 0)
+      (effects
+        (font
+          (size 1.27 1.27)
+        )
+        (justify left)
+      )
+    )
+    (property "Footprint" "Capacitor_THT:CP_Radial_D8.0mm_P3.50mm"
+      (at 180.34 313.69 0)
+      (effects
+        (font
+          (size 1.27 1.27)
+        )
+        (justify left)
+        hide
+      )
+    )
+    (property "Datasheet" "~"
+      (at 180.34 313.69 0)
+      (effects
+        (font
+          (size 1.27 1.27)
+        )
+        (justify left)
+        hide
+      )
+    )
+    (pin "1"
+      (uuid "dbf440b5-a948-58e8-b00c-8c382a872f18")
+    )
+    (pin "2"
+      (uuid "e14efc19-5959-5085-b4ef-bcd78dceff29")
+    )
+    (instances
+      (project "psu"
+        (path "/2e595ab6-8c2f-5f27-8552-cfe536347d6d"
+          (reference "C36")
+          (unit 1)
+        )
+      )
+    )
+  )
+  (label "+40V"
+    (at 180.34 309.88 90)
+    (fields_autoplaced)
+    (effects
+      (font
+        (size 1 1)
+      )
+      (justify left bottom)
+    )
+    (uuid "c2eef3de-6516-53f0-90e3-8a39a739f99c")
+  )
+  (label "GND"
+    (at 180.34 317.5 270)
+    (fields_autoplaced)
+    (effects
+      (font
+        (size 1 1)
+      )
+      (justify left bottom)
+    )
+    (uuid "f10d46ff-6950-5866-9728-cb92e20c3e6c")
+  )
+  (symbol
+    (lib_id "Device:C")
+    (at 215.9 313.69 0)
+    (unit 1)
+    (in_bom yes)
+    (on_board yes)
+    (dnp no)
+    (uuid "460f5390-76c6-5f4c-8a71-cf702a14861e")
+    (property "Reference" "C37"
+      (at 219.71 312.42 0)
+      (effects
+        (font
+          (size 1.27 1.27)
+        )
+        (justify left)
+      )
+    )
+    (property "Value" "100n 100V"
+      (at 219.71 314.96 0)
+      (effects
+        (font
+          (size 1.27 1.27)
+        )
+        (justify left)
+      )
+    )
+    (property "Footprint" "Capacitor_THT:C_Rect_L7.2mm_W3.5mm_P5.00mm_FKS2_FKP2_MKS2_MKP2"
+      (at 215.9 313.69 0)
+      (effects
+        (font
+          (size 1.27 1.27)
+        )
+        (justify left)
+        hide
+      )
+    )
+    (property "Datasheet" "~"
+      (at 215.9 313.69 0)
+      (effects
+        (font
+          (size 1.27 1.27)
+        )
+        (justify left)
+        hide
+      )
+    )
+    (pin "1"
+      (uuid "4f3abd9f-973d-53c6-8f64-92bfc38d320a")
+    )
+    (pin "2"
+      (uuid "a65c1794-3fd4-5ee6-8f07-f4a22c8e9e0e")
+    )
+    (instances
+      (project "psu"
+        (path "/2e595ab6-8c2f-5f27-8552-cfe536347d6d"
+          (reference "C37")
+          (unit 1)
+        )
+      )
+    )
+  )
+  (label "+40V"
+    (at 215.9 309.88 90)
+    (fields_autoplaced)
+    (effects
+      (font
+        (size 1 1)
+      )
+      (justify left bottom)
+    )
+    (uuid "4a826ec8-7da9-5097-8637-185b3b87eae7")
+  )
+  (label "GND"
+    (at 215.9 317.5 270)
+    (fields_autoplaced)
+    (effects
+      (font
+        (size 1 1)
+      )
+      (justify left bottom)
+    )
+    (uuid "b7269cde-6b62-5daf-af5d-396e019eefed")
+  )
+  (symbol
+    (lib_id "Device:R")
+    (at 251.46 313.69 0)
+    (unit 1)
+    (in_bom yes)
+    (on_board yes)
+    (dnp no)
+    (uuid "38af88bc-b18f-51b3-891d-d3316ee79ae9")
+    (property "Reference" "R35"
+      (at 255.27 312.42 0)
+      (effects
+        (font
+          (size 1.27 1.27)
+        )
+        (justify left)
+      )
+    )
+    (property "Value" "10k 0.5W"
+      (at 255.27 314.96 0)
+      (effects
+        (font
+          (size 1.27 1.27)
+        )
+        (justify left)
+      )
+    )
+    (property "Footprint" "Resistor_THT:R_Axial_DIN0309_L9.0mm_D3.2mm_P12.70mm_Horizontal"
+      (at 251.46 313.69 0)
+      (effects
+        (font
+          (size 1.27 1.27)
+        )
+        (justify left)
+        hide
+      )
+    )
+    (property "Datasheet" "~"
+      (at 251.46 313.69 0)
+      (effects
+        (font
+          (size 1.27 1.27)
+        )
+        (justify left)
+        hide
+      )
+    )
+    (pin "1"
+      (uuid "e5a8ecc2-4cf1-5f79-883d-9dba0587c423")
+    )
+    (pin "2"
+      (uuid "5975a30d-817d-558b-87c7-7e949710b35a")
+    )
+    (instances
+      (project "psu"
+        (path "/2e595ab6-8c2f-5f27-8552-cfe536347d6d"
+          (reference "R35")
+          (unit 1)
+        )
+      )
+    )
+  )
+  (label "+40V"
+    (at 251.46 309.88 90)
+    (fields_autoplaced)
+    (effects
+      (font
+        (size 1 1)
+      )
+      (justify left bottom)
+    )
+    (uuid "41e7e394-619e-5c58-ab65-0ec4d1e9435d")
+  )
+  (label "GND"
+    (at 251.46 317.5 270)
+    (fields_autoplaced)
+    (effects
+      (font
+        (size 1 1)
+      )
+      (justify left bottom)
+    )
+    (uuid "52250423-d826-5969-a41f-3bc699529308")
+  )
+  (rectangle
+    (start 289.56 256.54)
+    (end 513.08 363.22)
+    (stroke
+      (width 0)
+      (type dash)
+    )
+    (fill
+      (type none)
+    )
+    (uuid "9ffde063-8c60-53e2-b2d2-1d683e9135ea")
+  )
+  (symbol
+    (lib_id "Device:R")
+    (at 312.42 285.75 0)
+    (unit 1)
+    (in_bom yes)
+    (on_board yes)
+    (dnp no)
+    (uuid "b4f1b157-2c63-5b80-9500-03eb310cb52d")
+    (property "Reference" "R41"
+      (at 316.23 284.48 0)
+      (effects
+        (font
+          (size 1.27 1.27)
+        )
+        (justify left)
+      )
+    )
+    (property "Value" "4k7 0.5W"
+      (at 316.23 287.02 0)
+      (effects
+        (font
+          (size 1.27 1.27)
+        )
+        (justify left)
+      )
+    )
+    (property "Footprint" "Resistor_THT:R_Axial_DIN0309_L9.0mm_D3.2mm_P12.70mm_Horizontal"
+      (at 312.42 285.75 0)
+      (effects
+        (font
+          (size 1.27 1.27)
+        )
+        (justify left)
+        hide
+      )
+    )
+    (property "Datasheet" "~"
+      (at 312.42 285.75 0)
+      (effects
+        (font
+          (size 1.27 1.27)
+        )
+        (justify left)
+        hide
+      )
+    )
+    (pin "1"
+      (uuid "ae2098b5-6568-5a65-9460-72cf5552054c")
+    )
+    (pin "2"
+      (uuid "c9154482-6ab8-52ce-a0d3-1722fd4153e6")
+    )
+    (instances
+      (project "psu"
+        (path "/2e595ab6-8c2f-5f27-8552-cfe536347d6d"
+          (reference "R41")
+          (unit 1)
+        )
+      )
+    )
+  )
+  (label "HNZ"
+    (at 312.42 281.94 90)
+    (fields_autoplaced)
+    (effects
+      (font
+        (size 1 1)
+      )
+      (justify left bottom)
+    )
+    (uuid "a314f8c9-ce6d-59df-a0b9-e05634d2a2af")
+  )
+  (label "HV_NR"
+    (at 312.42 289.56 270)
+    (fields_autoplaced)
+    (effects
+      (font
+        (size 1 1)
+      )
+      (justify left bottom)
+    )
+    (uuid "57038b1b-a558-5a4c-8d61-a7b8a10b021b")
+  )
+  (symbol
+    (lib_id "Device:D_Zener")
+    (at 347.98 285.75 0)
+    (unit 1)
+    (in_bom yes)
+    (on_board yes)
+    (dnp no)
+    (uuid "0320540b-c680-5a4b-b34d-a9c75235f9eb")
+    (property "Reference" "D45"
+      (at 342.9 278.13 0)
+      (effects
+        (font
+          (size 1.27 1.27)
+        )
+        (justify left)
+      )
+    )
+    (property "Value" "1N4755A 43V"
+      (at 342.9 280.67 0)
+      (effects
+        (font
+          (size 1.27 1.27)
+        )
+        (justify left)
+      )
+    )
+    (property "Footprint" "Diode_THT:D_DO-41_SOD81_P10.16mm_Horizontal"
+      (at 347.98 285.75 0)
+      (effects
+        (font
+          (size 1.27 1.27)
+        )
+        (justify left)
+        hide
+      )
+    )
+    (property "Datasheet" "~"
+      (at 347.98 285.75 0)
+      (effects
+        (font
+          (size 1.27 1.27)
+        )
+        (justify left)
+        hide
+      )
+    )
+    (pin "1"
+      (uuid "782ce993-d382-51e8-a693-209ffc43803a")
+    )
+    (pin "2"
+      (uuid "37b8455b-61cc-51ad-9dd0-bcce11be51ca")
+    )
+    (instances
+      (project "psu"
+        (path "/2e595ab6-8c2f-5f27-8552-cfe536347d6d"
+          (reference "D45")
+          (unit 1)
+        )
+      )
+    )
+  )
+  (label "GND"
+    (at 344.17 285.75 180)
+    (fields_autoplaced)
+    (effects
+      (font
+        (size 1 1)
+      )
+      (justify right bottom)
+    )
+    (uuid "5cd03ee0-e635-5fbf-b3a0-773b7ad8616d")
+  )
+  (label "HNZ"
+    (at 351.79 285.75 0)
+    (fields_autoplaced)
+    (effects
+      (font
+        (size 1 1)
+      )
+      (justify left bottom)
+    )
+    (uuid "9b789b7f-a496-5b9a-81cd-7561683877f7")
+  )
+  (symbol
+    (lib_id "Device:R")
+    (at 383.54 285.75 0)
+    (unit 1)
+    (in_bom yes)
+    (on_board yes)
+    (dnp no)
+    (uuid "d973340a-4ae3-5f29-8f9e-eb713d10102f")
+    (property "Reference" "R42"
+      (at 387.35 284.48 0)
+      (effects
+        (font
+          (size 1.27 1.27)
+        )
+        (justify left)
+      )
+    )
+    (property "Value" "10k"
+      (at 387.35 287.02 0)
+      (effects
+        (font
+          (size 1.27 1.27)
+        )
+        (justify left)
+      )
+    )
+    (property "Footprint" "Resistor_THT:R_Axial_DIN0207_L6.3mm_D2.5mm_P10.16mm_Horizontal"
+      (at 383.54 285.75 0)
+      (effects
+        (font
+          (size 1.27 1.27)
+        )
+        (justify left)
+        hide
+      )
+    )
+    (property "Datasheet" "~"
+      (at 383.54 285.75 0)
+      (effects
+        (font
+          (size 1.27 1.27)
+        )
+        (justify left)
+        hide
+      )
+    )
+    (pin "1"
+      (uuid "74344b3f-2be7-5eb1-9421-d2562797e286")
+    )
+    (pin "2"
+      (uuid "9aa0c735-e447-56ad-9221-87be07f521ca")
+    )
+    (instances
+      (project "psu"
+        (path "/2e595ab6-8c2f-5f27-8552-cfe536347d6d"
+          (reference "R42")
+          (unit 1)
+        )
+      )
+    )
+  )
+  (label "HNZ"
+    (at 383.54 281.94 90)
+    (fields_autoplaced)
+    (effects
+      (font
+        (size 1 1)
+      )
+      (justify left bottom)
+    )
+    (uuid "65ad034f-6895-591a-a524-19b585400921")
+  )
+  (label "HNF"
+    (at 383.54 289.56 270)
+    (fields_autoplaced)
+    (effects
+      (font
+        (size 1 1)
+      )
+      (justify left bottom)
+    )
+    (uuid "ee818e50-0cd5-5e15-8afa-866f83197e0a")
+  )
+  (symbol
+    (lib_id "Device:C_Polarized")
+    (at 419.1 285.75 0)
+    (unit 1)
+    (in_bom yes)
+    (on_board yes)
+    (dnp no)
+    (uuid "afe8789c-fcc7-50c2-9baa-f80ab1403b5a")
+    (property "Reference" "C45"
+      (at 422.91 284.48 0)
+      (effects
+        (font
+          (size 1.27 1.27)
+        )
+        (justify left)
+      )
+    )
+    (property "Value" "100u 63V"
+      (at 422.91 287.02 0)
+      (effects
+        (font
+          (size 1.27 1.27)
+        )
+        (justify left)
+      )
+    )
+    (property "Footprint" "Capacitor_THT:CP_Radial_D8.0mm_P3.50mm"
+      (at 419.1 285.75 0)
+      (effects
+        (font
+          (size 1.27 1.27)
+        )
+        (justify left)
+        hide
+      )
+    )
+    (property "Datasheet" "~"
+      (at 419.1 285.75 0)
+      (effects
+        (font
+          (size 1.27 1.27)
+        )
+        (justify left)
+        hide
+      )
+    )
+    (pin "1"
+      (uuid "dec7706d-f565-5a58-ba17-c474e1061f73")
+    )
+    (pin "2"
+      (uuid "fbd8724c-f82d-5c8d-b163-bb0dad593e12")
+    )
+    (instances
+      (project "psu"
+        (path "/2e595ab6-8c2f-5f27-8552-cfe536347d6d"
+          (reference "C45")
+          (unit 1)
+        )
+      )
+    )
+  )
+  (label "GND"
+    (at 419.1 281.94 90)
+    (fields_autoplaced)
+    (effects
+      (font
+        (size 1 1)
+      )
+      (justify left bottom)
+    )
+    (uuid "cc9e1b64-2f17-5ec7-bedb-e3a15f85b2e6")
+  )
+  (label "HNF"
+    (at 419.1 289.56 270)
+    (fields_autoplaced)
+    (effects
+      (font
+        (size 1 1)
+      )
+      (justify left bottom)
+    )
+    (uuid "924d8fd4-2f79-53dc-928e-32f49e501b4b")
+  )
+  (symbol
+    (lib_id "Device:R")
+    (at 454.66 285.75 0)
+    (unit 1)
+    (in_bom yes)
+    (on_board yes)
+    (dnp no)
+    (uuid "9410acf9-96bd-5e48-a95f-59b13fdb1db8")
+    (property "Reference" "R43"
+      (at 458.47 284.48 0)
+      (effects
+        (font
+          (size 1.27 1.27)
+        )
+        (justify left)
+      )
+    )
+    (property "Value" "1k"
+      (at 458.47 287.02 0)
+      (effects
+        (font
+          (size 1.27 1.27)
+        )
+        (justify left)
+      )
+    )
+    (property "Footprint" "Resistor_THT:R_Axial_DIN0207_L6.3mm_D2.5mm_P10.16mm_Horizontal"
+      (at 454.66 285.75 0)
+      (effects
+        (font
+          (size 1.27 1.27)
+        )
+        (justify left)
+        hide
+      )
+    )
+    (property "Datasheet" "~"
+      (at 454.66 285.75 0)
+      (effects
+        (font
+          (size 1.27 1.27)
+        )
+        (justify left)
+        hide
+      )
+    )
+    (pin "1"
+      (uuid "2da4817f-4394-506e-9dc5-fa1f636c7b8b")
+    )
+    (pin "2"
+      (uuid "b7d8a8ba-e465-59f2-a46c-b285899bbadd")
+    )
+    (instances
+      (project "psu"
+        (path "/2e595ab6-8c2f-5f27-8552-cfe536347d6d"
+          (reference "R43")
+          (unit 1)
+        )
+      )
+    )
+  )
+  (label "HNF"
+    (at 454.66 281.94 90)
+    (fields_autoplaced)
+    (effects
+      (font
+        (size 1 1)
+      )
+      (justify left bottom)
+    )
+    (uuid "9079cc89-b2bf-53b6-a9c3-fc5cc233c371")
+  )
+  (label "Q14B"
+    (at 454.66 289.56 270)
+    (fields_autoplaced)
+    (effects
+      (font
+        (size 1 1)
+      )
+      (justify left bottom)
+    )
+    (uuid "3ab29be1-62e1-5ae0-a7b0-546a1e4651e2")
+  )
+  (symbol
+    (lib_id "Transistor_BJT:MPSA92")
+    (at 490.22 285.75 0)
+    (unit 1)
+    (in_bom yes)
+    (on_board yes)
+    (dnp no)
+    (uuid "9b99f25a-6e0c-513e-9c4c-db373d7cacbb")
+    (property "Reference" "Q14"
+      (at 495.3 284.48 0)
+      (effects
+        (font
+          (size 1.27 1.27)
+        )
+        (justify left)
+      )
+    )
+    (property "Value" "MPSA92"
+      (at 495.3 287.02 0)
+      (effects
+        (font
+          (size 1.27 1.27)
+        )
+        (justify left)
+      )
+    )
+    (property "Footprint" "Package_TO_SOT_THT:TO-92_Inline"
+      (at 490.22 285.75 0)
+      (effects
+        (font
+          (size 1.27 1.27)
+        )
+        (justify left)
+        hide
+      )
+    )
+    (property "Datasheet" "~"
+      (at 490.22 285.75 0)
+      (effects
+        (font
+          (size 1.27 1.27)
+        )
+        (justify left)
+        hide
+      )
+    )
+    (pin "1"
+      (uuid "520efef0-0ff7-5c11-aec6-41d93a37c35d")
+    )
+    (pin "2"
+      (uuid "5f767760-a3b4-50e1-b6c1-f8984826d34a")
+    )
+    (pin "3"
+      (uuid "0947fe56-6b83-58ac-9ec5-578e6aab98a3")
+    )
+    (instances
+      (project "psu"
+        (path "/2e595ab6-8c2f-5f27-8552-cfe536347d6d"
+          (reference "Q14")
+          (unit 1)
+        )
+      )
+    )
+  )
+  (label "Q15B"
+    (at 492.76 290.83 270)
+    (fields_autoplaced)
+    (effects
+      (font
+        (size 1 1)
+      )
+      (justify left bottom)
+    )
+    (uuid "85cd9dc2-fba4-587a-a509-b050c1e5eaa1")
+  )
+  (label "Q14B"
+    (at 485.14 285.75 180)
+    (fields_autoplaced)
+    (effects
+      (font
+        (size 1 1)
+      )
+      (justify right bottom)
+    )
+    (uuid "205723d6-ce5e-54ef-8cfa-20b069bafd47")
+  )
+  (label "HV_NR"
+    (at 492.76 280.67 90)
+    (fields_autoplaced)
+    (effects
+      (font
+        (size 1 1)
+      )
+      (justify left bottom)
+    )
+    (uuid "7a1981f4-4a93-596f-817b-c032ee4ef588")
+  )
+  (symbol
+    (lib_id "Device:Q_PNP_ECB")
+    (at 312.42 313.69 0)
+    (unit 1)
+    (in_bom yes)
+    (on_board yes)
+    (dnp no)
+    (uuid "6383d1d6-686a-5a8a-ae08-114fe5b7da7f")
+    (property "Reference" "Q15"
+      (at 317.5 312.42 0)
+      (effects
+        (font
+          (size 1.27 1.27)
+        )
+        (justify left)
+      )
+    )
+    (property "Value" "MJE350"
+      (at 317.5 314.96 0)
+      (effects
+        (font
+          (size 1.27 1.27)
+        )
+        (justify left)
+      )
+    )
+    (property "Footprint" "Package_TO_SOT_THT:TO-126-3_Vertical"
+      (at 312.42 313.69 0)
+      (effects
+        (font
+          (size 1.27 1.27)
+        )
+        (justify left)
+        hide
+      )
+    )
+    (property "Datasheet" "~"
+      (at 312.42 313.69 0)
+      (effects
+        (font
+          (size 1.27 1.27)
+        )
+        (justify left)
+        hide
+      )
+    )
+    (pin "1"
+      (uuid "dfb709ee-a2fb-5357-8591-596ccbfb5997")
+    )
+    (pin "2"
+      (uuid "e11c0bc8-7498-5532-854c-2c3bab0a3859")
+    )
+    (pin "3"
+      (uuid "4595fd9e-b5a5-5c3e-896d-2dfa7671383b")
+    )
+    (instances
+      (project "psu"
+        (path "/2e595ab6-8c2f-5f27-8552-cfe536347d6d"
+          (reference "Q15")
+          (unit 1)
+        )
+      )
+    )
+  )
+  (label "HNE"
+    (at 314.96 318.77 270)
+    (fields_autoplaced)
+    (effects
+      (font
+        (size 1 1)
+      )
+      (justify left bottom)
+    )
+    (uuid "ecc64f92-49e6-554a-b080-90993da5197a")
+  )
+  (label "HV_NR"
+    (at 314.96 308.61 90)
+    (fields_autoplaced)
+    (effects
+      (font
+        (size 1 1)
+      )
+      (justify left bottom)
+    )
+    (uuid "d5ae3272-8b1b-5ec3-9104-395d8847101c")
+  )
+  (label "Q15B"
+    (at 307.34 313.69 180)
+    (fields_autoplaced)
+    (effects
+      (font
+        (size 1 1)
+      )
+      (justify right bottom)
+    )
+    (uuid "e67884e9-c60e-56ff-b12e-53b57c0e8dd6")
+  )
+  (symbol
+    (lib_id "Device:R")
+    (at 347.98 313.69 0)
+    (unit 1)
+    (in_bom yes)
+    (on_board yes)
+    (dnp no)
+    (uuid "b59c79c5-4dc4-5f9f-a7af-6ac67a4ae21b")
+    (property "Reference" "R44"
+      (at 351.79 312.42 0)
+      (effects
+        (font
+          (size 1.27 1.27)
+        )
+        (justify left)
+      )
+    )
+    (property "Value" "12"
+      (at 351.79 314.96 0)
+      (effects
+        (font
+          (size 1.27 1.27)
+        )
+        (justify left)
+      )
+    )
+    (property "Footprint" "Resistor_THT:R_Axial_DIN0207_L6.3mm_D2.5mm_P10.16mm_Horizontal"
+      (at 347.98 313.69 0)
+      (effects
+        (font
+          (size 1.27 1.27)
+        )
+        (justify left)
+        hide
+      )
+    )
+    (property "Datasheet" "~"
+      (at 347.98 313.69 0)
+      (effects
+        (font
+          (size 1.27 1.27)
+        )
+        (justify left)
+        hide
+      )
+    )
+    (pin "1"
+      (uuid "9314e1ab-f8a8-56c6-93a4-8366a80dc2d3")
+    )
+    (pin "2"
+      (uuid "8802ec75-0557-5af3-a79d-11623559091d")
+    )
+    (instances
+      (project "psu"
+        (path "/2e595ab6-8c2f-5f27-8552-cfe536347d6d"
+          (reference "R44")
+          (unit 1)
+        )
+      )
+    )
+  )
+  (label "HNE"
+    (at 347.98 309.88 90)
+    (fields_autoplaced)
+    (effects
+      (font
+        (size 1 1)
+      )
+      (justify left bottom)
+    )
+    (uuid "b6e69c76-2d37-523a-ba5c-c76adec10b81")
+  )
+  (label "-40V"
+    (at 347.98 317.5 270)
+    (fields_autoplaced)
+    (effects
+      (font
+        (size 1 1)
+      )
+      (justify left bottom)
+    )
+    (uuid "5680a918-47d2-5640-b39e-bb30ea2b1875")
+  )
+  (symbol
+    (lib_id "Transistor_BJT:MPSA92")
+    (at 383.54 313.69 0)
+    (unit 1)
+    (in_bom yes)
+    (on_board yes)
+    (dnp no)
+    (uuid "c851a267-b60f-52d8-99ad-1c9f20d35e06")
+    (property "Reference" "Q16"
+      (at 388.62 312.42 0)
+      (effects
+        (font
+          (size 1.27 1.27)
+        )
+        (justify left)
+      )
+    )
+    (property "Value" "MPSA92"
+      (at 388.62 314.96 0)
+      (effects
+        (font
+          (size 1.27 1.27)
+        )
+        (justify left)
+      )
+    )
+    (property "Footprint" "Package_TO_SOT_THT:TO-92_Inline"
+      (at 383.54 313.69 0)
+      (effects
+        (font
+          (size 1.27 1.27)
+        )
+        (justify left)
+        hide
+      )
+    )
+    (property "Datasheet" "~"
+      (at 383.54 313.69 0)
+      (effects
+        (font
+          (size 1.27 1.27)
+        )
+        (justify left)
+        hide
+      )
+    )
+    (pin "1"
+      (uuid "caf485ff-6914-5742-9167-800f1ba63be5")
+    )
+    (pin "2"
+      (uuid "0194ea36-5eb0-5e92-8de3-c40723e2e3e8")
+    )
+    (pin "3"
+      (uuid "d16efceb-592d-52fe-b570-856b6e69e669")
+    )
+    (instances
+      (project "psu"
+        (path "/2e595ab6-8c2f-5f27-8552-cfe536347d6d"
+          (reference "Q16")
+          (unit 1)
+        )
+      )
+    )
+  )
+  (label "-40V"
+    (at 386.08 318.77 270)
+    (fields_autoplaced)
+    (effects
+      (font
+        (size 1 1)
+      )
+      (justify left bottom)
+    )
+    (uuid "6c229c32-85d5-51c9-9bb3-fb528e35b548")
+  )
+  (label "HNE"
+    (at 378.46 313.69 180)
+    (fields_autoplaced)
+    (effects
+      (font
+        (size 1 1)
+      )
+      (justify right bottom)
+    )
+    (uuid "61a9f57b-1c48-5edf-9a1b-55b4914c0c5c")
+  )
+  (label "Q14B"
+    (at 386.08 308.61 90)
+    (fields_autoplaced)
+    (effects
+      (font
+        (size 1 1)
+      )
+      (justify left bottom)
+    )
+    (uuid "391e6dc9-e941-52d8-aa4b-50e643b4b4f0")
+  )
+  (symbol
+    (lib_id "Device:C_Polarized")
+    (at 419.1 313.69 0)
+    (unit 1)
+    (in_bom yes)
+    (on_board yes)
+    (dnp no)
+    (uuid "d34db95b-30ca-55d7-b735-f80f77cb5330")
+    (property "Reference" "C46"
+      (at 422.91 312.42 0)
+      (effects
+        (font
+          (size 1.27 1.27)
+        )
+        (justify left)
+      )
+    )
+    (property "Value" "100u 63V"
+      (at 422.91 314.96 0)
+      (effects
+        (font
+          (size 1.27 1.27)
+        )
+        (justify left)
+      )
+    )
+    (property "Footprint" "Capacitor_THT:CP_Radial_D8.0mm_P3.50mm"
+      (at 419.1 313.69 0)
+      (effects
+        (font
+          (size 1.27 1.27)
+        )
+        (justify left)
+        hide
+      )
+    )
+    (property "Datasheet" "~"
+      (at 419.1 313.69 0)
+      (effects
+        (font
+          (size 1.27 1.27)
+        )
+        (justify left)
+        hide
+      )
+    )
+    (pin "1"
+      (uuid "26bb4091-635c-5c91-af75-c77dd64a3993")
+    )
+    (pin "2"
+      (uuid "bc97f7b5-a8a5-539c-b589-3fbb4c6e78b6")
+    )
+    (instances
+      (project "psu"
+        (path "/2e595ab6-8c2f-5f27-8552-cfe536347d6d"
+          (reference "C46")
+          (unit 1)
+        )
+      )
+    )
+  )
+  (label "GND"
+    (at 419.1 309.88 90)
+    (fields_autoplaced)
+    (effects
+      (font
+        (size 1 1)
+      )
+      (justify left bottom)
+    )
+    (uuid "aa2a30ed-1edc-58bc-922e-ca08409d0e46")
+  )
+  (label "-40V"
+    (at 419.1 317.5 270)
+    (fields_autoplaced)
+    (effects
+      (font
+        (size 1 1)
+      )
+      (justify left bottom)
+    )
+    (uuid "07198724-a494-5e9b-8800-ec84ffdec860")
+  )
+  (symbol
+    (lib_id "Device:C")
+    (at 454.66 313.69 0)
+    (unit 1)
+    (in_bom yes)
+    (on_board yes)
+    (dnp no)
+    (uuid "36f467a3-bfe5-5a77-93d4-1d83c1ae9df2")
+    (property "Reference" "C47"
+      (at 458.47 312.42 0)
+      (effects
+        (font
+          (size 1.27 1.27)
+        )
+        (justify left)
+      )
+    )
+    (property "Value" "100n 100V"
+      (at 458.47 314.96 0)
+      (effects
+        (font
+          (size 1.27 1.27)
+        )
+        (justify left)
+      )
+    )
+    (property "Footprint" "Capacitor_THT:C_Rect_L7.2mm_W3.5mm_P5.00mm_FKS2_FKP2_MKS2_MKP2"
+      (at 454.66 313.69 0)
+      (effects
+        (font
+          (size 1.27 1.27)
+        )
+        (justify left)
+        hide
+      )
+    )
+    (property "Datasheet" "~"
+      (at 454.66 313.69 0)
+      (effects
+        (font
+          (size 1.27 1.27)
+        )
+        (justify left)
+        hide
+      )
+    )
+    (pin "1"
+      (uuid "ab09cdb9-853a-5bb8-ac2f-3381eb323559")
+    )
+    (pin "2"
+      (uuid "35c2199e-57f9-5da5-81c8-ddf37b70049b")
+    )
+    (instances
+      (project "psu"
+        (path "/2e595ab6-8c2f-5f27-8552-cfe536347d6d"
+          (reference "C47")
+          (unit 1)
+        )
+      )
+    )
+  )
+  (label "GND"
+    (at 454.66 309.88 90)
+    (fields_autoplaced)
+    (effects
+      (font
+        (size 1 1)
+      )
+      (justify left bottom)
+    )
+    (uuid "c932745c-62b4-5464-a872-54f9b851fc77")
+  )
+  (label "-40V"
+    (at 454.66 317.5 270)
+    (fields_autoplaced)
+    (effects
+      (font
+        (size 1 1)
+      )
+      (justify left bottom)
+    )
+    (uuid "46b16545-1686-5fc9-ab67-beb1659b92e5")
+  )
+  (symbol
+    (lib_id "Device:R")
+    (at 490.22 313.69 0)
+    (unit 1)
+    (in_bom yes)
+    (on_board yes)
+    (dnp no)
+    (uuid "7d59b079-462a-55a4-8470-60a56040a003")
+    (property "Reference" "R45"
+      (at 494.03 312.42 0)
+      (effects
+        (font
+          (size 1.27 1.27)
+        )
+        (justify left)
+      )
+    )
+    (property "Value" "10k 0.5W"
+      (at 494.03 314.96 0)
+      (effects
+        (font
+          (size 1.27 1.27)
+        )
+        (justify left)
+      )
+    )
+    (property "Footprint" "Resistor_THT:R_Axial_DIN0309_L9.0mm_D3.2mm_P12.70mm_Horizontal"
+      (at 490.22 313.69 0)
+      (effects
+        (font
+          (size 1.27 1.27)
+        )
+        (justify left)
+        hide
+      )
+    )
+    (property "Datasheet" "~"
+      (at 490.22 313.69 0)
+      (effects
+        (font
+          (size 1.27 1.27)
+        )
+        (justify left)
+        hide
+      )
+    )
+    (pin "1"
+      (uuid "5fd68225-f995-5f7d-ada3-27106399feb0")
+    )
+    (pin "2"
+      (uuid "474f3cdb-f673-5031-b88f-cab1f59742b0")
+    )
+    (instances
+      (project "psu"
+        (path "/2e595ab6-8c2f-5f27-8552-cfe536347d6d"
+          (reference "R45")
+          (unit 1)
+        )
+      )
+    )
+  )
+  (label "-40V"
+    (at 490.22 309.88 90)
+    (fields_autoplaced)
+    (effects
+      (font
+        (size 1 1)
+      )
+      (justify left bottom)
+    )
+    (uuid "4c0809d2-1560-5c7b-b80e-4ee704d830de")
+  )
+  (label "GND"
+    (at 490.22 317.5 270)
+    (fields_autoplaced)
+    (effects
+      (font
+        (size 1 1)
+      )
+      (justify left bottom)
+    )
+    (uuid "bf8a6200-bcef-58e1-a8c9-06372f778668")
+  )
+  (symbol
+    (lib_id "Connector_Generic:Conn_01x04")
+    (at 312.42 341.63 0)
+    (unit 1)
+    (in_bom yes)
+    (on_board yes)
+    (dnp no)
+    (uuid "b5f74280-eebf-503e-9780-d9762fa3ae22")
+    (property "Reference" "J6"
+      (at 316.23 340.36 0)
+      (effects
+        (font
+          (size 1.27 1.27)
+        )
+        (justify left)
+      )
+    )
+    (property "Value" "TO PREAMP +40/GND/GND/-40"
+      (at 316.23 342.9 0)
+      (effects
+        (font
+          (size 1.27 1.27)
+        )
+        (justify left)
+      )
+    )
+    (property "Footprint" "Connector_JST:JST_XH_B4B-XH-A_1x04_P2.50mm_Vertical"
+      (at 312.42 341.63 0)
+      (effects
+        (font
+          (size 1.27 1.27)
+        )
+        (justify left)
+        hide
+      )
+    )
+    (property "Datasheet" "~"
+      (at 312.42 341.63 0)
+      (effects
+        (font
+          (size 1.27 1.27)
+        )
+        (justify left)
+        hide
+      )
+    )
+    (pin "1"
+      (uuid "921f15c6-f86b-5dc9-9fae-88922db1f521")
+    )
+    (pin "2"
+      (uuid "1981dd6f-0083-5fdc-bd55-58317808ad7f")
+    )
+    (pin "3"
+      (uuid "753de255-a3c1-53e4-9ed3-86e72319c0f6")
+    )
+    (pin "4"
+      (uuid "4a4f93ad-2625-54ed-8baa-48285c8797d0")
+    )
+    (instances
+      (project "psu"
+        (path "/2e595ab6-8c2f-5f27-8552-cfe536347d6d"
+          (reference "J6")
+          (unit 1)
+        )
+      )
+    )
+  )
+  (label "+40V"
+    (at 307.34 339.09 180)
+    (fields_autoplaced)
+    (effects
+      (font
+        (size 1 1)
+      )
+      (justify right bottom)
+    )
+    (uuid "c5eb74ce-8b0d-59f4-941c-24d1f405f6f9")
+  )
+  (label "GND"
+    (at 307.34 341.63 180)
+    (fields_autoplaced)
+    (effects
+      (font
+        (size 1 1)
+      )
+      (justify right bottom)
+    )
+    (uuid "ac968bcc-a299-57fc-8b49-0365e527a5c8")
+  )
+  (label "GND"
+    (at 307.34 344.17 180)
+    (fields_autoplaced)
+    (effects
+      (font
+        (size 1 1)
+      )
+      (justify right bottom)
+    )
+    (uuid "30b83780-33bf-5a70-b4ab-41d0f175f3d9")
+  )
+  (label "-40V"
+    (at 307.34 346.71 180)
+    (fields_autoplaced)
+    (effects
+      (font
+        (size 1 1)
+      )
+      (justify right bottom)
+    )
+    (uuid "34351358-d75f-5f95-bbb1-f518ce0b27c1")
+  )
+  (symbol
+    (lib_id "power:PWR_FLAG")
+    (at 60.96 25.4 0)
+    (unit 1)
+    (in_bom no)
+    (on_board no)
+    (dnp no)
+    (uuid "f7495d78-daf2-5e2d-9a8e-9dc1d019ebd4")
+    (property "Reference" "#FLG01"
+      (at 60.96 38.1 0)
+      (effects
+        (font
+          (size 1.27 1.27)
+        )
+        (justify left)
+        hide
+      )
+    )
+    (property "Value" "PWR_FLAG"
+      (at 60.96 38.1 0)
+      (effects
+        (font
+          (size 1.27 1.27)
+        )
+        (justify left)
+        hide
+      )
+    )
+    (property "Footprint" ""
+      (at 60.96 25.4 0)
+      (effects
+        (font
+          (size 1.27 1.27)
+        )
+        (justify left)
+        hide
+      )
+    )
+    (property "Datasheet" ""
+      (at 60.96 25.4 0)
+      (effects
+        (font
+          (size 1.27 1.27)
+        )
+        (justify left)
+        hide
+      )
+    )
+    (pin "1"
+      (uuid "126d0c80-2caa-51b4-9a51-97804096c224")
+    )
+    (instances
+      (project "psu"
+        (path "/2e595ab6-8c2f-5f27-8552-cfe536347d6d"
+          (reference "#FLG01")
+          (unit 1)
+        )
+      )
+    )
+  )
+  (label "GND"
+    (at 60.96 25.4 270)
+    (fields_autoplaced)
+    (effects
+      (font
+        (size 1 1)
+      )
+      (justify left bottom)
+    )
+    (uuid "c9fc5954-ddf5-5e51-b13b-273418f6ad80")
+  )
+  (text "Main rails +/-28 V (T1)"
+    (at 55.88 57.15 0)
+    (effects
+      (font
+        (size 2 2)
+        bold
+      )
+      (justify left bottom)
+    )
+    (uuid "2657ba8c-bbdc-50fa-886d-9c9d6cde2aa8")
+  )
+  (text "Star ground: GND net meets at the C1-C4 junction. Heavy tracks / wires to the power amp board."
+    (at 55.88 125.73 0)
+    (effects
+      (font
+        (size 1.27 1.27)
+      )
+      (justify left bottom)
+    )
+    (uuid "4567a4e1-95b8-5a70-9350-c6b5091c91c4")
+  )
+  (text "+15 V regulator (from +28 V)"
+    (at 294.64 57.15 0)
+    (effects
+      (font
+        (size 2 2)
+        bold
+      )
+      (justify left bottom)
+    )
+    (uuid "16b16c1e-4649-5559-a3f5-0c4884abcb3a")
+  )
+  (text "Ref: 16 V zener, RC-filtered. Darlington Q1/Q2. Q3 limits at ~240 mA. Output ~ +14.8 V."
+    (at 294.64 153.67 0)
+    (effects
+      (font
+        (size 1.27 1.27)
+      )
+      (justify left bottom)
+    )
+    (uuid "9cd63ac4-6c90-5fbd-9df7-adba38af3628")
+  )
+  (text "-15 V regulator (from -28 V)"
+    (at 55.88 146.05 0)
+    (effects
+      (font
+        (size 2 2)
+        bold
+      )
+      (justify left bottom)
+    )
+    (uuid "97fcb33a-013f-5c0a-a1b9-2ad13a0144d3")
+  )
+  (text "Mirror of the +15 V regulator."
+    (at 55.88 242.57 0)
+    (effects
+      (font
+        (size 1.27 1.27)
+      )
+      (justify left bottom)
+    )
+    (uuid "6b6de891-22d6-5fa0-bbde-04b8330359b3")
+  )
+  (text "HV raw supply (T2)"
+    (at 294.64 173.99 0)
+    (effects
+      (font
+        (size 2 2)
+        bold
+      )
+      (justify left bottom)
+    )
+    (uuid "fb58ea0c-2d53-5d8c-b3c5-eadf3af6a426")
+  )
+  (text "1N4007 bridge, 1000 uF 100 V per rail: ~ +/-55 V raw."
+    (at 294.64 242.57 0)
+    (effects
+      (font
+        (size 1.27 1.27)
+      )
+      (justify left bottom)
+    )
+    (uuid "6cbb3d3c-a42f-57ee-b7f3-4449b1bc1993")
+  )
+  (text "+40 V regulator (discrete)"
+    (at 55.88 262.89 0)
+    (effects
+      (font
+        (size 2 2)
+        bold
+      )
+      (justify left bottom)
+    )
+    (uuid "48623085-efc3-5d9d-9fbb-77b47ee30363")
+  )
+  (text "43 V zener ref, RC soft start, MPSA42 + MJE340 Darlington, Q13 limits at ~55 mA. Output ~ +41.6 V."
+    (at 55.88 331.47 0)
+    (effects
+      (font
+        (size 1.27 1.27)
+      )
+      (justify left bottom)
+    )
+    (uuid "52b7c552-5e90-5951-be5c-96c145b27cd0")
+  )
+  (text "-40 V regulator (discrete)"
+    (at 294.64 262.89 0)
+    (effects
+      (font
+        (size 2 2)
+        bold
+      )
+      (justify left bottom)
+    )
+    (uuid "44e4ad28-6e9a-58eb-b183-aca62f6535e7")
+  )
+  (text "Mirror: MPSA92 + MJE350. Output ~ -41.6 V."
+    (at 294.64 359.41 0)
+    (effects
+      (font
+        (size 1.27 1.27)
+      )
+      (justify left bottom)
+    )
+    (uuid "b45fb64f-dc86-56fc-a2fc-9a8a688cf836")
+  )
+  (text "Power flags (ERC drivers for rails that enter through connectors)"
+    (at 60.96 15.24 0)
+    (effects
+      (font
+        (size 1.27 1.27)
+      )
+      (justify left bottom)
+    )
+    (uuid "dd23256c-c963-51e7-83cb-f5c3cbb50fa5")
+  )
+  (sheet_instances
+    (path "/"
+      (page "1")
+    )
+  )
+)

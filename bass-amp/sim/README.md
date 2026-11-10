@@ -13,6 +13,7 @@ All files run with ngspice (tested with ngspice-42) and Python 3 + numpy/matplot
 | `t_noise_ref.cir` | Same pickup into a noiseless amp with a conventional 1 MΩ input, for comparison |
 | `t_powerup.cir` | Rails ramp up from 0 V: confirms both modules come up in the right operating point |
 | `t_eq.cir`, `opamp.sub`, `mid_tune.py`, `mid_table.py` | 3-band EQ: Baxandall bass/treble + gyrator mid, and the capacitor table for the 5-way mid switch |
+| `t_protect.cir`, `t_protect_bass.cir` | Power-amp protection: turn-on delay, AC-loss drop-out, DC-fault drop-out, mute current, and no false trip on a 25 Vpk 30 Hz bass note |
 | `plots.py` | Regenerates `../docs/*.png` |
 
 ```sh

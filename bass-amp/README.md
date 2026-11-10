@@ -50,7 +50,7 @@ flowchart LR
   A2 --> MV["MASTER 10k log"] --> MIX["U3A summer"]
   AUX[/"AUX IN 3.5 mm"/] --> MIX
   MIX --> HP["U4 phones amp"] --> PH[/"PHONES (mutes speaker)"/]
-  MIX --> SUB["U6A subsonic HP<br/>DEEP 22 Hz / TIGHT 38 Hz"]
+  MIX --> SUB["U6A subsonic HP<br/>DEEP 22 Hz / TIGHT 40 Hz"]
   SUB --> PA1["LM3886 A (+)"]
   SUB --> INV["U3B inverter"] --> PA2["LM3886 B (−)"]
   PA1 --> RLY["DC-protect / delay relay"] --> SPK[/"Speakon NL4 → 8 Ω 1×12 + horn"/]
@@ -74,7 +74,7 @@ flowchart LR
 | Bass | ±14.4 dB @ 30 Hz, ±13.7 dB @ 40 Hz, ±9.4 dB @ 100 Hz (shelf) | sim |
 | Mid | ±14.5 dB peak, Q ≈ 1.6, at 250 / 500 / 800 / 1.5 k / 3 kHz (switched) | sim |
 | Treble | ±10 dB @ 5 kHz, ±15 dB @ 10 kHz (shelf) | sim |
-| Subsonic filter | 2nd order: DEEP −3 dB @ 22 Hz (−0.8 dB at low B, 31 Hz) / TIGHT −3 dB @ 38 Hz | calc, `docs/subsonic.png` |
+| Subsonic filter | 2nd order: DEEP −3 dB @ 22 Hz (−0.8 dB at low B, 31 Hz) / TIGHT −3 dB @ ≈ 40 Hz | calc, `docs/subsonic.png` |
 | Balanced out | Pre/post EQ, +2 dBu nominal, max +26 dBu differential, −20 dB pad, ground lift, phantom-safe | design |
 | FX loop | Send 0 / −10 dB switch; return into an HV stage (+30 dBu headroom) | design |
 | Phones | NE5532 per side, 47 Ω build-out, 32–600 Ω phones; plugging in mutes the speaker | design |
@@ -292,7 +292,7 @@ Each indicator is a peak detector OR-ed from two nodes of opposite polarity, so 
   - DZ = 10 V (1N4740A), so the LED lights at ±11.3 V<sub>pk</sub>. That is 2.5 dB before the NE5532 stages clip.
 - **POWER clip:**
   - A = LM3886 A output, B = LM3886 B output (the two bridge halves are in anti-phase).
-  - DZ = 22 V (1N4748A), so the LED lights at ≈ 23.5 V<sub>pk</sub> per side. That is just before the chips clip under load.
+  - DZ = 20 V (1N4747A), so the LED lights at ≈ 21 V<sub>pk</sub> per side. That is just before the chips clip under load (≈ 22–23 V<sub>pk</sub> with sagging rails).
 
 ---
 
@@ -303,7 +303,7 @@ Each indicator is a peak detector OR-ed from two nodes of opposite polarity, so 
 | **FX send** (U2B) | EQ_OUT → S2 (0 dB, or −9.7 dB via 6.8 k/3.3 k) → U2B follower → 100 Ω → 10 µF bipolar → jack, with 100 k to GND on the jack side |
 | **FX return** | Switched jack. The switch contact is fed from **EQ_OUT**, so with nothing plugged in the signal flows straight through. The jack goes to A2 (section 5.4). |
 | **Master + aux** (U3A, inverting summer) | A2 → 4.7 µF → VR5 10 kA MASTER (wiper) → 10 k → U3A −in. AUX L and AUX R each → 22 k → U3A −in. Feedback 10 k ‖ 47 pF. +in → GND. Output = MIX. |
-| **Subsonic** (U6A, unity Sallen-Key high-pass) | MIX → 220 nF → 220 nF → U6A +in. Resistor from the cap junction to the output: 22 k (DEEP) / 12 k (TIGHT). Resistor from +in to GND: 47 k / 27 k. S4 is a DPDT. Output = SUB. |
+| **Subsonic** (U6A, unity Sallen-Key high-pass) | MIX → 220 nF → 220 nF → U6A +in. Resistor from the cap junction to the output: 22 k. Resistor from +in to GND: 47 k (DEEP). For TIGHT, a DPDT switches 27 k in parallel with the 22 k and 56 k in parallel with the 47 k (≈ 12.1 k / 25.6 k, ≈ 40 Hz). The filter input is never left floating while switching. Output = SUB. |
 | **Bridge phase splitter** (U3B) | SUB → 10 k → −in, 10 k feedback (0.1 % or matched), +in → GND. Output = SUB_INV. |
 | **Phones** (U4A/U4B) | MIX → each half as a follower → 47 Ω → TRS tip/ring. The jack's NC switch is in series with the LM3886 mute current (section 10), so plugging in phones silences the speaker. |
 | **Balanced DI/line out** (U5) | S5 PRE (A1 out after C6) / POST (EQ_OUT) → 2.2 k + 1N4148 clamps to ±15 V (protects U5 from the A1 output's ±36 V swing) → S6 pad (direct, or −20 dB via 10 k/1.1 k) → U5A follower = HOT. U5A → 10 k/10 k inverter U5B = COLD. Each leg: 47 Ω → 1N4148 clamps to ±15 V → 47 µF 63 V (+ toward XLR) → 10 Ω → XLR pin 2/3, with 100 k to GND at the pin. S7 lifts pin 1 from signal ground. |
@@ -357,16 +357,31 @@ Decouple every NE5532 with 100 nF film directly at pins 4 and 8, plus 47 µF per
 
 ## 10. Mute, turn-on delay and DC protection (discrete)
 
-1. **Mute pin (LM3886 pin 8):**
-   - Each chip gets 20 k from pin 8 to the node MUTE_N. MUTE_N goes through the phones-jack NC contact to the collector of Q30 (MPSA42, emitter at −28 V).
-   - The chip plays only while ≥ 0.5 mA flows out of pin 8 (≈ 1.3 mA here).
-   - Q30 base: 47 k from the relay-enable node, 10 k B–E, plus a 1N4148 B–E clamp.
-2. **Relay:** 24 V coil, 10 A contact, in series with the LM3886 A output. It is driven by a BD139 from +28 V through a 220 Ω/2 W dropper.
-3. **Enable logic**, three conditions:
-   - **Turn-on delay:** 100 k / 47 µF, about 3.5 s.
-   - **AC-loss detect:** a 1N4148 from one T1 secondary feeding 1 µF ‖ 100 k drives a transistor that holds the enable. When mains drops, enable falls within ≈ 50 ms, so the relay opens and the chips mute before the rails collapse. No thump.
-   - **DC detect:** each LM3886 output → 47 k → 47 µF bipolar to GND (low-pass), then a 4 × 1N4148 bridge into a 2N5210. More than ±1.5 V of DC on either output pulls the enable low.
-   - This is the well-known ESP Project 33 arrangement, adapted for a bridged output by OR-ing both outputs.
+The complete circuit is in `kicad/poweramp/`. It is simulated in `sim/t_protect.cir` and `sim/t_protect_bass.cir`.
+
+1. **Speaker relay:** K1, an Omron G5LE-1 with a 24 V coil and a 10 A contact.
+   - It sits in series with the LM3886 A output. The coil is fed from +28 V through 220 Ω and switched by an MPSA42 + BD139 Darlington.
+2. **Turn-on delay:** node T charges through 100 k / 47 µF.
+   - A 12 V zener in the Darlington's base path pulls the relay in at about 13.6 V.
+   - Simulated pull-in: **3.2 s**.
+3. **AC-loss detection:** a 1N4148 from one T1 secondary feeds 1 µF ‖ 47 k.
+   - That keeps a 2N5210 on, which holds a second 2N5210 (the discharge transistor) off.
+   - When mains is switched off, the discharge transistor dumps T. Simulated: **the relay opens 78 ms after the AC disappears**, while the 20 000 µF reservoir is still up. No thump.
+4. **DC-fault detection:** each output → 47 k → 47 µF bipolar.
+   - A positive fault turns on an NPN through a series diode (> +1.3 V).
+   - A negative fault turns on a common-base NPN through a series diode and 1 k (< −1.3 V).
+   - Simulated relay drop-out:
+
+     | Fault | Drop-out |
+     |---|---|
+     | ±27 V (a failed chip) | 0.12 s (+) / 0.26 s (−) |
+     | ±10 V | 0.3 s / 0.8 s |
+
+   - A 25 V<sub>pk</sub> 30 Hz bass note leaves only 66 mV on the filter node, so it **does not trip**.
+   - Bug found and fixed in simulation: the first version clamped the positive detector's base with a diode to ground. That clamp loaded the filter, so negative faults were nearly invisible.
+5. **Mute (LM3886 pin 8):** the chips are unmuted only while the relay is energised.
+   - The low side of the coil drives an MPSA92 level shifter into Q30 (MPSA42, emitter at −28 V).
+   - Q30 sinks 1.27 mA from each pin 8 through 20 k (the datasheet needs ≥ 0.5 mA). The phones-jack NC switch is in series with Q30's collector, so plugging in phones mutes the speaker.
 
 ---
 
@@ -462,6 +477,7 @@ Decouple every NE5532 with 100 nF film directly at pins 4 and 8, plus 47 µF per
 
 ## 16. Files
 
+- `kicad/`: **KiCad projects for the four boards** (HVOA module, preamp, power amp, PSU), with footprints assigned and PDFs. The schematics are generated and checked against the design; the HVOA module is checked pin-for-pin against the simulated SPICE netlist. See `kicad/README.md`.
 - `sim/`: ngspice netlists and Python scripts that produced every simulated figure above. See `sim/README.md`.
 - `docs/`: response plots.
 
