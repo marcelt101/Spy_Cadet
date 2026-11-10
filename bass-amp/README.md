@@ -469,7 +469,7 @@ The complete circuit is in `kicad/poweramp/`. It is simulated in `sim/t_protect.
 | BD139 / BD140 | 2 / 1 | ±15 V pass transistors; relay driver |
 | NE5532 (DIP-8) | 6 | U1–U6 |
 | LM3886T | 2 | Power amp |
-| Zeners | 5V6 ×2, 3V3 ×2, 43V ×2, 16V ×2, 10V, 22V | |
+| Zeners | 5V6 ×2, 3V3 ×2, 43V ×2, 16V ×2, 12V, 10V, 20V | |
 | Red LEDs (references) + panel LEDs | 4 + 3 | |
 | 1N4148 / 1N4007 / 25 A bridge | ≈ 25 / 4 / 1 | |
 
