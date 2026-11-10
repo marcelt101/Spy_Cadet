@@ -1,5 +1,6 @@
 """Hand-placed drawing of the power amp board (parts and nets from board_poweramp.py)."""
 from kdraw import Drawing
+import netnames
 import board_poweramp
 
 def chip(d, b, P, u, n0, L):
@@ -28,13 +29,13 @@ def build():
         b.add(P(j), 8 if mir else 22, 8 + 7 * i, mirror=mir)
     b = d.block('LM3886 A (non-inverted half)', 38, 6, 74, 44, 'Gain 1 + 20k/1k = 21. Gain resistors 1 %, matched A to B. U1 tab = V-.')
     chip(d, b, P, 'U1', 0, 'L1')
-    b = d.block('LM3886 B (inverted half)', 38, 54, 74, 44, 'Identical to A; driven from SUB_INV.')
+    b = d.block('LM3886 B (inverted half)', 38, 54, 74, 44, 'Identical to A; driven from PA_DRIVE-.')
     chip(d, b, P, 'U2', 10, 'L2')
     b = d.block('Speaker relay with ~3.5 s turn-on delay', 116, 6, 56, 34,
                 'T charges via R40/C40; at ~13.6 V the 12 V zener lets Q32/Q33 pull K1 in.\nAnything that pulls TD low drops the relay within ~5 ms.')
     b.add(P('R40'), 6, 8); b.add(P('C40'), 6, 17); b.add(P('D40'), 13, 13); b.add(P('R41'), 19, 13, 90); b.add(P('R42'), 23, 20)
     b.add(P('Q32'), 30, 19); b.add(P('Q33'), 36, 24); b.add(P('R43'), 33, 28)
-    b.add(P('K1'), 46, 11); b.add(P('R44'), 44, 3); b.add(P('D41'), 36, 11, 270); b.add(P('R49'), 12, 23)
+    b.add(P('K1'), 46, 12); b.add(P('R44'), 44, 3); b.add(P('D41'), 36, 11, 270); b.add(P('R49'), 12, 23)
     b = d.block('AC-loss detector', 116, 44, 56, 24, 'While AC is present Q36 holds Q35 off. Mains off: C41 decays in ~30 ms,\nQ35 dumps C40, relay opens, chips mute.')
     b.add(P('D42'), 7, 6, 180); b.add(P('R45'), 13, 6, 90); b.add(P('C41'), 18, 11); b.add(P('R46'), 22, 11)
     b.add(P('R47'), 27, 6, 90); b.add(P('Q36'), 34, 8); b.add(P('R48'), 39, 3); b.add(P('Q35'), 44, 8)
@@ -52,9 +53,10 @@ def build():
     b = d.block('POWER clip indicator', 176, 44, 46, 30, 'Peak detector on both bridge halves; lights at ~21 V peak.')
     b.add(P('R81'), 7, 5, 90); b.add(P('D81'), 13, 5, 180); b.add(P('R82'), 7, 10, 90); b.add(P('D82'), 13, 10, 180)
     b.add(P('C81'), 18, 15); b.add(P('R83'), 22, 15); b.add(P('D83'), 25, 5); b.add(P('R84'), 31, 5, 90)
-    b.add(P('R85'), 35, 10); b.add(P('Q81'), 40, 7); b.add(P('R86'), 41, 1)
-    d.rails = {'VCC': 'power:+28V', 'VEE': 'bassamp:-28V', 'GND': 'power:GND'}
-    d.flags = [('VCC', 10, 54), ('VEE', 16, 54), ('GND', 22, 54)]
+    b.add(P('R85'), 35, 10); b.add(P('Q81'), 40, 7); b.add(P('R86'), 46, 3)
+    d.rails = {n: netnames.RAIL_SYMBOL[n] for n in netnames.RAIL_SYMBOL if n in {x for q in src.values() for x in q.conn.values()}}
+    d.named = set(netnames.POWERAMP.values()) - set(d.rails)
+    d.flags = [('+28V', 10, 54), ('-28V', 16, 54), ('GND', 22, 54)]
     return d
 
 if __name__ == '__main__':

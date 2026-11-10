@@ -16,7 +16,7 @@ def kicad_nets(sch):
     comps = {find(c, 'ref')[0][1]: (find(c, 'value')[0][1], (find(c, 'footprint') or [[0, '']])[0][1]) for c in find(find(doc, 'components')[0], 'comp')}
     return nets, comps
 
-def check_against_sheet(sheet, sch):
+def check_against_sheet(sheet, sch, names=None):
     nets, comps = kicad_nets(sch)
     want = {}
     for net, members in sheet.nets().items():
@@ -38,7 +38,11 @@ def check_against_sheet(sheet, sch):
         lib, name = fp.split(':')
         if not os.path.exists(f'/usr/share/kicad/footprints/{lib}.pretty/{name}.kicad_mod'):
             errs.append(f'footprint not in library: {fp}')
-    print(f'{os.path.basename(sch)}: {len(comps)} parts, {len(want)} nets ->', 'OK' if not errs else 'FAIL')
+    if names:
+        for n in sorted(set(names) & set(want)):
+            if n not in got or got[n] != want[n]:
+                errs.append(f'net name {n!r} not found in KiCad netlist with the right pins')
+    print(f'{os.path.basename(sch)}: {len(comps)} parts, {len(want)} nets, {len(set(names or ()) & set(want))} named ->', 'OK' if not errs else 'FAIL')
     for e in errs: print('   ', e)
     return not errs
 

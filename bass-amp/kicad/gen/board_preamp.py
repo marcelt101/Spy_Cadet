@@ -2,6 +2,7 @@
 FX loop, master/aux, subsonic filter, BTL phase splitter, phones, balanced DI, PRE clip."""
 from kgen import Sheet
 from parts import *
+import netnames
 
 def module_socket(ref, name, out, inn, inp):
     return CONN(ref, f'{name} (HVOA-1 socket)', ['+40V', 'GND', '-40V', out, inn, inp], fp=FP['SKT6'])
@@ -97,7 +98,7 @@ def build():
           R('R96', '10k', 'CLZ', 'CLQB'), R('R97', '10k', 'CLQB', 'GND'), NPN('Q91', '2N5210', 'CLLK', 'CLQB', 'GND'),
           R('R98', '1k5', '+15V', 'CLLA'), CONN('J16', 'PRE CLIP LED', ['CLLA', 'CLLK'])]
     s.flags = ['+15V', '-15V', '+40V', '-40V', 'GND']
-    return s
+    return netnames.apply(s, netnames.PREAMP)
 
 if __name__ == '__main__':
     build().write('../preamp/preamp.kicad_sch', cols=6)

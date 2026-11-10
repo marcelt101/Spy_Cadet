@@ -2,6 +2,7 @@
 +/-14.8 V discrete regulated (from the +/-28 V rails)."""
 from kgen import Sheet
 from parts import *
+import netnames
 
 def build():
     s = Sheet('psu', 'Bass amp PSU board: +/-28 V, +/-40 V (discrete reg), +/-15 V (discrete reg)', rev='1',
@@ -55,7 +56,7 @@ def build():
           R('R45', '10k 0.5W', '-40V', 'GND', 'R05'),
           CONN('J6', 'TO PREAMP +40/GND/GND/-40', ['+40V', 'GND', 'GND', '-40V'])]
     s.flags = ['GND']
-    return s
+    return netnames.apply(s, netnames.PSU)
 
 if __name__ == '__main__':
     build().write('../psu/psu.kicad_sch', cols=6)

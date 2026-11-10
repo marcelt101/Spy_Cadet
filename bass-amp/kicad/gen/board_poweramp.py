@@ -2,6 +2,7 @@
 turn-on delay / AC-loss / DC-fault protection, mute driver, POWER clip LED."""
 from kgen import Sheet
 from parts import *
+import netnames
 
 def chip(s, u, side, inp, n0):
     """One LM3886 half of the bridge. side = 'A' or 'B'."""
@@ -71,7 +72,7 @@ def build():
           R('R84', '10k', 'PCZ', 'PQB'), R('R85', '10k', 'PQB', 'GND'), NPN('Q81', '2N5210', 'PLEDK', 'PQB', 'GND'),
           R('R86', '2k7', 'VCC', 'PLEDA')]
     s.flags = ['VCC', 'VEE', 'GND']
-    return s
+    return netnames.apply(s, netnames.POWERAMP)
 
 if __name__ == '__main__':
     build().write('../poweramp/poweramp.kicad_sch', cols=6)

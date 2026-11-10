@@ -50,9 +50,9 @@ flowchart LR
   A2 --> MV["MASTER 10k log"] --> MIX["U3A summer"]
   AUX[/"AUX IN 3.5 mm"/] --> MIX
   MIX --> HP["U4 phones amp"] --> PH[/"PHONES (mutes speaker)"/]
-  MIX --> SUB["U6A subsonic HP<br/>DEEP 22 Hz / TIGHT 40 Hz"]
-  SUB --> PA1["LM3886 A (+)"]
-  SUB --> INV["U3B inverter"] --> PA2["LM3886 B (−)"]
+  MIX --> SUBS["U6A subsonic HP<br/>DEEP 22 Hz / TIGHT 40 Hz"]
+  SUBS -- "PA_DRIVE+" --> PA1["LM3886 A (+)"]
+  SUBS --> INV["U3B inverter"] -- "PA_DRIVE−" --> PA2["LM3886 B (−)"]
   PA1 --> RLY["DC-protect / delay relay"] --> SPK[/"Speakon NL4 → 8 Ω 1×12 + horn"/]
   PA2 --> SPK
 ```
@@ -303,8 +303,8 @@ Each indicator is a peak detector OR-ed from two nodes of opposite polarity, so 
 | **FX send** (U2B) | EQ_OUT → S2 (0 dB, or −9.7 dB via 6.8 k/3.3 k) → U2B follower → 100 Ω → 10 µF bipolar → jack, with 100 k to GND on the jack side |
 | **FX return** | Switched jack. The switch contact is fed from **EQ_OUT**, so with nothing plugged in the signal flows straight through. The jack goes to A2 (section 5.4). |
 | **Master + aux** (U3A, inverting summer) | A2 → 4.7 µF → VR5 10 kA MASTER (wiper) → 10 k → U3A −in. AUX L and AUX R each → 22 k → U3A −in. Feedback 10 k ‖ 47 pF. +in → GND. Output = MIX. |
-| **Subsonic** (U6A, unity Sallen-Key high-pass) | MIX → 220 nF → 220 nF → U6A +in. Resistor from the cap junction to the output: 22 k. Resistor from +in to GND: 47 k (DEEP). For TIGHT, a DPDT switches 27 k in parallel with the 22 k and 56 k in parallel with the 47 k (≈ 12.1 k / 25.6 k, ≈ 40 Hz). The filter input is never left floating while switching. Output = SUB. |
-| **Bridge phase splitter** (U3B) | SUB → 10 k → −in, 10 k feedback (0.1 % or matched), +in → GND. Output = SUB_INV. |
+| **Subsonic** (U6A, unity Sallen-Key high-pass) | MIX → 220 nF → 220 nF → U6A +in. Resistor from the cap junction to the output: 22 k. Resistor from +in to GND: 47 k (DEEP). For TIGHT, a DPDT switches 27 k in parallel with the 22 k and 56 k in parallel with the 47 k (≈ 12.1 k / 25.6 k, ≈ 40 Hz). The filter input is never left floating while switching. Output = **PA_DRIVE+**. |
+| **Bridge phase splitter** (U3B) | PA_DRIVE+ → 10 k → −in, 10 k feedback (0.1 % or matched), +in → GND. Output = **PA_DRIVE−** (net `PA_DRIVE-`). |
 | **Phones** (U4A/U4B) | MIX → each half as a follower → 47 Ω → TRS tip/ring. The jack's NC switch is in series with the LM3886 mute current (section 10), so plugging in phones silences the speaker. |
 | **Balanced DI/line out** (U5) | S5 PRE (A1 out after C6) / POST (EQ_OUT) → 2.2 k + 1N4148 clamps to ±15 V (protects U5 from the A1 output's ±36 V swing) → S6 pad (direct, or −20 dB via 10 k/1.1 k) → U5A follower = HOT. U5A → 10 k/10 k inverter U5B = COLD. Each leg: 47 Ω → 1N4148 clamps to ±15 V → 47 µF 63 V (+ toward XLR) → 10 Ω → XLR pin 2/3, with 100 k to GND at the pin. S7 lifts pin 1 from signal ground. |
 
@@ -314,10 +314,10 @@ Decouple every NE5532 with 100 nF film directly at pins 4 and 8, plus 47 µF per
 
 ## 9. Power amplifier: 2 × LM3886T in bridge
 
-### 9.1 Per-chip circuit (A and B identical; A gets SUB, B gets SUB_INV)
+### 9.1 Per-chip circuit (A and B identical; A gets PA_DRIVE+, B gets PA_DRIVE−)
 
 ```
- SUB ── 2.2µF film ── 1k ──┬── pin 10 (+IN)         pin 1, 5 : +28 V (220µF + 100nF to GND at pins)
+ PA_DRIVE+ ── 2.2µF film ── 1k ──┬── pin 10 (+IN)         pin 1, 5 : +28 V (220µF + 100nF to GND at pins)
                            ├── 220p ── GND          pin 4    : −28 V (220µF + 100nF) – TAB is V− !
                            └── 22k ─── GND          pin 7    : GND (power ground)
  pin 3 (OUT) ── 20k ──┬── pin 9 (−IN)               pin 8    : MUTE (section 10)
@@ -325,7 +325,7 @@ Decouple every NE5532 with 100 nF film directly at pins 4 and 8, plus 47 µF per
  pin 3 ── 0.7µH ‖ 10Ω ── SPK±        pin 3 ── 2.7Ω 2W + 100nF ── GND (Zobel)
 ```
 
-- Total bridge gain is 42 (+32.5 dB), so 0.77 Vrms at SUB gives full power.
+- Total bridge gain is 42 (+32.5 dB), so 0.77 Vrms at PA_DRIVE+ gives full power.
 - The two gain-setting resistor sets should match to 1 %, so both halves clip at the same time.
 
 ### 9.2 Ratings check

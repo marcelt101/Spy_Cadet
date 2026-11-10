@@ -99,6 +99,7 @@ class Drawing:
         self.root = uid('root/' + project)
         self.flags = []          # (net, x, y) PWR_FLAG positions (grid)
         self.report = []
+        self.named = set()       # nets that always carry a visible label
         self.label_pins = set()  # (ref, pin) drawn with a net label instead of a wire
         self.stubs = {}          # (ref, pin) -> [(dx, dy), ...] wire path before a rail symbol
     def block(self, title, x, y, w, h, note=''):
@@ -190,7 +191,7 @@ class Drawing:
             if not pts: continue
             if lab: nblocks[net] = nblocks[net] | {None}
             unrouted = self.R.route_net(net, [(x, y) for x, y, *_ in pts])
-            need_label = len(nblocks[net]) > 1 or any(n == net for n, *_ in self.flags)
+            need_label = len(nblocks[net]) > 1 or any(n == net for n, *_ in self.flags) or net in self.named
             if unrouted:
                 self.report.append(f'{self.project}: {b.title[:30]}: net {net} labelled at {len(unrouted)} pin(s)')
                 for (x, y) in unrouted:
@@ -289,6 +290,8 @@ class Drawing:
             r1, r2, just = (x1 + 0.8, -0.5), (x1 + 0.8, 0.5), 'left'
             if conn_like:
                 r1, r2, just = ((x0 + x1) / 2, y0 - 1.0), ((x0 + x1) / 2, y1 + 1.0), 'center'
+            if p.libid.startswith('Relay:'):
+                r1, r2, just = (x1 + 1, y0 - 1.0), (x1 + 1, y0 - 2.0), 'left'
             if p.libid.startswith('Amplifier_'):
                 r1, r2, just = (x1 + 1.5, y1 + 0.3), (x1 + 1.5, y1 + 1.3), 'left'
         # KiCad mirrors justification for rotated/mirrored symbols; keep text centred there to stay predictable

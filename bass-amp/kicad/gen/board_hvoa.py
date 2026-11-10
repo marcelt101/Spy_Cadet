@@ -1,11 +1,12 @@
 """HVOA-1 daughterboard: +/-40 V nested-cascode discrete op-amp (sim/hvoa.sub)."""
 from kgen import Sheet
 from parts import *
+import netnames
 
 def build():
     s = Sheet('hvoa_module', 'HVOA-1 +/-40 V nested-cascode discrete op-amp module', rev='1',
               comments=['Build twice: A1 (instrument input) and A2 (FX return). Parts marked "A1 / A2" differ.',
-                        'Netlist identical to bass-amp/sim/hvoa.sub (checked by gen/verify_hvoa.py).',
+                        'Netlist identical to sim/hvoa.sub (checked by kicad/gen/build_all.py).',
                         'Match Q1/Q2 (Vbe 2 mV, hFE 10 %) and Q5/Q6; glue each pair together. D105/D106 touch Q11/Q12.',
                         'All TO-92 parts are E-B-C pinout (2N5087, 2N5210, MPSA42, MPSA92).'])
     b = s.block('Connector and rail filter', 'J1 mates with the 6-pin socket on the preamp board.')
@@ -40,7 +41,7 @@ def build():
           R('R114', '56', 'E11', 'OUT'), R('R115', '56', 'E12', 'OUT'),
           MPSA42('Q13', 'VASH', 'E11', 'OUT'), MPSA92('Q14', 'VASL', 'E12', 'OUT')]
     s.flags = ['VP_IN', 'VN_IN', 'GND']
-    return s
+    return netnames.apply(s, netnames.HVOA)
 
 if __name__ == '__main__':
     build().write('../hvoa_module/hvoa_module.kicad_sch', cols=5)

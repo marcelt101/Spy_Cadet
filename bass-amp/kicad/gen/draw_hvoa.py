@@ -1,12 +1,13 @@
 """Hand-placed drawing of the HVOA-1 module (parts and nets from board_hvoa.py)."""
 from kdraw import Drawing
+import netnames
 import board_hvoa
 
 def build():
     src = {p.ref: p for p in board_hvoa.build().all_parts()}
     d = Drawing('hvoa_module', 'HVOA-1 +/-40 V nested-cascode discrete op-amp module', paper='A3',
                 comments=['Build twice: A1 (instrument input) and A2 (FX return). Values marked "x / A2: y" differ.',
-                          'Topology identical to bass-amp/sim/hvoa.sub (checked by gen/build_all.py).',
+                          'Topology identical to sim/hvoa.sub (checked by gen/build_all.py).',
                           'Match Q1/Q2 and Q5/Q6 and glue each pair together. D105/D106 touch Q11/Q12.',
                           'All TO-92 parts E-B-C (2N5087, 2N5210, MPSA42, MPSA92).'])
     P = lambda r: src[r]
@@ -42,8 +43,9 @@ def build():
     m.add(P('Q11'), 94, 22); m.add(P('R114'), 95, 30)
     m.add(P('Q12'), 94, 46, mirror='x'); m.add(P('R115'), 95, 38)
     m.add(P('Q13'), 104, 30); m.add(P('Q14'), 104, 38, mirror='x')
-    d.rails = {'VP': 'bassamp:+40V', 'VN': 'bassamp:-40V', 'GND': 'power:GND'}
-    d.flags = [('VP_IN', 8, 30), ('VN_IN', 14, 30), ('GND', 20, 30)]
+    d.rails = {n: netnames.RAIL_SYMBOL[n] for n in netnames.RAIL_SYMBOL if n in {x for q in src.values() for x in q.conn.values()}}
+    d.named = set(netnames.HVOA.values()) - set(d.rails)
+    d.flags = [('+40V_IN', 8, 30), ('-40V_IN', 14, 30), ('GND', 20, 30)]
     return d
 
 if __name__ == '__main__':

@@ -1,5 +1,6 @@
 """Hand-placed drawing of the PSU board (parts and nets from board_psu.py)."""
 from kdraw import Drawing
+import netnames
 import board_psu
 
 def reg(b, P, refs, pos):
@@ -51,8 +52,8 @@ def build():
     b = d.block('-40 V regulator (discrete)', 84, 88, 76, 34, 'Mirror: MPSA92 + MJE350. Output ~ -41.6 V. J6 -> preamp J2.')
     reg(b, P, [None, None, 'R41', 'D45', 'R42', 'C45', 'R43', 'Q14', 'Q15', 'R44', 'Q16', 'C46', 'C47', 'R45'], False)
     b.add(P('J6'), 70, 8)
-    d.rails = {'VCC': 'power:+28V', 'VEE': 'bassamp:-28V', 'GND': 'power:GND', '+15V': 'power:+15V', '-15V': 'power:-15V',
-               '+40V': 'bassamp:+40V', '-40V': 'bassamp:-40V'}
+    d.rails = {n: netnames.RAIL_SYMBOL[n] for n in netnames.RAIL_SYMBOL if n in {x for q in src.values() for x in q.conn.values()}}
+    d.named = set(netnames.PSU.values()) - set(d.rails)
     d.flags = [('GND', 50, 42)]
     return d
 

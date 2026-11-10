@@ -32,6 +32,26 @@ One connection (STB, between the subsonic filter's 56 k resistor and its switch 
 
 If you move things around in KiCad, the PCB update still matches as long as the connections stay the same.
 
+## Net names
+
+Every net an engineer needs to follow has a name, shown on the schematic and carried into the PCB netlist. The names are kept in `gen/netnames.py`.
+
+| Kind | Convention | Examples |
+|---|---|---|
+| Regulated rails | Power symbols named by voltage | `+40V` `-40V` `+28V` `-28V` `+15V` `-15V` `GND` |
+| Unregulated or pre-filter supplies | Voltage plus a suffix | `+55V_RAW` `-55V_RAW` `+28V_FILT` `+40V_IN` (module side of its rail filter) |
+| References | Voltage + `_REF`, or function | `+43V_REF` `+16V_REF` `VREF_TOP` `CASC_BIAS` |
+| Transformer secondaries | Transformer + winding | `T1_AC1` `T1_AC2` `T2_AC1` `T2_AC2` |
+| External inputs | Function | `INST_IN` `FX_RETURN` `AUX_IN_L` `AUX_IN_R` `AC_SENSE` |
+| External outputs | Function, with polarity for balanced and bridged pairs | `FX_SEND` `PHONES_L/R` `LINE_OUT_HOT` `LINE_OUT_COLD` `SPK+` `SPK-` |
+| Board-to-board | Function | `PA_DRIVE+` `PA_DRIVE-` (preamp → power amp) |
+| Amplifier pins | Stage + `_IN+` / `_IN-` / `_OUT` | `A1_IN+` `A1_IN-` `A1_OUT` `U1_IN+` `BTL_A_OUT` |
+| Signal path nodes | Function | `PRE_EQ` `TONE_SUM` `TONE_OUT` `EQ_OUT` `MIX_SUM` `MIX_OUT` `GYRATOR` |
+| Panel parts on headers | Part + function | `MID_SW_A` `MID_CS1..5` `MID_CG1..5` `SUBSONIC_SW_A/B` `DI_PAD_SW` `PRE_CLIP_LED_A/K` |
+| Active-low controls | KiCad overbar `~{NAME}` | `~{RLY_ON}` (low when the speaker relay is energised), `~{SPK_TRIP}` (pull low to open the relay) |
+
+Purely local junctions, such as a resistor-to-transistor-base link, keep KiCad's automatic `Net-(R42-Pad1)` names.
+
 ## Verification (`gen/build_all.py`)
 
 The script:
@@ -40,6 +60,7 @@ The script:
 2. Has `kicad-cli` (KiCad's own parser) export each netlist, then checks that:
    - every net connects exactly the intended pins
    - every part has a footprint that exists in the KiCad library
+   - every named net appears under its name, on the right pins
 3. Checks that the **HVOA module schematic has the same topology as the simulated SPICE netlist** (`../sim/hvoa.sub`), pin for pin. A deliberately mis-wired copy is caught, so the check is not vacuous.
 4. Writes the PDFs.
 
@@ -56,10 +77,10 @@ cd gen && python3 build_all.py      # needs kicad-cli (KiCad 7+) and the kicad-s
 | psu J4 (XH-3) | preamp J1 | +15 V, GND, −15 V |
 | psu J6 (XH-4) | preamp J2 | +40 V, GND, GND, −40 V (a different size from J1, so the two cannot be swapped) |
 | psu J2 (screw) | poweramp J1 | +28 V, GND, −28 V (heavy wire, ≥ 1 mm²) |
-| psu J3 (XH-2) | poweramp J4 | AC sense (one 20 VAC winding) |
-| preamp J15 (XH-3) | poweramp J2 | SUB, GND, SUB_INV (twisted, or shielded 2-core) |
-| phones jack NC switch | poweramp J5 | Opens when phones are plugged in, which mutes the speaker (fit a jumper if unused) |
-| hvoa_module J1 (header) | preamp J20 (A1), J21 (A2) | +40 V, GND, −40 V, OUT, IN−, IN+ |
+| psu J3 (XH-2) | poweramp J4 | T1_AC1 → AC_SENSE, GND |
+| preamp J15 (XH-3) | poweramp J2 | PA_DRIVE+, GND, PA_DRIVE- (twisted, or shielded 2-core) |
+| phones jack NC switch | poweramp J5 | MUTE_CTRL / MUTE_CTRL_SW: opens when phones are plugged in, which mutes the speaker (fit a jumper if unused) |
+| hvoa_module J1 (header) | preamp J20 (A1), J21 (A2) | +40V_IN, GND, -40V_IN, OUT, IN-, IN+ (preamp side: +40V, GND, -40V, A1_OUT/A2_OUT, A1_IN-/A2_IN-, A1_IN+/A2_IN+) |
 
 ## Before you order PCBs, check these footprints
 

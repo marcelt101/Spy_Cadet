@@ -1,5 +1,6 @@
 """Hand-placed drawing of the preamp board (parts and nets from board_preamp.py)."""
 from kdraw import Drawing
+import netnames
 import board_preamp
 
 def build():
@@ -114,7 +115,8 @@ def build():
     b.add(P('C91'), 19, 15); b.add(P('R95'), 23, 15); b.add(P('D93'), 27, 5); b.add(P('R96'), 33, 5, 90)
     b.add(P('R97'), 37, 11); b.add(P('Q91'), 42, 8); b.add(P('R98'), 50, 3); b.add(P('J16'), 56, 9)
 
-    d.rails = {'+15V': 'power:+15V', '-15V': 'power:-15V', '+40V': 'bassamp:+40V', '-40V': 'bassamp:-40V', 'GND': 'power:GND'}
+    d.rails = {n: netnames.RAIL_SYMBOL[n] for n in netnames.RAIL_SYMBOL if n in {x for q in src.values() for x in q.conn.values()}}
+    d.named = set(netnames.PREAMP.values()) - set(d.rails)
     d.flags = [('+15V', 60, 32), ('-15V', 66, 32), ('+40V', 72, 32), ('-40V', 78, 32), ('GND', 84, 32)]
     return d
 
