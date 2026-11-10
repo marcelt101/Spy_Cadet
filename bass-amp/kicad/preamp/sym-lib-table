@@ -1,3 +1,0 @@
-(sym_lib_table
-  (lib (name "bassamp")(type "KiCad")(uri "${KIPRJMOD}/../lib/bassamp.kicad_sym")(options "")(descr "Bass amp power symbols +40V -40V -28V"))
-)
