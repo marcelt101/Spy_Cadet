@@ -15,18 +15,28 @@ Each folder also has a PDF of its schematic.
 
 ## How the schematics are drawn
 
-The schematics are generated from Python netlist descriptions in `gen/`:
+The schematics are drawn the conventional way:
 
-- Parts are grouped into titled, dashed blocks by function.
-- Every pin is connected by a **net label**, not a drawn wire.
+- Parts are placed by hand in circuit order, grouped into titled sections.
+- Pins are joined with real wires, with junction dots at tees.
+- Supply rails use power symbols: +15V, −15V, +28V, GND, plus custom **+40V / −40V / −28V** symbols in `lib/bassamp.kicad_sym`. Each project's `sym-lib-table` finds that library automatically.
+- Net labels appear only where a signal leaves its section, for example PRE_AC going from the input stage to the EQ. They also mark the fan-out to the mid-frequency switch header (J9), which is how that kind of connector is normally drawn.
 
-This is electrically complete and unambiguous, but it reads like a netlist rather than a hand-drawn circuit diagram. You can redraw any block with wires in KiCad. Keep the net names and the PCB update will still match.
+The drawings come from `gen/`:
+
+- `board_*.py` holds each board's netlist: parts, values, footprints and connections.
+- `draw_*.py` holds where each part sits.
+- `kdraw.py` draws the wires with an orthogonal router that won't touch another net or run through a part body.
+
+One connection (STB, between the subsonic filter's 56 k resistor and its switch header) uses a label pair instead of a wire. Everything else is wired.
+
+If you move things around in KiCad, the PCB update still matches as long as the connections stay the same.
 
 ## Verification (`gen/build_all.py`)
 
 The script:
 
-1. Regenerates all four schematics.
+1. Redraws all four schematics.
 2. Has `kicad-cli` (KiCad's own parser) export each netlist, then checks that:
    - every net connects exactly the intended pins
    - every part has a footprint that exists in the KiCad library
