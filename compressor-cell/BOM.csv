@@ -1,0 +1,58 @@
+Qty,References,Value,Symbol,Footprint
+31,"C1 C2 C3 C4 C5 C6 C7 C8 C9 C10 C11 C12 C13 C18 C19 C20 C21 C22 C23 C24 C25 C26 C27 C30 C31 C42 C43 C44 C45 C46 C47","100n",C,Capacitor_THT:C_Disc_D5.0mm_W2.5mm_P5.00mm
+1,"C14","1.2n C0G",C,Capacitor_THT:C_Disc_D5.0mm_W2.5mm_P5.00mm
+2,"C15 C39","1n C0G",C,Capacitor_THT:C_Disc_D5.0mm_W2.5mm_P5.00mm
+1,"C16","3.3n C0G",C,Capacitor_THT:C_Disc_D5.0mm_W2.5mm_P5.00mm
+1,"C17","470p C0G",C,Capacitor_THT:C_Disc_D5.0mm_W2.5mm_P5.00mm
+2,"C28 C37","1u",C,Capacitor_THT:C_Rect_L7.2mm_W5.5mm_P5.00mm_FKS2_FKP2_MKS2_MKP2
+2,"C34 C35","10u",C_Polarized,Capacitor_THT:CP_Radial_D5.0mm_P2.00mm
+1,"C36","330n",C,Capacitor_THT:C_Disc_D5.0mm_W2.5mm_P5.00mm
+1,"C38","6.8p C0G",C,Capacitor_THT:C_Disc_D5.0mm_W2.5mm_P5.00mm
+1,"C40","8.2p C0G",C,Capacitor_THT:C_Disc_D5.0mm_W2.5mm_P5.00mm
+1,"C41","1u film",C,Capacitor_THT:C_Rect_L7.2mm_W5.5mm_P5.00mm_FKS2_FKP2_MKS2_MKP2
+2,"CT1 CT2","0.5-3pF DNP",C_Trim,Capacitor_SMD:C_Trimmer_Voltronics_JR
+1,"CT3","0.5-3pF NULL",C_Trim,Capacitor_SMD:C_Trimmer_Voltronics_JR
+4,"D1 D2 D3 D4","MMBV2109LT1G",D_Capacitance,varactor:Varactor_SOT-23_A1-NC2-K3
+1,"J1","+15 / GND / -15",Conn_01x03,Connector_PinHeader_2.54mm:PinHeader_1x03_P2.54mm_Vertical
+1,"J2","AUDIO IN",Conn_01x02,Connector_PinHeader_2.54mm:PinHeader_1x02_P2.54mm_Vertical
+1,"J3","AUDIO OUT",Conn_01x02,Connector_PinHeader_2.54mm:PinHeader_1x02_P2.54mm_Vertical
+1,"J4","CV IN 0-5V",Conn_01x02,Connector_PinHeader_2.54mm:PinHeader_1x02_P2.54mm_Vertical
+1,"JP1","CV SOURCE",Jumper_3_Open,Connector_PinHeader_2.54mm:PinHeader_1x03_P2.54mm_Vertical
+1,"JP3","HOLD POLARITY",Jumper_3_Open,Connector_PinHeader_2.54mm:PinHeader_1x03_P2.54mm_Vertical
+2,"R1 R18","100k",R,Resistor_THT:R_Axial_DIN0207_L6.3mm_D2.5mm_P10.16mm_Horizontal
+1,"R2","20k",R,Resistor_THT:R_Axial_DIN0207_L6.3mm_D2.5mm_P10.16mm_Horizontal
+6,"R3 R4 R5 R19 R20 R21","10k",R,Resistor_THT:R_Axial_DIN0207_L6.3mm_D2.5mm_P10.16mm_Horizontal
+5,"R6 R7 R8 R9 R14","1k",R,Resistor_THT:R_Axial_DIN0207_L6.3mm_D2.5mm_P10.16mm_Horizontal
+2,"R10 R11","4.87k",R,Resistor_THT:R_Axial_DIN0207_L6.3mm_D2.5mm_P10.16mm_Horizontal
+2,"R12 R13","4.22k",R,Resistor_THT:R_Axial_DIN0207_L6.3mm_D2.5mm_P10.16mm_Horizontal
+1,"R15","100",R,Resistor_THT:R_Axial_DIN0207_L6.3mm_D2.5mm_P10.16mm_Horizontal
+1,"R16","4.7k",R,Resistor_THT:R_Axial_DIN0207_L6.3mm_D2.5mm_P10.16mm_Horizontal
+1,"R22","30.1k",R,Resistor_THT:R_Axial_DIN0207_L6.3mm_D2.5mm_P10.16mm_Horizontal
+1,"R24","100M",R,Resistor_THT:R_Axial_DIN0207_L6.3mm_D2.5mm_P10.16mm_Horizontal
+1,"R33","160k",R,Resistor_THT:R_Axial_DIN0207_L6.3mm_D2.5mm_P10.16mm_Horizontal
+1,"R34","1.62k",R,Resistor_THT:R_Axial_DIN0207_L6.3mm_D2.5mm_P10.16mm_Horizontal
+1,"R35","3.0M",R,Resistor_THT:R_Axial_DIN0207_L6.3mm_D2.5mm_P10.16mm_Horizontal
+1,"RB1","3.3M",R,Resistor_THT:R_Axial_DIN0207_L6.3mm_D2.5mm_P10.16mm_Horizontal
+2,"RV2 RV4","10k lin",R_Potentiometer,Potentiometer_THT:Potentiometer_Alps_RK09K_Single_Vertical
+1,"RV3","10k",R_Potentiometer_Trim,Potentiometer_THT:Potentiometer_Bourns_3296W_Vertical
+1,"RV5","1M REPLICA TRIM",R_Potentiometer_Trim,Potentiometer_THT:Potentiometer_Bourns_3296W_Vertical
+1,"TP1","CARRIER_102K",TestPoint,TestPoint:TestPoint_Pad_D1.5mm
+1,"TP2","HOLD_GATE",TestPoint,TestPoint:TestPoint_Pad_D1.5mm
+1,"TP3","HOLD_SW_CTRL",TestPoint,TestPoint:TestPoint_Pad_D1.5mm
+1,"TP4","CHG_AMP_OUT",TestPoint,TestPoint:TestPoint_Pad_D1.5mm
+1,"TP5","DEMOD_OUT",TestPoint,TestPoint:TestPoint_Pad_D1.5mm
+1,"TP6","HOLD_CAP",TestPoint,TestPoint:TestPoint_Pad_D1.5mm
+1,"TP7","LPF_OUT",TestPoint,TestPoint:TestPoint_Pad_D1.5mm
+1,"TP9","VAR_BIAS_CMD",TestPoint,TestPoint:TestPoint_Pad_D1.5mm
+1,"TP10","VAR_BIAS_DRIVE",TestPoint,TestPoint:TestPoint_Pad_D1.5mm
+1,"TP11","BIAS_ERR",TestPoint,TestPoint:TestPoint_Pad_D1.5mm
+4,"U1 U3 U4 U5","OPA2134PA",OPA2134,Package_DIP:DIP-8_W7.62mm
+1,"U2","OPA1656ID",OPA2134,Package_SO:SOIC-8_3.9x4.9mm_P1.27mm
+4,"U7 U8 U9 U10","DG419DJ",DG419LDJ,Package_DIP:DIP-8_W7.62mm
+1,"U11","74HC4040",4040,Package_DIP:DIP-16_W7.62mm
+1,"U12","74HC10",74LS10,Package_DIP:DIP-14_W7.62mm
+1,"U14","78L05",L78L05_TO92,Package_TO_SOT_THT:TO-92_Inline
+1,"U15","LM4040DIZ-5.0",LM4040LP-5,Package_TO_SOT_THT:TO-92_Inline
+1,"U16","OPA2140AID",OPA2134,Package_SO:SOIC-8_3.9x4.9mm_P1.27mm
+2,"U17 U18","INA128PA",INA128,Package_DIP:DIP-8_W7.62mm
+1,"X1","3.2768MHz",ACO-xxxMHz,Oscillator:Oscillator_DIP-14

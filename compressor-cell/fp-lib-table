@@ -1,0 +1,4 @@
+(fp_lib_table
+  (version 7)
+  (lib (name "varactor")(type "KiCad")(uri "${KIPRJMOD}/varactor.pretty")(options "")(descr "Project varactor footprints with datasheet-correct pad numbering"))
+)
