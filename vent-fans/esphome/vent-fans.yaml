@@ -1,0 +1,120 @@
+# Vent booster fans - Raspberry Pi Pico W on the vent_fans carrier PCB.
+#
+# GP15 drives the AO3400A low-side buck at 40 kHz. Thanks to L1/C3 the fans get
+# smooth DC (about duty x 5 V) instead of chopped 5 V, so the speed setting
+# really changes fan speed and the fans stay quiet (see ../sim).
+#
+# Home Assistant decides when the fans run (homeassistant/automation.yaml).
+# The optional DS18B20 duct probe on J4 lets the board run the fans by itself
+# whenever Home Assistant is unreachable.
+
+esphome:
+  name: vent-fans
+  friendly_name: Vent Fans
+
+rp2040:
+  board: rpipicow
+
+wifi:
+  ssid: !secret wifi_ssid
+  password: !secret wifi_password
+
+logger:
+
+api:
+  encryption:
+    key: !secret api_key
+  reboot_timeout: 0s        # don't reboot every 15 min when HA is down; the fallback below handles it
+
+ota:
+  - platform: esphome
+    password: !secret ota_password
+
+# --- Fan drive -------------------------------------------------------------
+globals:
+  - id: target_level        # what the fan component asked for (0..1)
+    type: float
+    initial_value: "0.0"
+  - id: actual_level        # what GP15 is outputting right now
+    type: float
+    initial_value: "0.0"
+
+output:
+  - platform: rp2040_pwm    # the real pin; only the slew limiter below writes to it
+    id: pwm_hw
+    pin: GPIO15
+    frequency: 40000Hz
+
+  - platform: template      # what the fan component drives
+    id: fan_out
+    type: float
+    # 5 V fans usually stall below ~2.5 V. Speed 1 % maps to min_power, 100 % to
+    # full 5 V. Raise min_power if your fans don't start at low speed.
+    min_power: 0.55
+    max_power: 1.0
+    zero_means_zero: true
+    write_action:
+      - lambda: id(target_level) = state;
+
+# Slew limiter (soft start): moves the PWM at most 2 % every 20 ms, so
+# 0 -> 100 % takes 1 s. Without it, switching straight on rings the L1/C3 filter
+# and pulls a ~2 A spike through L1 (simulated); with it, the peak is ~0.45 A.
+interval:
+  - interval: 20ms
+    then:
+      - lambda: |-
+          const float step = 0.02f;
+          float a = id(actual_level), t = id(target_level);
+          if (a < t) a = std::min(t, a + step);
+          else if (a > t) a = std::max(t, a - step);
+          if (a != id(actual_level)) {
+            id(actual_level) = a;
+            id(pwm_hw).set_level(a);
+          }
+
+fan:
+  - platform: speed
+    id: vent_fans
+    output: fan_out
+    name: None              # entity becomes fan.vent_fans
+    restore_mode: ALWAYS_OFF
+
+# --- Optional: DS18B20 duct probe on J4 (standalone fallback) --------------
+# Uncomment this block if you fit J4 + R3 and a waterproof DS18B20 probe.
+# Push the probe through the duct wall a few inches upstream of the fans.
+#
+# one_wire:
+#   - platform: gpio
+#     pin: GPIO16
+#
+# sensor:
+#   - platform: dallas_temp
+#     id: duct_temp
+#     name: Duct temperature
+#     update_interval: 15s
+#
+# # Add this entry to the EXISTING interval: list above (YAML allows only one
+# # interval: key). Only acts while Home Assistant is NOT connected. Duct air is hot (>90 F)
+# # while heating and cold (<61 F) while cooling; anything near room temperature
+# # means the blower is off. The gap between the on and off thresholds keeps it
+# # from flapping on and off.
+#   - interval: 30s
+#     then:
+#       - if:
+#           condition:
+#             not:
+#               api.connected:
+#           then:
+#             - if:
+#                 condition:
+#                   lambda: 'float t = id(duct_temp).state; return !isnan(t) && (t >= 32.0 || t <= 16.0);'
+#                 then:
+#                   - fan.turn_on:
+#                       id: vent_fans
+#                       speed: 60
+#                 else:
+#                   - if:
+#                       condition:
+#                         lambda: 'float t = id(duct_temp).state; return isnan(t) || (t > 18.0 && t < 27.0);'
+#                       then:
+#                         - fan.turn_off: vent_fans

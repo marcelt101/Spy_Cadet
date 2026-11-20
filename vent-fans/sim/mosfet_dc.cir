@@ -1,0 +1,15 @@
+* AO3400A model check: Id vs Vgs at Vds = 0.1 V and Rds(on) at 3.3 V gate
+.include models.inc
+Vd d 0 0.1
+Vg g 0 3.3
+M1 d g 0 0 AO3400A
+.control
+dc Vg 0 4.5 0.01
+let rds = 0.1/(-i(Vd))
+wrdata mosfet_dc.dat rds
+meas dc rds33 find rds at=3.3
+meas dc rds25 find rds at=2.5
+meas dc rds45 find rds at=4.49
+quit
+.endc
+.end

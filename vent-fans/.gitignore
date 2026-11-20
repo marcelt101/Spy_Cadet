@@ -1,0 +1,8 @@
+sim/*.dat
+sim/_run.cir
+sim/wave.dat
+kicad/*.kicad_prl
+kicad/*-backups/
+kicad/fp-info-cache
+kicad/tools/__pycache__/
+kicad/fab/

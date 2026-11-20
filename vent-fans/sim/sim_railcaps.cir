@@ -1,0 +1,12 @@
+* INTERMEDIATE: no inductor, caps moved to the 5 V rail: 100 uF bulk + 10 uF ceramic at the fan headers
+.include models.inc
+.param duty=0.6 per=40u
+.include harness.inc
+C1 vbus c1n 100u
+Rc1 c1n 0 0.3
+C2 vbus c2n 10u
+Rc2 c2n 0 5m
+.control
+.include measure.inc
+.endc
+.end

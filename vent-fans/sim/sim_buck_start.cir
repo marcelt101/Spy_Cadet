@@ -1,0 +1,18 @@
+* PROPOSED circuit, power-up: GPIO held low (pull-down) for 3 ms, then 60 % PWM.
+* Checks the turn-on surge and that the Pico's VSYS never sees a dip/overshoot.
+.include models.inc
+.param duty=0.6 per=25u lval=100u
+.include harness_buck.inc
+.control
+alter @Vgpio[pulse] = [ 0 3.3 3m 3n 3n 15u 25u ]
+tran 20n 12m 0 50n uic
+let vfan = v(vbus)-v(fanm)
+meas tran il_pk max i(l1) from=3m to=12m
+meas tran vbus_min min v(vbus) from=3m to=12m
+meas tran vsys_min min v(vsys) from=3m to=12m
+meas tran vfan_end avg vfan from=10m to=12m
+meas tran vfan_pk max vfan from=3m to=12m
+wrdata wave_buck_start.dat vfan i(l1) v(vbus) v(vsys)
+quit
+.endc
+.end

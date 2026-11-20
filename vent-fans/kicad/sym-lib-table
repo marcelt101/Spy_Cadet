@@ -1,0 +1,3 @@
+(sym_lib_table
+  (lib (name "vent_fans")(type "KiCad")(uri "${KIPRJMOD}/lib/vent_fans.kicad_sym")(options "")(descr "Project symbols"))
+)

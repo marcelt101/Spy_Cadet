@@ -1,0 +1,16 @@
+* PROPOSED circuit, power-up WITH the ESPHome slew limiter (0 -> 60 %).
+* Staircase steps every 2 ms here (firmware uses 20 ms, which is gentler still).
+.include models.inc
+.param duty=0.6 per=25u lval=100u
+.include harness_buck_ramp.inc
+.control
+tran 20n 70m 0 50n uic
+let vfan = v(vbus)-v(fanm)
+meas tran il_pk max i(l1) from=3m to=70m
+meas tran vbus_min min v(vbus) from=3m to=70m
+meas tran vsys_min min v(vsys) from=3m to=70m
+meas tran vfan_end avg vfan from=66m to=70m
+wrdata wave_buck_softstart.dat vfan i(l1) v(vbus) v(vsys)
+quit
+.endc
+.end

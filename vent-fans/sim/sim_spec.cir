@@ -1,0 +1,10 @@
+* ORIGINAL SPEC: 100 uF electrolytic placed ACROSS THE FANS (VBUS to drain)
+.include models.inc
+.param duty=0.6 per=40u
+.include harness.inc
+C1 vbus c1n 100u
+Rc1 c1n drain 0.3
+.control
+.include measure.inc
+.endc
+.end

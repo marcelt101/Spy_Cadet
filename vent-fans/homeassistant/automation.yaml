@@ -1,0 +1,46 @@
+# Vent fans follow the furnace/AC blower.
+# Paste into Settings -> Automations -> (new) -> Edit in YAML.
+# 1. Replace every climate.thermostat (3 places) with your thermostat (Developer Tools -> States,
+#    filter "climate."). HomeKit Controller thermostats report hvac_action as
+#    heating / cooling / idle.
+# 2. Check the fan entity is fan.vent_fans after adopting the ESPHome device.
+alias: Vent fans follow HVAC
+description: Run the vent booster fans while the furnace/AC is heating or cooling.
+mode: restart
+variables:
+  thermostat: climate.thermostat
+  speed: 60            # % of the usable range (see min_power in vent-fans.yaml)
+  running: [heating, cooling, fan]
+triggers:
+  # Blower started: wait 20 s for the duct to pressurise
+  - trigger: state
+    entity_id: climate.thermostat
+    attribute: hvac_action
+    to: [heating, cooling, fan]
+    for: "00:00:20"
+  # Blower stopped: run on for 30 s to empty the duct of conditioned air
+  - trigger: state
+    entity_id: climate.thermostat
+    attribute: hvac_action
+    not_to: [heating, cooling, fan]
+    for: "00:00:30"
+  # Re-sync after HA restarts or the fan board reconnects
+  - trigger: homeassistant
+    event: start
+  - trigger: state
+    entity_id: fan.vent_fans
+    from: unavailable
+actions:
+  - if:
+      - condition: template
+        value_template: "{{ state_attr(thermostat, 'hvac_action') in running }}"
+    then:
+      - action: fan.turn_on
+        target:
+          entity_id: fan.vent_fans
+        data:
+          percentage: "{{ speed }}"
+    else:
+      - action: fan.turn_off
+        target:
+          entity_id: fan.vent_fans
